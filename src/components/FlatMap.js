@@ -69,10 +69,10 @@ function FlatMap({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }) {
       getWeight: d => d[2],
       intensity: heatmapConfig.intensity || 1,
       colorRange: heatmapConfig.colorRange || [
-        [0, 255, 255, 255], // White
-        [0, 255, 0, 255], // Green
-        [255, 255, 0, 255], // Yellow
-        [255, 0, 0, 255], // Red
+        [0, 255, 255, 255],
+        [0, 255, 0, 255],
+        [255, 255, 0, 255],
+        [255, 0, 0, 255],
       ],
       threshold: heatmapConfig.threshold || 0.9,
     }),

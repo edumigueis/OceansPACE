@@ -9,6 +9,37 @@ import './styles/App.css';
 import cloroData from './assets/data/cloro.csv';
 import aeroData from './assets/data/aero.csv';
 
+const initialViewStateMission1 = {
+  latitude: 22.8,
+  longitude: 60.5,
+  zoom: 5,
+};
+
+const initialViewStateMission2 = {
+  latitude: -16.83678,
+  longitude: -174.25968,
+  zoom: 8,
+};
+
+const heatmapConfig = {
+  intensity: 1,
+  colorRange: [
+    [255, 0, 0, 255],
+    [255, 255, 0, 255],
+    [0, 255, 0, 255],
+    [0, 255, 255, 255],
+    [0, 0, 255, 255],
+  ],
+  threshold: 0.9,
+};
+
+const tileLayerConfig = {
+  data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  minZoom: 0,
+  maxZoom: 19,
+  tileSize: 256,
+};
+
 function App() {
   const missionOneStages = [
     <SingleQuestionStage 
@@ -44,7 +75,7 @@ function App() {
     />,
     <InformativeSectionStage 
       info={{ title: "Mission 2", content: "Discover Marine Life" }}
-    />,
+     />,
     <MapFocusStage 
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />
@@ -56,16 +87,31 @@ function App() {
         <Route exact path="/" element={<Main />} />
         <Route 
           path="/mission-1" 
-          element={<MissionPage stages={missionOneStages} csvPath={cloroData} />} 
+          element={
+            <MissionPage 
+              stages={missionOneStages} 
+              csvPath={cloroData} 
+              initialViewState={initialViewStateMission1} 
+              heatmapConfig={heatmapConfig} 
+              tileLayerConfig={tileLayerConfig}
+            />
+          } 
         />
         <Route 
           path="/mission-2" 
-          element={<MissionPage stages={missionTwoStages} csvPath={aeroData} />} 
+          element={
+            <MissionPage 
+              stages={missionTwoStages} 
+              csvPath={aeroData} 
+              initialViewState={initialViewStateMission2} 
+              heatmapConfig={heatmapConfig} 
+              tileLayerConfig={tileLayerConfig}
+            />
+          } 
         />
       </Routes>
     </Router>
   );
 }
-
 
 export default App;

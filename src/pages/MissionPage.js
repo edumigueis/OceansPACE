@@ -1,34 +1,7 @@
 import React, { useState, useRef } from 'react';
 import FlatMap from '../components/FlatMap';
 
-const initialViewState = {
-  latitude: 22.8,
-  longitude: 60.5,
-  zoom: 5,
-  pitch: 0,
-  bearing: 0,
-};
-
-const heatmapConfig = {
-  intensity: 1,
-  colorRange: [
-    [255, 0, 0, 255],
-    [255, 255, 0, 255],
-    [0, 255, 0, 255],
-    [0, 255, 255, 255],
-    [0, 0, 255, 255],
-  ],
-  threshold: 0.9,
-};
-
-const tileLayerConfig = {
-  data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
-  minZoom: 0,
-  maxZoom: 19,
-  tileSize: 256,
-};
-
-function MissionPage({ stages, csvPath }) {
+function MissionPage({ stages, csvPath, initialViewState, heatmapConfig, tileLayerConfig }) {
   const [stageIndex, setStageIndex] = useState(0); // Use setStageIndex to control stage changes
   const mapRef = useRef(null);
 
@@ -50,12 +23,6 @@ function MissionPage({ stages, csvPath }) {
     }
   };
 
-  // Pass handleCenterMap and setStageIndex to the current stage
-  const currentStage = React.cloneElement(stages[stageIndex], { 
-    handleCenterMap, 
-    setStageIndex // Pass setStageIndex as setStage to avoid confusion
-  });
-
   return (
     <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
       {stages[stageIndex]}
@@ -65,7 +32,7 @@ function MissionPage({ stages, csvPath }) {
           csvUrl={csvPath}
           initialViewState={initialViewState}
           heatmapConfig={heatmapConfig}
-          tileLayerConfig={tileLayerConfig} 
+          tileLayerConfig={tileLayerConfig}
         />
       </div>
       <div style={{ padding: '10px' }}>

@@ -6,6 +6,8 @@ import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
 import './styles/App.css';
+import cloroData from './assets/data/cloro.csv';
+import aeroData from './assets/data/aero.csv';
 
 function App() {
   const missionOneStages = [
@@ -48,23 +50,22 @@ function App() {
     />
   ];
 
-  const csvPathCloro = '../assets/data/cloro.csv';
-
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route 
           path="/mission-1" 
-          element={<MissionPage stages={missionOneStages} csvPath={csvPathCloro} />} 
+          element={<MissionPage stages={missionOneStages} csvPath={cloroData} />} 
         />
         <Route 
           path="/mission-2" 
-          element={<MissionPage stages={missionTwoStages} csvPath={csvPathCloro} />} 
+          element={<MissionPage stages={missionTwoStages} csvPath={aeroData} />} 
         />
       </Routes>
     </Router>
   );
 }
+
 
 export default App;

@@ -52,11 +52,11 @@ function MissionPage({ stages, csvPath }) {
 
   return (
     <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
-      {stages[stageIndex]} {/* Render the current stage component */}
+      {stages[stageIndex]}
       <div style={{ flex: 1, zIndex: 0 }}>
         <FlatMap
           ref={mapRef}
-          csvUrl={csvPath} // Use the dynamic CSV path
+          csvUrl={csvPath}
           initialViewState={initialViewState}
           heatmapConfig={heatmapConfig}
           tileLayerConfig={tileLayerConfig} 

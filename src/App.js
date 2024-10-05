@@ -8,18 +8,43 @@ import MapFocusStage from './components/stages/MapFocusStage';
 import './styles/App.css';
 import cloroData from './assets/data/cloro.csv';
 import aeroData from './assets/data/aero.csv';
+import oman from './assets/missions/oman.jpg';
 
-const initialViewStateMission1 = {
-  latitude: 22.8,
-  longitude: 60.5,
-  zoom: 5,
-};
+const initialViewState = [
+  {
+    index: 0,
+    latitude: 22.87161,
+    longitude: 60.58191,
+    zoom: 5,
+  },
+  {
+    index: 1,
+    latitude: -16.83678,
+    longitude: -174.25968,
+    zoom: 7,
+  },
+];
 
-const initialViewStateMission2 = {
-  latitude: -16.83678,
-  longitude: -174.25968,
-  zoom: 8,
-};
+const briefings = [
+  {
+    index: 0,
+    title: "The Omani Bloom",
+    lat: 24.618875,
+    lng: 57.455609,
+    location: "The Omani Sea",
+    image: oman,
+    question: "What is the capital of France?",
+  },
+  {
+    index: 1,
+    title: "The Arabian Peninsula",
+    lat: 25.0,
+    lng: 55.0,
+    location: "Middle East",
+    image: oman,
+    question: "What is the capital of Oman?",
+  },
+];
 
 const heatmapConfig = {
   intensity: 1,
@@ -42,7 +67,7 @@ const tileLayerConfig = {
 
 function App() {
   const missionOneStages = [
-    <SingleQuestionStage 
+    <SingleQuestionStage
       question={{
         text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
         options: [
@@ -53,16 +78,16 @@ function App() {
         ],
       }}
     />,
-    <InformativeSectionStage 
-      info={{ title: "Mission 2", content: "Explore New Areas" }}
+    <InformativeSectionStage
+      info={{ title: "Mission 1", content: "Explore New Areas" }}
     />,
-    <MapFocusStage 
-      focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
-    />
+    <MapFocusStage
+      focusData={{ title: "Mission 1", content: "Complete Your Goals" }}
+    />,
   ];
 
   const missionTwoStages = [
-    <SingleQuestionStage 
+    <SingleQuestionStage
       question={{
         text: "What is the primary source of energy for photosynthesis in phytoplankton?",
         options: [
@@ -73,41 +98,41 @@ function App() {
         ],
       }}
     />,
-    <InformativeSectionStage 
+    <InformativeSectionStage
       info={{ title: "Mission 2", content: "Discover Marine Life" }}
-     />,
-    <MapFocusStage 
-      focusData={{ title: "Mission 3", content: "Analyze Data" }}
-    />
+    />,
+    <MapFocusStage
+      focusData={{ title: "Mission 2", content: "Analyze Data" }}
+    />,
   ];
 
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route 
-          path="/mission-1" 
+        <Route path="/" element={<Main coordinates={initialViewState} briefings={briefings} />} />
+        <Route
+          path="/mission-1"
           element={
-            <MissionPage 
-              stages={missionOneStages} 
-              csvPath={cloroData} 
-              initialViewState={initialViewStateMission1} 
-              heatmapConfig={heatmapConfig} 
+            <MissionPage
+              stages={missionOneStages}
+              csvPath={cloroData}
+              initialViewState={initialViewState[0]}
+              heatmapConfig={heatmapConfig}
               tileLayerConfig={tileLayerConfig}
             />
-          } 
+          }
         />
-        <Route 
-          path="/mission-2" 
+        <Route
+          path="/mission-2"
           element={
-            <MissionPage 
-              stages={missionTwoStages} 
-              csvPath={aeroData} 
-              initialViewState={initialViewStateMission2} 
-              heatmapConfig={heatmapConfig} 
+            <MissionPage
+              stages={missionTwoStages}
+              csvPath={aeroData}
+              initialViewState={initialViewState[1]}
+              heatmapConfig={heatmapConfig}
               tileLayerConfig={tileLayerConfig}
             />
-          } 
+          }
         />
       </Routes>
     </Router>

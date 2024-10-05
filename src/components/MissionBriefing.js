@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/MissionBriefing.css';
+import { useNavigate } from 'react-router-dom';
 
 const MissionBriefing = ({ isOpen, onClose, missionData }) => {
-    if (!isOpen) return null;
+    const navigator = useNavigate();
+    if (!isOpen || !missionData) return null;
 
-    const { title, lat, lng, location, image, question } = missionData;
+    const { index, title, lat, lng, location, image, question } = missionData;
 
     return (
         <motion.div
@@ -32,7 +34,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                             <p>LAT: {lat}, LNG: {lng}</p>
                         </div>
                     </div>
-                    <div className="box button">
+                    <div className="box button" onClick={() => navigator("/mission-" + index)}>
                         <h1>START MISSION</h1>
                         <div className="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

@@ -9,18 +9,43 @@ import MapFocusStage from './components/stages/MapFocusStage';
 import './styles/App.css';
 import cloroData from './assets/data/cloro.csv';
 import aeroData from './assets/data/aero.csv';
+import oman from './assets/missions/oman.jpg';
 
-const initialViewStateMission1 = {
-  latitude: 22.8,
-  longitude: 60.5,
-  zoom: 5,
-};
+const initialViewState = [
+  {
+    index: 0,
+    latitude: 22.87161,
+    longitude: 60.58191,
+    zoom: 5,
+  },
+  {
+    index: 1,
+    latitude: -16.83678,
+    longitude: -174.25968,
+    zoom: 7,
+  },
+];
 
-const initialViewStateMission2 = {
-  latitude: -16.83678,
-  longitude: -174.25968,
-  zoom: 8,
-};
+const briefings = [
+  {
+    index: 0,
+    title: "The Omani Bloom",
+    lat: 24.618875,
+    lng: 57.455609,
+    location: "The Omani Sea",
+    image: oman,
+    question: "What is the capital of France?",
+  },
+  {
+    index: 1,
+    title: "The Arabian Peninsula",
+    lat: 25.0,
+    lng: 55.0,
+    location: "Middle East",
+    image: oman,
+    question: "What is the capital of Oman?",
+  },
+];
 
 const heatmapConfig = {
   intensity: 1,
@@ -43,7 +68,7 @@ const tileLayerConfig = {
 
 function App() {
   const missionOneStages = [
-    <SingleQuestionStage 
+    <SingleQuestionStage
       question={{
         text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
         options: [
@@ -54,40 +79,37 @@ function App() {
         ],
       }}
     />,
-    <InformativeSectionStage 
-    focusOnCoordinates={() => {}} // Passar a função de foco no mapa
-    latitude={35.0}  // Coordenadas de exemplo
-    longitude={61.0} // Coordenadas de exemplo
-    zoomLevel={1}   // Nível de zoom de exemplo
-  >
-    <div className="mission-card-header">
-      <h2>Mission 1</h2>
-      <h4>The Role of Phytoplankton</h4>
-    </div>
-    
-    <div className="interactive-infographic">
-      <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
-      {/* Insert interactive infographic here */}
-    </div>
+    <InformativeSectionStage handleCenterMap={() => { }}>
+      <div className="mission-card-header">
+        <h2>Mission 1</h2>
+        <h4>The Role of Phytoplankton</h4>
+      </div>
 
-    <div className="animated-diagram">
-      <h5>How Phytoplankton Contribute to Oxygen Production</h5>
-      {/* Insert animated diagram here */}
-    </div>
+      <div className="interactive-infographic">
+        <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+        {/* Insert interactive infographic here */}
+      </div>
 
-    <h5>Fun Facts About Phytoplankton</h5>
-    <ul>
-      <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-      <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
-    </ul>
-  </InformativeSectionStage>,
-  <MapFocusStage 
-    focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
-  />
-];
+      <div className="animated-diagram">
+        <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+        {/* Insert animated diagram here */}
+      </div>
+
+      <h5>Fun Facts About Phytoplankton</h5>
+      <ul>
+        <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+        <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
+      </ul>
+
+
+    </InformativeSectionStage>,
+    <MapFocusStage
+      focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
+    />
+  ];
 
   const missionTwoStages = [
-    <SingleQuestionStage 
+    <SingleQuestionStage
       question={{
         text: "What is the primary source of energy for photosynthesis in phytoplankton?",
         options: [
@@ -97,35 +119,30 @@ function App() {
           { id: 4, text: "The Moon", isCorrect: false },
         ],
       }}
-    />, 
-    <InformativeSectionStage 
-      focusOnCoordinates={() => {}} // Passar a função de foco no mapa
-      latitude={35.0}  // Coordenadas de exemplo
-      longitude={61.0} // Coordenadas de exemplo
-      zoomLevel={10}   // Nível de zoom de exemplo
-    >
+    />,
+    <InformativeSectionStage handleCenterMap={() => { }}>
       <div className="mission-card-header">
-        <h2>Mission 2</h2>
+        <h2>Mission 1</h2>
         <h4>The Role of Phytoplankton</h4>
       </div>
-      
+
       <div className="interactive-infographic">
         <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
         {/* Insert interactive infographic here */}
       </div>
-    
       <div className="animated-diagram">
         <h5>How Phytoplankton Contribute to Oxygen Production</h5>
         {/* Insert animated diagram here */}
       </div>
-    
       <h5>Fun Facts About Phytoplankton</h5>
       <ul>
         <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
         <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
       </ul>
+
+
     </InformativeSectionStage>,
-    <MapFocusStage 
+    <MapFocusStage
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />
   ];
@@ -133,31 +150,31 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Main />} />
+        <Route path="/" element={<Main coordinates={initialViewState} briefings={briefings} />} />
         <Route path="/difficulty-selection" element={<DifficultyPage />} />
-        <Route 
-          path="/mission-1" 
+        <Route
+          path="/mission-1"
           element={
-            <MissionPage 
-              stages={missionOneStages} 
-              csvPath={cloroData} 
-              initialViewState={initialViewStateMission1} 
-              heatmapConfig={heatmapConfig} 
+            <MissionPage
+              stages={missionOneStages}
+              csvPath={cloroData}
+              initialViewState={initialViewState[0]}
+              heatmapConfig={heatmapConfig}
               tileLayerConfig={tileLayerConfig}
             />
-          } 
+          }
         />
-        <Route 
-          path="/mission-2" 
+        <Route
+          path="/mission-2"
           element={
-            <MissionPage 
-              stages={missionTwoStages} 
-              csvPath={aeroData} 
-              initialViewState={initialViewStateMission2} 
-              heatmapConfig={heatmapConfig} 
+            <MissionPage
+              stages={missionTwoStages}
+              csvPath={aeroData}
+              initialViewState={initialViewState[1]}
+              heatmapConfig={heatmapConfig}
               tileLayerConfig={tileLayerConfig}
             />
-          } 
+          }
         />
       </Routes>
     </Router>

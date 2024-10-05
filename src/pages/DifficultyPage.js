@@ -40,12 +40,12 @@ export default function App() {
         <Suspense fallback={null}>
           <Ocean />
         </Suspense>
-        <Sky 
-          scale={1000} 
-          sunPosition={[0, -2, -70]}  
-          sunColor="white"         
-          turbidity={6}              
-          rayleigh={1}               
+        <Sky
+          scale={1000}
+          sunPosition={[0, -2, -70]}
+          sunColor="white"
+          turbidity={6}
+          rayleigh={1}
         />
       </Canvas>
 

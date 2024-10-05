@@ -1,64 +1,66 @@
 /* styles/App.css */
 
 .question-stage-container {
-    position: absolute;
-    top: 20px; /* Distância do topo */
-    left: 20px; /* Distância da esquerda */
-    width: 100%;
-    max-width: 400px; /* Limite de largura */
-    background-color: #f0f0f0;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    z-index: 1;
-  }
-  
-  .question-title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .question-options {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .question-button {
-    background-color: #005;
-    color: #fff;
+  position: absolute;
+  top: 20px;
+  /* Distância do topo */
+  left: 20px;
+  /* Distância da esquerda */
+  width: 100%;
+  max-width: 400px;
+  /* Limite de largura */
+  background-color: #f0f0f0;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.question-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.question-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question-button {
+  background-color: #005;
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.question-button:hover {
+  background-color: #003366;
+}
+
+.question-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .question-stage-container {
+    width: 90%;
     padding: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
   }
-  
-  .question-button:hover {
-    background-color: #003366;
+
+  .question-title {
+    font-size: 1.25rem;
   }
-  
-  .question-button:disabled {
-    background-color: #999;
-    cursor: not-allowed;
+
+  .question-button {
+    padding: 0.75rem;
+    font-size: 0.875rem;
   }
-  
-  @media (max-width: 768px) {
-    .question-stage-container {
-      width: 90%;
-      padding: 1rem;
-    }
-  
-    .question-title {
-      font-size: 1.25rem;
-    }
-  
-    .question-button {
-      padding: 0.75rem;
-      font-size: 0.875rem;
-    }
-  }
-  
+}

@@ -52,9 +52,9 @@ def nc_to_csv(nc_file, output_csv, variable_name, center_lat, center_lon, radius
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    nc_file = "./data/datasets/volcano.nc"
-    output_csv = "./data/output/converted/aero.csv"
-    variable_name = "bb_443"
+    nc_file = "./data/datasets/volcano_2.nc"
+    output_csv = "./data/output/converted/volcano_2.csv"
+    variable_name = "Rrs_531"
     
     # Center coordinates and radius in kilometers
     center_lat = -16.83678

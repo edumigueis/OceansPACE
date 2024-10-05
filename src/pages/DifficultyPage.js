@@ -50,27 +50,50 @@ export default function App() {
     }
   };
 
+  // Function to navigate to the next page
+  const goToNextPage = () => {
+    window.location.href = '/'; // Adjust this to your desired route or URL
+  };
+
   return (
     <>
-      <>
-        <Canvas camera={{ position: [0, 5, 100], fov: 55, near: 1, far: 20000 }}>
-          <pointLight position={[100, 100, 100]} />
-          <pointLight position={[-100, -100, -100]} />
-          <Suspense fallback={null}>
-            <Ocean speed={getSpeed()} /> {/* Pass the calculated speed */}
-          </Suspense>
-          <Sky 
-            scale={1000} 
-            sunPosition={[0, -2, -55]}  
-            sunColor="white"         
-            turbidity={6}              
-            rayleigh={1}               
-          />
-        </Canvas>
-      </>
+      <Canvas camera={{ position: [0, 5, 100], fov: 55, near: 1, far: 20000 }}>
+        <pointLight position={[100, 100, 100]} />
+        <pointLight position={[-100, -100, -100]} />
+        <Suspense fallback={null}>
+          <Ocean speed={getSpeed()} /> {/* Pass the calculated speed */}
+        </Suspense>
+        <Sky 
+          scale={1000} 
+          sunPosition={[0, -2, -55]}  
+          sunColor="white"         
+          turbidity={6}              
+          rayleigh={1}               
+        />
+      </Canvas>
+      
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 2 }}>
         <LpContent setDifficulty={setDifficulty} /> {/* Pass setDifficulty to change difficulty */}
       </div>
+
+      {/* Button to go to the next page */}
+      <button 
+        onClick={goToNextPage} 
+        style={{
+          position: 'absolute',
+          bottom: '10%',
+          right: '5%',
+          padding: '15px 30px',
+          backgroundColor: '#1CAAD9',
+          color: 'white',
+          border: 'none',
+          borderRadius: '10px',
+          cursor: 'pointer',
+          fontSize: '18px'
+        }}
+      >
+        Next Page
+      </button>
     </>
   )
 }

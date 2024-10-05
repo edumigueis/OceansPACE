@@ -34,7 +34,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                             <p>LAT: {lat}, LNG: {lng}</p>
                         </div>
                     </div>
-                    <div className="box button" onClick={() => navigator("/mission-" + index)}>
+                    <div className="box button" onClick={() => navigator("/mission-" + (index + 1))}>
                         <h1>START MISSION</h1>
                         <div className="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

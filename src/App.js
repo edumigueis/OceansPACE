@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import MissionPage from './pages/MissionPage';
+import DifficultyPage from './pages/DifficultyPage';
 import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
@@ -127,6 +128,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Main />} />
+        <Route path="/difficulty-selection" element={<DifficultyPage />} />
         <Route 
           path="/mission-1" 
           element={

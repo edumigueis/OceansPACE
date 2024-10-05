@@ -1,12 +1,34 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+// Correct imports
+import React, { useState, useRef } from 'react';
+import { motion } from 'framer-motion'; 
 import '../styles/MissionBriefing.css';
+import backgroundMusic from '../assets/sounds/background_ocean.wav';
 
+// Component declaration
 const MissionBriefing = ({ isOpen, onClose, missionData }) => {
+    // Conditional rendering - if the modal is not open, return null
     if (!isOpen) return null;
 
+    // Destructuring mission data
     const { title, lat, lng, location, image, question } = missionData;
 
+    // State and audio reference
+    const [isPlaying, setIsPlaying] = useState(false); // Controls if audio is playing
+    const audioRef = useRef(new Audio(backgroundMusic)); // Creates a reference to the audio
+
+    // Function to toggle play/pause for the audio
+    const toggleAudio = () => {
+        const audio = audioRef.current; 
+        if (isPlaying) {
+            audio.pause(); // Pauses the audio
+        } else {
+            audio.loop = true; // Plays in loop
+            audio.play().catch(error => console.log('Audio play failed:', error)); // Attempts to play audio and handles errors
+        }
+        setIsPlaying(!isPlaying); // Toggles the playing state
+    };
+
+    // JSX for modal return
     return (
         <motion.div
             className="modal-overlay"
@@ -22,6 +44,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                 exit={{ y: "-100vh" }}
                 onClick={(e) => e.stopPropagation()}
             >
+                {/* Left column - Mission details */}
                 <div className="column column-left">
                     <div className="box spaced">
                         <div className="top">
@@ -41,6 +64,8 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                         </div>
                     </div>
                 </div>
+
+                {/* Middle column - Mission location */}
                 <div className="column column-middle">
                     <div className="top-box">
                         <h3>Location: {location}</h3>
@@ -49,10 +74,31 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                         <img src={image} alt="mission-location" />
                     </div>
                 </div>
+
+                {/* Right column - Mission question */}
                 <div className="column column-right">
                     <div className="quiz-question">
                         <h3>{question}</h3>
                     </div>
+
+                    {/* Button to control audio */}
+                    <button
+                        onClick={toggleAudio}
+                        style={{
+                            position: 'absolute',
+                            bottom: '20px',
+                            right: '20px',
+                            zIndex: 11,
+                            padding: '10px 20px',
+                            backgroundColor: isPlaying ? '#f44336' : '#4CAF50',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {isPlaying ? 'Mute' : 'Unmute'}
+                    </button>
                 </div>
             </motion.div>
         </motion.div>

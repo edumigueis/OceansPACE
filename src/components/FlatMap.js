@@ -20,16 +20,17 @@ function FlatMap({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }) {
             const formattedData = results.data.map((row) => {
               const lat = parseFloat(row.lat);
               const lon = parseFloat(row.lon);
-              const intensity = parseFloat(row.chlor_a_normalized);
+              const intensity = parseFloat(row.normalized);
 
               if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
                 console.warn(`Invalid coordinates: lat=${lat}, lon=${lon}`);
                 return null;
               }
 
-              return [lon, lat, intensity]; // Note: order is [longitude, latitude, intensity]
+              return [lon, lat, intensity];
             }).filter(item => item !== null);
 
+            console.log(formattedData)
             setHeatData(formattedData);
           },
           error: (error) => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import MissionCards from '../MissionCards';
 
-function InformativeSectionStage({ handleCenterMap, children }) {
+function InformativeSectionStage({ focusOnCoordinates, latitude, longitude, zoomLevel, children }) {
   const centerMap = () => {
-    handleCenterMap(35.0, 61.0); // Exemplo de coordenadas para centralizar
+    focusOnCoordinates(latitude, longitude, zoomLevel); // Usando a nova função com coordenadas e nível de zoom
   };
 
   return (

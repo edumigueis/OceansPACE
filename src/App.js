@@ -132,12 +132,10 @@ function App() {
         <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
         {/* Insert interactive infographic here */}
       </div>
-
       <div className="animated-diagram">
         <h5>How Phytoplankton Contribute to Oxygen Production</h5>
         {/* Insert animated diagram here */}
       </div>
-
       <h5>Fun Facts About Phytoplankton</h5>
       <ul>
         <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>

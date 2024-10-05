@@ -48,6 +48,13 @@ function Main() {
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
 
+  // Função para pausar o áudio da Main
+  const pauseMainAudio = () => {
+    const audio = audioRef.current;
+    audio.pause();
+    setIsPlaying(false); // Atualiza o estado para refletir que o áudio foi pausado
+  };
+
   const toggleAudio = () => {
     const audio = audioRef.current;
     if (isPlaying) {
@@ -133,6 +140,7 @@ function Main() {
           image: oman,
           question: "What is the capital of France?"
         }}
+        pauseMainAudio={pauseMainAudio} // Passa a função para o componente MissionBriefing
       />
       <button
         onClick={toggleAudio}

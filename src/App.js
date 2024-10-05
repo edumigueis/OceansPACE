@@ -54,34 +54,37 @@ function App() {
         ],
       }}
     />,
-    <InformativeSectionStage handleCenterMap={() => {}}>
-  <div className="mission-card-header">
-    <h2>Mission 1</h2>
-    <h4>The Role of Phytoplankton</h4>
-  </div>
-  
-  <div className="interactive-infographic">
-    <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
-    {/* Insert interactive infographic here */}
-  </div>
+    <InformativeSectionStage 
+    focusOnCoordinates={() => {}} // Passar a função de foco no mapa
+    latitude={35.0}  // Coordenadas de exemplo
+    longitude={61.0} // Coordenadas de exemplo
+    zoomLevel={1}   // Nível de zoom de exemplo
+  >
+    <div className="mission-card-header">
+      <h2>Mission 1</h2>
+      <h4>The Role of Phytoplankton</h4>
+    </div>
+    
+    <div className="interactive-infographic">
+      <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+      {/* Insert interactive infographic here */}
+    </div>
 
-  <div className="animated-diagram">
-    <h5>How Phytoplankton Contribute to Oxygen Production</h5>
-    {/* Insert animated diagram here */}
-  </div>
+    <div className="animated-diagram">
+      <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+      {/* Insert animated diagram here */}
+    </div>
 
-  <h5>Fun Facts About Phytoplankton</h5>
-  <ul>
-    <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-    <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
-  </ul>
-
-
-</InformativeSectionStage>,
-    <MapFocusStage 
-      focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
-    />
-  ];
+    <h5>Fun Facts About Phytoplankton</h5>
+    <ul>
+      <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+      <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
+    </ul>
+  </InformativeSectionStage>,
+  <MapFocusStage 
+    focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
+  />
+];
 
   const missionTwoStages = [
     <SingleQuestionStage 
@@ -95,30 +98,33 @@ function App() {
         ],
       }}
     />, 
-    <InformativeSectionStage handleCenterMap={() => {}}>
-    <div className="mission-card-header">
-      <h2>Mission 1</h2>
-      <h4>The Role of Phytoplankton</h4>
-    </div>
+    <InformativeSectionStage 
+      focusOnCoordinates={() => {}} // Passar a função de foco no mapa
+      latitude={35.0}  // Coordenadas de exemplo
+      longitude={61.0} // Coordenadas de exemplo
+      zoomLevel={10}   // Nível de zoom de exemplo
+    >
+      <div className="mission-card-header">
+        <h2>Mission 2</h2>
+        <h4>The Role of Phytoplankton</h4>
+      </div>
+      
+      <div className="interactive-infographic">
+        <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+        {/* Insert interactive infographic here */}
+      </div>
     
-    <div className="interactive-infographic">
-      <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
-      {/* Insert interactive infographic here */}
-    </div>
-  
-    <div className="animated-diagram">
-      <h5>How Phytoplankton Contribute to Oxygen Production</h5>
-      {/* Insert animated diagram here */}
-    </div>
-  
-    <h5>Fun Facts About Phytoplankton</h5>
-    <ul>
-      <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-      <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
-    </ul>
-  
-  
-  </InformativeSectionStage>,
+      <div className="animated-diagram">
+        <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+        {/* Insert animated diagram here */}
+      </div>
+    
+      <h5>Fun Facts About Phytoplankton</h5>
+      <ul>
+        <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+        <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
+      </ul>
+    </InformativeSectionStage>,
     <MapFocusStage 
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />

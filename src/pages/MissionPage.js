@@ -65,7 +65,7 @@ function MissionPage({ stages, csvPath }) {
           csvUrl={csvPath}
           initialViewState={initialViewState}
           heatmapConfig={heatmapConfig}
-          tileLayerConfig={tileLayerConfig} 
+          tileLayerConfig={tileLayerConfig}
         />
       </div>
       <div style={{ padding: '10px' }}>

@@ -9,6 +9,37 @@ import './styles/App.css';
 import cloroData from './assets/data/cloro.csv';
 import aeroData from './assets/data/aero.csv';
 
+const initialViewStateMission1 = {
+  latitude: 22.8,
+  longitude: 60.5,
+  zoom: 5,
+};
+
+const initialViewStateMission2 = {
+  latitude: -16.83678,
+  longitude: -174.25968,
+  zoom: 8,
+};
+
+const heatmapConfig = {
+  intensity: 1,
+  colorRange: [
+    [255, 0, 0, 255],
+    [255, 255, 0, 255],
+    [0, 255, 0, 255],
+    [0, 255, 255, 255],
+    [0, 0, 255, 255],
+  ],
+  threshold: 0.9,
+};
+
+const tileLayerConfig = {
+  data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  minZoom: 0,
+  maxZoom: 19,
+  tileSize: 256,
+};
+
 function App() {
   const missionOneStages = [
     <SingleQuestionStage 
@@ -62,14 +93,31 @@ function App() {
           { id: 4, text: "The Moon", isCorrect: false },
         ],
       }}
-    />,
-    <InformativeSectionStage 
-      handleCenterMap={() => {}} 
-      title="Mission 2"
-      subtitle="Discover Marine Life"
-      tasks={["Collect samples", "Analyze results", "Report findings"]}
-      description="Explore the marine ecosystem and its inhabitants."
-    />,
+    />, 
+    <InformativeSectionStage handleCenterMap={() => {}}>
+    <div className="mission-card-header">
+      <h2>Mission 1</h2>
+      <h4>The Role of Phytoplankton</h4>
+    </div>
+    
+    <div className="interactive-infographic">
+      <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+      {/* Insert interactive infographic here */}
+    </div>
+  
+    <div className="animated-diagram">
+      <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+      {/* Insert animated diagram here */}
+    </div>
+  
+    <h5>Fun Facts About Phytoplankton</h5>
+    <ul>
+      <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+      <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
+    </ul>
+  
+  
+  </InformativeSectionStage>,
     <MapFocusStage 
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />
@@ -81,16 +129,31 @@ function App() {
         <Route exact path="/" element={<Main />} />
         <Route 
           path="/mission-1" 
-          element={<MissionPage stages={missionOneStages} csvPath={cloroData} />} 
+          element={
+            <MissionPage 
+              stages={missionOneStages} 
+              csvPath={cloroData} 
+              initialViewState={initialViewStateMission1} 
+              heatmapConfig={heatmapConfig} 
+              tileLayerConfig={tileLayerConfig}
+            />
+          } 
         />
         <Route 
           path="/mission-2" 
-          element={<MissionPage stages={missionTwoStages} csvPath={aeroData} />} 
+          element={
+            <MissionPage 
+              stages={missionTwoStages} 
+              csvPath={aeroData} 
+              initialViewState={initialViewStateMission2} 
+              heatmapConfig={heatmapConfig} 
+              tileLayerConfig={tileLayerConfig}
+            />
+          } 
         />
       </Routes>
     </Router>
   );
 }
-
 
 export default App;

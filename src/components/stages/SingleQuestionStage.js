@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Question from '../Question';
 
-function SingleQuestionStage({ setStage, handleCenterMap }) {
+function SingleQuestionStage({ setStageIndex, handleCenterMap }) {
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -9,20 +9,18 @@ function SingleQuestionStage({ setStage, handleCenterMap }) {
     setSelectedAnswer(answer);
     setQuestionAnswered(true);
 
-    // Center the map on a specific coordinate (example: latitude, longitude)
-    handleCenterMap(22.8, 60.5); // Example coordinates for centering
+    handleCenterMap(22.8, 60.5); 
 
-    // Redirect if the answer is correct
     if (answer.isCorrect) {
       setTimeout(() => {
-        setStage((prev) => (prev < 2 ? prev + 1 : 2)); // Change stage to next one
+        setStageIndex((prev) => (prev < 2 ? prev + 1 : 2)); 
       }, 1500);
     }
   };
 
   return (
-    <div style={{ position: 'absolute', left: 0, top: 0, width: '300px', height: '200px', backgroundColor: '#f0f0f0', zIndex: 1 }}>
-      <Question 
+    <div className="question-stage-container">
+      <Question
         question={{
           text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
           options: [
@@ -31,7 +29,7 @@ function SingleQuestionStage({ setStage, handleCenterMap }) {
             { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
             { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
           ],
-        }} 
+        }}
         onAnswerClick={handleAnswerClick}
       />
     </div>

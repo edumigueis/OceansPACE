@@ -57,8 +57,8 @@ if __name__ == "__main__":
     variable_name = "chlor_a"
     
     # Center coordinates and radius in kilometers
-    center_lat = 10.813164
-    center_lon = 60.492115
-    radius_km = 3200
+    center_lat = 22.280752
+    center_lon = 60.878625
+    radius_km = 1510
     
     nc_to_csv(nc_file, output_csv, variable_name, center_lat, center_lon, radius_km)

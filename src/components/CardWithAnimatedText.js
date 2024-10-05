@@ -21,20 +21,19 @@ const CardWithAnimatedText = ({ coordinates }) => {
           const timeout = setTimeout(() => {
             setDisplayedText((prev) => prev + texts[lineIndex][charIndex]);
             setCharIndex(charIndex + 1);
-          }, 40);
+          }, 30);
           return () => clearTimeout(timeout);
         } else {
-          // When first or second line is done, either erase or show coordinates
           if (lineIndex === 0) {
             const eraseTimeout = setTimeout(() => {
               setIsErasing(true);
-            }, 700);
+            }, 600);
             return () => clearTimeout(eraseTimeout);
           } else if (lineIndex === 1) {
             const showCoordsTimeout = setTimeout(() => {
               setShowCoordinates(true);
               setIsErasing(true);
-            }, 700);
+            }, 600);
             return () => clearTimeout(showCoordsTimeout);
           }
         }
@@ -44,7 +43,7 @@ const CardWithAnimatedText = ({ coordinates }) => {
           setIsErasing(false);
           setLineIndex(lineIndex + 1);
           setCharIndex(0);
-        }, 700);
+        }, 600);
         return () => clearTimeout(eraseTimeout);
       }
     }

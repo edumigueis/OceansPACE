@@ -4,7 +4,8 @@ import CardWithAnimatedText from '../components/CardWithAnimatedText';
 import MissionBriefing from '../components/MissionBriefing';
 import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
-import oman from '../assets/missions/oman.jpg'
+import oman from '../assets/missions/oman.jpg';
+import backgroundMusic from '../assets/sounds/background_space.mp3';
 
 const gData = [
   {
@@ -36,14 +37,44 @@ const gData = [
 function Main() {
   const globeEl = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ringsData, setRingsData] = useState([]);
+  const [pointsData, setPointsData] = useState([]);
+  const [isInteractive, setIsInteractive] = useState(false);
   const [, setSelectedPoint] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(new Audio(backgroundMusic));
 
-  // Map the gData coordinates into the format required by CardWithAnimatedText
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
 
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.loop = true;
+      audio.play().catch(error => console.log('Audio play failed:', error));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRingsData(gData);
+      setPointsData(gData.map(e => ({ lat: e.lat, lng: e.lng, color: e.color, altitude: 0.0001 })));
+      setIsInteractive(true);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+      audioRef.current.pause();
+    };
+  }, []);
+
   const handleClick = (e) => {
+    if (!isInteractive) return;
+
     const { lat, lng } = e;
 
     for (const ring of gData) {
@@ -51,13 +82,13 @@ function Main() {
         Math.pow(lat - ring.lat, 2) + Math.pow(lng - ring.lng, 2)
       );
 
-      if (distance < ring.maxR) {
-        globeEl.current.pointOfView({ lat: ring.lat, lng: ring.lng, altitude: 0.3 }, 2000);
+      if (distance < ring.maxR * 1.2) {
+        globeEl.current.pointOfView({ lat: ring.lat, lng: ring.lng, altitude: 0.4 }, 1000);
 
         setTimeout(() => {
           setSelectedPoint(ring);
           setIsModalOpen(true);
-        }, 2000);
+        }, 1500);
 
         return;
       }
@@ -67,24 +98,25 @@ function Main() {
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedPoint(null);
+    globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
   return (
     <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', left: '50px', top: 'calc(50% - 55px)', zIndex: 10, pointerEvents: 'none' }}>
+      <div style={{ position: 'absolute', left: '50px', top: 'calc(50% - 80px)', zIndex: 10, pointerEvents: 'none' }}>
         <CardWithAnimatedText coordinates={coordinates} />
       </div>
       <div style={{ position: 'relative', zIndex: 9, pointerEvents: 'all' }}>
         <Globe
           ref={globeEl}
           globeImageUrl={lowResEarth}
-          ringsData={gData}
+          ringsData={ringsData}
           ringColor="color"
           ringMaxRadius="maxR"
           ringPropagationSpeed="propagationSpeed"
           ringRepeatPeriod="repeatPeriod"
           onGlobeClick={handleClick}
-          pointsData={gData.map((e) => ({ lat: e.lat, lng: e.lng, color: e.color, altitude: 0.0001 }))}
+          pointsData={pointsData}
           pointAltitude="altitude"
           pointColor={(point) => point.color}
           pointRadius={0.3}
@@ -102,6 +134,23 @@ function Main() {
           question: "What is the capital of France?"
         }}
       />
+      <button
+        onClick={toggleAudio}
+        style={{
+          position: 'absolute',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 11,
+          padding: '10px 20px',
+          backgroundColor: isPlaying ? '#f44336' : '#4CAF50',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        {isPlaying ? 'Mute' : 'Unmute'}
+      </button>
     </div>
   );
 }

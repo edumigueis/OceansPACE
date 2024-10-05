@@ -1,21 +1,19 @@
-import * as THREE from 'three';
-import React, { Suspense, useRef, useMemo, useState } from 'react';
-import { Canvas, extend, useThree, useLoader, useFrame } from '@react-three/fiber';
-import { Sky } from '@react-three/drei';
-import { Water } from 'three-stdlib';
-import '../styles/Difficulty.css';
-import LpContent from '../components/LpContent.js';
-import backgroundMusic from '../assets/sounds/background_ocean.wav';
+import * as THREE from 'three'
+import React, { Suspense, useRef, useMemo, useState } from 'react'
+import { Canvas, extend, useThree, useLoader, useFrame } from '@react-three/fiber'
+import { Sky } from '@react-three/drei'
+import { Water } from 'three-stdlib'
+import '../styles/Difficulty.css'
+import LpContent from '../components/LpContent.js'
 
-extend({ Water });
+extend({ Water })
 
 function Ocean({ speed }) {
-  const ref = useRef();
-  const gl = useThree((state) => state.gl);
-  const waterNormals = useLoader(THREE.TextureLoader, '/waternormals.jpeg');
-  waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
-  const geom = useMemo(() => new THREE.PlaneGeometry(10000, 10000), []);
-
+  const ref = useRef()
+  const gl = useThree((state) => state.gl)
+  const waterNormals = useLoader(THREE.TextureLoader, '/waternormals.jpeg')
+  waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping
+  const geom = useMemo(() => new THREE.PlaneGeometry(10000, 10000), [])
   const config = useMemo(
     () => ({
       textureWidth: 512,
@@ -29,30 +27,14 @@ function Ocean({ speed }) {
       format: gl.encoding
     }),
     [waterNormals]
-  );
-
+  )
   // Use the speed passed in props to control the water movement speed
-  useFrame((state, delta) => (ref.current.material.uniforms.time.value += delta * speed));
-  
-  return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />;
+  useFrame((state, delta) => (ref.current.material.uniforms.time.value += delta * speed))
+  return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />
 }
 
 export default function App() {
   const [difficulty, setDifficulty] = useState('MEDIUM'); // Default difficulty
-  const [isPlaying, setIsPlaying] = useState(false); // Controls if audio is playing
-  const audioRef = useRef(new Audio(backgroundMusic)); // Creates a reference to the audio
-
-  // Function to toggle audio playback
-  const toggleAudio = () => {
-    const audio = audioRef.current;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.loop = true;
-      audio.play().catch(error => console.log('Audio play failed:', error));
-    }
-    setIsPlaying(!isPlaying);
-  };
 
   // Function to change speed based on difficulty
   const getSpeed = () => {
@@ -94,24 +76,6 @@ export default function App() {
         <LpContent setDifficulty={setDifficulty} /> {/* Pass setDifficulty to change difficulty */}
       </div>
 
-      <button
-        onClick={toggleAudio}
-        style={{
-          position: 'absolute',
-          bottom: '20px',
-          right: '20px',
-          zIndex: 11,
-          padding: '10px 20px',
-          backgroundColor: isPlaying ? '#f44336' : '#4CAF50',
-          color: 'white',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer'
-        }}
-      >
-        {isPlaying ? 'Mute' : 'Unmute'}
-      </button>
-
       {/* Button to go to the next page */}
       <button 
         onClick={goToNextPage} 
@@ -131,6 +95,6 @@ export default function App() {
         Next Page
       </button>
     </>
-  );
+  )
 }
 

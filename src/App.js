@@ -107,7 +107,10 @@ function App() {
     <MapFocusStage
       focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
     />,
-    <FinalStage />
+    <FinalStage 
+    onArrival={() => console.log('Final stage reached!')} 
+    briefing={briefings[0]} 
+  />
   ];
 
   const missionTwoStages = [
@@ -146,7 +149,11 @@ function App() {
     </InformativeSectionStage>,
     <MapFocusStage
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
-    />
+    />,
+    <FinalStage 
+    onArrival={() => console.log('Final stage reached!')} 
+    briefing={briefings[1]} 
+  />
   ];
 
   return (

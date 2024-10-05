@@ -10,7 +10,7 @@ function InformativeSectionStage({ handleCenterMap, children }) {
     <div style={{ width: '500px', backgroundColor: '#f0f0f0' }}>
       <MissionCards>
         <div className="mission-card-content">
-          {children} {}
+          {children} { }
           <button onClick={centerMap}>Focus on Coordinates</button> {/* Botão para centralizar o mapa */}
         </div>
       </MissionCards>

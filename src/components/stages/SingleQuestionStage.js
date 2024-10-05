@@ -9,11 +9,11 @@ function SingleQuestionStage({ setStageIndex, handleCenterMap }) {
     setSelectedAnswer(answer);
     setQuestionAnswered(true);
 
-    handleCenterMap(22.8, 60.5); 
+    handleCenterMap(22.8, 60.5);
 
     if (answer.isCorrect) {
       setTimeout(() => {
-        setStageIndex((prev) => (prev < 2 ? prev + 1 : 2)); 
+        setStageIndex((prev) => (prev < 2 ? prev + 1 : 2));
       }, 1500);
     }
   };

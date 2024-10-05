@@ -1,40 +1,39 @@
 .mission-card {
-    width: calc(100% - 40px);
-    padding: 20px;
-  }
-  
-  .mission-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .mission-card-content ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .mission-card-content p {
-    color: #888;
-    font-size: 14px;
-  }
-  
-  .mission-card-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .mission-card-navigation button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .mission-card-navigation button svg {
-    height: 32px;
-    fill: currentColor;
-  }
-  
+  width: calc(100% - 40px);
+  padding: 20px;
+}
+
+.mission-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mission-card-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.mission-card-content p {
+  color: #888;
+  font-size: 14px;
+}
+
+.mission-card-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.mission-card-navigation button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mission-card-navigation button svg {
+  height: 32px;
+  fill: currentColor;
+}

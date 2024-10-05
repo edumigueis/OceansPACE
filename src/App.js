@@ -79,31 +79,31 @@ function App() {
         ],
       }}
     />,
-    <InformativeSectionStage handleCenterMap={() => {}}>
-  <div className="mission-card-header">
-    <h2>Mission 1</h2>
-    <h4>The Role of Phytoplankton</h4>
-  </div>
-  
-  <div className="interactive-infographic">
-    <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
-    {/* Insert interactive infographic here */}
-  </div>
+    <InformativeSectionStage handleCenterMap={() => { }}>
+      <div className="mission-card-header">
+        <h2>Mission 1</h2>
+        <h4>The Role of Phytoplankton</h4>
+      </div>
 
-  <div className="animated-diagram">
-    <h5>How Phytoplankton Contribute to Oxygen Production</h5>
-    {/* Insert animated diagram here */}
-  </div>
+      <div className="interactive-infographic">
+        <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+        {/* Insert interactive infographic here */}
+      </div>
 
-  <h5>Fun Facts About Phytoplankton</h5>
-  <ul>
-    <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-    <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
-  </ul>
+      <div className="animated-diagram">
+        <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+        {/* Insert animated diagram here */}
+      </div>
+
+      <h5>Fun Facts About Phytoplankton</h5>
+      <ul>
+        <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+        <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
+      </ul>
 
 
-</InformativeSectionStage>,
-    <MapFocusStage 
+    </InformativeSectionStage>,
+    <MapFocusStage
       focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
     />
   ];
@@ -119,32 +119,32 @@ function App() {
           { id: 4, text: "The Moon", isCorrect: false },
         ],
       }}
-    />, 
-    <InformativeSectionStage handleCenterMap={() => {}}>
-    <div className="mission-card-header">
-      <h2>Mission 1</h2>
-      <h4>The Role of Phytoplankton</h4>
-    </div>
-    
-    <div className="interactive-infographic">
-      <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
-      {/* Insert interactive infographic here */}
-    </div>
-  
-    <div className="animated-diagram">
-      <h5>How Phytoplankton Contribute to Oxygen Production</h5>
-      {/* Insert animated diagram here */}
-    </div>
-  
-    <h5>Fun Facts About Phytoplankton</h5>
-    <ul>
-      <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-      <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
-    </ul>
-  
-  
-  </InformativeSectionStage>,
-    <MapFocusStage 
+    />,
+    <InformativeSectionStage handleCenterMap={() => { }}>
+      <div className="mission-card-header">
+        <h2>Mission 1</h2>
+        <h4>The Role of Phytoplankton</h4>
+      </div>
+
+      <div className="interactive-infographic">
+        <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+        {/* Insert interactive infographic here */}
+      </div>
+
+      <div className="animated-diagram">
+        <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+        {/* Insert animated diagram here */}
+      </div>
+
+      <h5>Fun Facts About Phytoplankton</h5>
+      <ul>
+        <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+        <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
+      </ul>
+
+
+    </InformativeSectionStage>,
+    <MapFocusStage
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />
   ];
@@ -154,8 +154,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Main coordinates={initialViewState} briefings={briefings} />} />
         <Route path="/difficulty-selection" element={<DifficultyPage />} />
-        <Route 
-          path="/mission-1" 
+        <Route
+          path="/mission-1"
           element={
             <MissionPage
               stages={missionOneStages}

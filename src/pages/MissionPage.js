@@ -51,9 +51,9 @@ function MissionPage({ stages, csvPath }) {
   };
 
   // Pass handleCenterMap and setStageIndex to the current stage
-  const currentStage = React.cloneElement(stages[stageIndex], { 
-    handleCenterMap, 
-    setStageIndex 
+  const currentStage = React.cloneElement(stages[stageIndex], {
+    handleCenterMap,
+    setStageIndex
   });
 
   return (

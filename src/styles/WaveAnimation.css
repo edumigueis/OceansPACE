@@ -2,72 +2,81 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: none;
-    overflow-y: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
   
   body {
-    background: radial-gradient(rgba(255, 254, 234, 1) 0%, rgba(255, 254, 234, 1) 35%, #B7E8EB 100%);
+    background-color: #046b8b;
   }
   
-  .ocean {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: #015871;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    position: relative;
   }
   
-  .wave {
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
-    position: absolute;
-    width: 6400px;
-    top: -198px;
-    left: 0;
-    height: 198px;
-    transform: translate(0, 0, 0);
-    animation: wave-animation 2s ease infinite; /* Mudança para classe normal */
+  .content {
+    padding-top: 50px;
   }
   
-  .wave2 {
-    top: -168px;
-    animation: swell-animation 1s ease infinite; /* Mudança para classe normal */
-    opacity: 1;
+  .logo {
+    width: 100px;
+    height: 100px;
   }
   
-  @keyframes wave-animation {
-    0% { margin-left: 0; }
-    100% { margin-left: -1600px; }
+  h1 {
+    font-size: 40px;
   }
   
-  @keyframes swell-animation {
-    0%, 100% { transform: translate(0, -30px); }
-    50% { transform: translate(0, 5px); }
+  p {
+    font-size: 14px;
+    margin-bottom: 30px;
   }
   
-  /* Controle de Velocidade para NORMAL, EASY e HARD */
-  
-  .normal .wave {
-    animation-duration: 10s; /* Velocidade inicial "normal" */
+  .difficulty-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
   }
   
-  .normal .wave2 {
-    animation-duration: 18s;
+  .button {
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    background-color: #28a4e2;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  .slow .wave {
-    animation: wave-animation 8s ease infinite; /* Mudança para classe normal */
+  .button:hover {
+    background-color: #1a5f7f;
   }
   
-  .slow .wave2 {
-    animation: swell-animation s ease infinite; /* Mudança para classe normal */
+  .selected {
+    background-color: #006fbf;
   }
   
-  .fast .wave {
-    animation-duration: 1.5s; /* Onda mais rápida para HARD */
+  .confirm-button {
+    margin-top: 20px;
+    padding: 10px 50px;
+    font-size: 18px;
+    background-color: hsl(57, 100%, 50%);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
   }
   
-  .fast .wave2 {
-    animation-duration: 1s;
+  .footer-text {
+    padding-bottom: 20px;
+    font-size: 14px;
   }
   

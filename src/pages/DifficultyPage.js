@@ -1,48 +1,55 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Corrigido: useNavigate em vez de useHistory
-import DifficultyButtons from "../components/DifficultyButtons";
-import ConfirmButton from "../components/ConfirmButton";
-import WaveAnimation from "../components/WaveAnimation";
-import "../styles/Difficulty.css"; // Mantém o estilo principal no App.css
-import logoOceanSpace from "../assets/logooceanspace.png";
+import * as THREE from 'three'
+import React, { Suspense, useRef, useMemo } from 'react'
+import { Canvas, extend, useThree, useLoader, useFrame } from '@react-three/fiber'
+import { Sky } from '@react-three/drei'
+import { Water } from 'three-stdlib'
+import '../styles/Difficulty.css'
 
+extend({ Water })
 
-function HomePage() {
-  const [difficulty, setDifficulty] = useState(null);
-  const [showConfirmButton, setShowConfirmButton] = useState(false);
-  const navigate = useNavigate(); // Corrigido: useNavigate em vez de useHistory
-
-  const handleDifficultySelect = (level) => {
-    setDifficulty(level);
-    setShowConfirmButton(true);
-  };
-
-  const handleConfirm = () => {
-    setTimeout(() => {
-      navigate("/"); // Corrigido: useNavigate para redirecionar
-    }, 2000);
-  };
-
-  return (
-    <div className="container">
-      <div className="content">
-        <img src={logoOceanSpace} alt="Ocean Logo" className="logo" />
-        <div class="title-text">        
-            <h1>OCEANSPACE</h1>
-            <p>UNDERSTAND OCEAN CHARACTERISTICS THROUGH PACE SATELLITE DATA TO UNDERSTAND THE IMPACTS OF GLOBAL WARMING ON THE OCEAN</p>
-        </div>
-
-        <DifficultyButtons difficulty={difficulty} onSelect={handleDifficultySelect} />
-
-        {showConfirmButton && <ConfirmButton onConfirm={handleConfirm} />}
-      </div>
-
-      {/* Animação das Ondas */}
-      <WaveAnimation difficulty={difficulty} />
-
-      <p className="footer-text">DIFFICULTY LEVEL CHANGES THE OCEANS PACE</p>
-    </div>
-  );
+function Ocean() {
+  const ref = useRef()
+  const gl = useThree((state) => state.gl)
+  const waterNormals = useLoader(THREE.TextureLoader, '/waternormals.jpeg')
+  waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping
+  const geom = useMemo(() => new THREE.PlaneGeometry(10000, 10000), [])
+  const config = useMemo(
+    () => ({
+      textureWidth: 512,
+      textureHeight: 512,
+      waterNormals,
+      sunDirection: new THREE.Vector3(),
+      sunColor: 0xffffff,
+      waterColor: 0x001e0f,
+      distortionScale: 0,
+      fog: false,
+      format: gl.encoding
+    }),
+    [waterNormals]
+  )
+  useFrame((state, delta) => (ref.current.material.uniforms.time.value += delta * 1))
+  return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />
 }
 
-export default HomePage;
+export default function App() {
+  return (
+    <>
+      <Canvas camera={{ position: [0, 5, 100], fov: 55, near: 1, far: 20000 }}>
+        <pointLight position={[100, 100, 100]} />
+        <pointLight position={[-100, -100, -100]} />
+        <Suspense fallback={null}>
+          <Ocean />
+        </Suspense>
+        <Sky 
+          scale={1000} 
+          sunPosition={[0, -2, -70]}  
+          sunColor="white"         
+          turbidity={6}              
+          rayleigh={1}               
+        />
+      </Canvas>
+
+    </>
+  )
+}
+

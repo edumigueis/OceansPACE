@@ -1,9 +1,5 @@
 import React, { useState, useRef } from 'react';
 import FlatMap from '../components/FlatMap';
-import SingleQuestionStage from '../components/stages/SingleQuestionStage';
-import InformativeSectionStage from '../components/stages/InformativeSectionStage';
-import MapFocusStage from '../components/stages/MapFocusStage';
-import csv from '../assets/data/cloro.csv';
 
 const initialViewState = {
   latitude: 22.8,
@@ -32,8 +28,8 @@ const tileLayerConfig = {
   tileSize: 256,
 };
 
-function MissionPage() {
-  const [stage, setStage] = useState(0);
+function MissionPage({ stages, csvPath }) {
+  const [stageIndex, setStageIndex] = useState(0);
   const mapRef = useRef(null);
 
   const handleZoomIn = () => {
@@ -54,35 +50,25 @@ function MissionPage() {
     }
   };
 
-  const renderStage = () => {
-    switch (stage) {
-      case 0:
-        return <SingleQuestionStage setStage={setStage} handleCenterMap={handleCenterMap} />;
-      case 1:
-        return <InformativeSectionStage handleCenterMap={handleCenterMap} />;
-      case 2:
-        return <MapFocusStage handleCenterMap={handleCenterMap} />;
-      default:
-        return <SingleQuestionStage setStage={setStage} handleCenterMap={handleCenterMap} />;
-    }
-  };
-
   return (
     <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
-      {renderStage()}
+      {stages[stageIndex]} {/* Render the current stage component */}
       <div style={{ flex: 1, zIndex: 0 }}>
         <FlatMap
-          ref={mapRef} // Attach the ref to the map component
-          csvUrl={csv}
+          ref={mapRef}
+          csvUrl={csvPath} // Use the dynamic CSV path
           initialViewState={initialViewState}
           heatmapConfig={heatmapConfig}
-          tileLayerConfig={tileLayerConfig} />
+          tileLayerConfig={tileLayerConfig} 
+        />
       </div>
       <div style={{ padding: '10px' }}>
         <button onClick={handleZoomIn}>Zoom In</button>
         <button onClick={handleZoomOut}>Zoom Out</button>
-        <button onClick={() => setStage((prev) => (prev > 0 ? prev - 1 : 0))}>Previous</button>
-        <button onClick={() => setStage((prev) => (prev < 2 ? prev + 1 : 2))}>Next</button>
+        <button onClick={() => setStageIndex((prev) => (prev > 0 ? prev - 1 : 0))}>Previous</button>
+        <button onClick={() => setStageIndex((prev) => (prev < stages.length - 1 ? prev + 1 : stages.length - 1))}>
+          Next
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: none;
+    overflow-y: none;
+  }
+  
+  body {
+    background: radial-gradient(rgba(255, 254, 234, 1) 0%, rgba(255, 254, 234, 1) 35%, #B7E8EB 100%);
+  }
+  
+  .ocean {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #015871;
+  }
+  
+  .wave {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+    position: absolute;
+    width: 6400px;
+    top: -198px;
+    left: 0;
+    height: 198px;
+    transform: translate(0, 0, 0);
+    animation: wave-animation 2s ease infinite; /* Mudança para classe normal */
+  }
+  
+  .wave2 {
+    top: -168px;
+    animation: swell-animation 1s ease infinite; /* Mudança para classe normal */
+    opacity: 1;
+  }
+  
+  @keyframes wave-animation {
+    0% { margin-left: 0; }
+    100% { margin-left: -1600px; }
+  }
+  
+  @keyframes swell-animation {
+    0%, 100% { transform: translate(0, -30px); }
+    50% { transform: translate(0, 5px); }
+  }
+  
+  /* Controle de Velocidade para NORMAL, EASY e HARD */
+  
+  .normal .wave {
+    animation-duration: 10s; /* Velocidade inicial "normal" */
+  }
+  
+  .normal .wave2 {
+    animation-duration: 18s;
+  }
+  
+  .slow .wave {
+    animation: wave-animation 8s ease infinite; /* Mudança para classe normal */
+  }
+  
+  .slow .wave2 {
+    animation: swell-animation s ease infinite; /* Mudança para classe normal */
+  }
+  
+  .fast .wave {
+    animation-duration: 1.5s; /* Onda mais rápida para HARD */
+  }
+  
+  .fast .wave2 {
+    animation-duration: 1s;
+  }
+  

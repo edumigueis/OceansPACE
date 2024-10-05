@@ -1,0 +1,102 @@
+/* Resetando margens e centralizando conteúdo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: none;
+  overflow-x: hidden; /* Remover overflow horizontal */
+  overflow-y: hidden; /* Remover overflow vertical */
+
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-color: #046b8b;
+    color: white;
+    text-align: center;
+  }
+  
+  .content {
+    padding-top: 50px;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  h1 {
+    font-size: 40px;
+    /* margin: 20px 0; */
+  }
+  
+  p {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .difficulty-buttons {
+    display: flex;
+    gap: 20px;
+    align-content: center;
+    justify-content: center; 
+
+}
+  
+  .button {
+    padding: 6px 30px;
+    font-size: 18px;
+    background-color: #0000;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-color: #407b8e;
+    border-width: 5px;
+  }
+  
+  .button:hover {
+    background-color: #376990;
+  }
+  
+  .selected {
+    background-color: #28a4e2;
+  }
+  
+  .confirm-button {
+    margin-top: 20px;
+    padding: 10px 50px;
+    font-size: 18px;
+    background-color: hsl(57, 100%, 50%);
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirm-button:hover {
+    background-color: #b4c535;
+  }
+  
+  
+  .footer-text {
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: #fff;
+    z-index: 9;
+  }
+  
+  .title-text{
+    display: flex;
+    flex-direction: column;
+  }

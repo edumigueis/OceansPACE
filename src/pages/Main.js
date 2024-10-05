@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Globe from 'react-globe.gl';
+import CardWithAnimatedText from '../components/CardWithAnimatedText';
+import MissionBriefing from '../components/MissionBriefing';
 import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
 
@@ -87,6 +89,8 @@ function Main() {
           pointRadius={0.3}
         />
       </div>
+
+      <MissionBriefing isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }

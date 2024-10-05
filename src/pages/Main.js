@@ -4,6 +4,7 @@ import CardWithAnimatedText from '../components/CardWithAnimatedText';
 import MissionBriefing from '../components/MissionBriefing';
 import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
+import oman from '../assets/missions/oman.jpg'
 
 const gData = [
   {
@@ -89,8 +90,18 @@ function Main() {
           pointRadius={0.3}
         />
       </div>
-
-      <MissionBriefing isOpen={isModalOpen} onClose={closeModal} />
+      <MissionBriefing
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        missionData={{
+          title: "The Omani Bloom",
+          lat: 24.618875,
+          lng: 57.455609,
+          location: "The Omani Sea",
+          image: oman,
+          question: "What is the capital of France?"
+        }}
+      />
     </div>
   );
 }

@@ -6,12 +6,6 @@ import backgroundMusic from '../assets/sounds/background_ocean.wav';
 
 // Component declaration
 const MissionBriefing = ({ isOpen, onClose, missionData }) => {
-    // Conditional rendering - if the modal is not open, return null
-    if (!isOpen) return null;
-
-    // Destructuring mission data
-    const { title, lat, lng, location, image, question } = missionData;
-
     // State and audio reference
     const [isPlaying, setIsPlaying] = useState(false); // Controls if audio is playing
     const audioRef = useRef(new Audio(backgroundMusic)); // Creates a reference to the audio
@@ -27,6 +21,12 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
         }
         setIsPlaying(!isPlaying); // Toggles the playing state
     };
+
+    // Conditional rendering - if the modal is not open, return null
+    if (!isOpen) return null;
+
+    // Destructuring mission data
+    const { title, lat, lng, location, image, question } = missionData;
 
     // JSX for modal return
     return (

@@ -29,7 +29,7 @@ const tileLayerConfig = {
 };
 
 function MissionPage({ stages, csvPath }) {
-  const [stageIndex, setStageIndex] = useState(0); // Use setStageIndex to control stage changes
+  const [stageIndex, setStageIndex] = useState(0);
   const mapRef = useRef(null);
 
   const handleZoomIn = () => {
@@ -53,12 +53,12 @@ function MissionPage({ stages, csvPath }) {
   // Pass handleCenterMap and setStageIndex to the current stage
   const currentStage = React.cloneElement(stages[stageIndex], { 
     handleCenterMap, 
-    setStageIndex // Pass setStageIndex as setStage to avoid confusion
+    setStageIndex 
   });
 
   return (
     <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
-      {stages[stageIndex]}
+      {currentStage}
       <div style={{ flex: 1, zIndex: 0 }}>
         <FlatMap
           ref={mapRef}

@@ -1,82 +1,82 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-  
-  body {
-    background-color: #046b8b;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-    color: white;
-    text-align: center;
-    position: relative;
-  }
-  
-  .content {
-    padding-top: 50px;
-  }
-  
-  .logo {
-    width: 100px;
-    height: 100px;
-  }
-  
-  h1 {
-    font-size: 40px;
-  }
-  
-  p {
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-  
-  .difficulty-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .button {
-    padding: 10px 30px;
-    font-size: 18px;
-    border: none;
-    background-color: #28a4e2;
-    color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #1a5f7f;
-  }
-  
-  .selected {
-    background-color: #006fbf;
-  }
-  
-  .confirm-button {
-    margin-top: 20px;
-    padding: 10px 50px;
-    font-size: 18px;
-    background-color: hsl(57, 100%, 50%);
-    color: #000;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .footer-text {
-    padding-bottom: 20px;
-    font-size: 14px;
-  }
-  
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  background-color: #046b8b;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.content {
+  padding-top: 50px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.difficulty-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px 30px;
+  font-size: 18px;
+  border: none;
+  background-color: #28a4e2;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #1a5f7f;
+}
+
+.selected {
+  background-color: #006fbf;
+}
+
+.confirm-button {
+  margin-top: 20px;
+  padding: 10px 50px;
+  font-size: 18px;
+  background-color: hsl(57, 100%, 50%);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.footer-text {
+  padding-bottom: 20px;
+  font-size: 14px;
+}

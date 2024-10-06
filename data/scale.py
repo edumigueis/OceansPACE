@@ -1,9 +1,13 @@
 import pandas as pd
 import numpy as np
+import os
 
 # Define the chlor_a scale
 chlor_a_scale = [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20]
-backscattering_scale = [0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2];
+backscattering_scale = [0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2]
+vulcan_scale = [0.000,0.005, 0.010, 0.015]
+oman_scale = [0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1]
+
 normalized_scale = np.linspace(0, 1, len(backscattering_scale))  # Corresponding normalized values
 
 def normalize_value(value, scale, normalized):
@@ -18,11 +22,16 @@ def normalize_value(value, scale, normalized):
     return 1
 
 def normalize_chlor_a(csv_file, output_file):
+    # Ensure the directory exists
+    output_dir = os.path.dirname(output_file)
+    os.makedirs(output_dir, exist_ok=True)
+
     df = pd.read_csv(csv_file)
-    df['bb_443_normalized'] = df['bb_443'].apply(lambda x: normalize_value(x, backscattering_scale, normalized_scale))
+    #df['oman_normalized'] = df['adg_unc_443'].apply(lambda x: normalize_value(x,oman_scale , normalized_scale))
+    df['vulcan_normalized'] = df['Rrs_531'].apply(lambda x: normalize_value(x, vulcan_scale, normalized_scale))
     df.to_csv(output_file, index=False)
     print(f"Normalized data saved to {output_file}")
 
-csv_file = './data/output/converted/aero.csv'
-output_file = './data/output/normalized/aero.csv'
+csv_file = './data/output/converted/vulcan_after.csv'
+output_file = './data/output/normalized/vulcan_after_norm.csv'
 normalize_chlor_a(csv_file, output_file)

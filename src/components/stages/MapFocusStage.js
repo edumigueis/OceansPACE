@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMap } from './MapProvider'; // Adjust the path as needed
 import MissionCards from '../MissionCards';
 
-function MapFocusStage({ handleCenterMap }) {
-  const centerMap = () => {
-    handleCenterMap(24.0, 62.0); // Example coordinates for centering
+function MapFocusStage({ images }) {
+  const { focusOnCoordinates } = useMap();
+  const [visibleMissions, setVisibleMissions] = useState([images[0]]);
+
+  const focusOnCoordinatesNow = (coordinates) => {
+    if (focusOnCoordinates) {
+      focusOnCoordinates(coordinates.lat, coordinates.lng, coordinates.zoom); // Set the zoom level you want
+    }
+  };
+
+  const addMoreMissions = () => {
+    const nextMission = images[visibleMissions.length];
+    if (nextMission) {
+      setVisibleMissions([...visibleMissions, nextMission]);
+    }
   };
 
   return (
     <div style={{ width: '700px', backgroundColor: '#f0f0f0' }}>
-      <MissionCards>
-        <div className="mission-card-content">
-          <div className="mission-card-header">
-            <h2>Mission 3</h2>
-            <h4>Complete Your Goals</h4>
+      {visibleMissions.map((mission, index) => (
+        <MissionCards key={index}>
+          <div className="mission-card-content">
+            <div className="mission-card-header">
+              <h2>{mission.title}</h2>
+              <img src={mission.image} alt={`Mission ${index + 1}`} style={{ width: '100%', height: '150px', objectFit: 'cover' }} />
+              <p>{mission.text}</p>
+            </div>
+            <button onClick={() => focusOnCoordinatesNow(mission)}>Focus on Coordinates</button>
+            {index === visibleMissions.length - 1 && visibleMissions.length < images.length && (
+              <button onClick={addMoreMissions}>More</button>
+            )}
           </div>
-          <ul>
-            <li>Finalize report G</li>
-            <li>Prepare presentation H</li>
-            <li>Gather feedback I</li>
-          </ul>
-          <p>This is some rich text for mission 3.</p>
-          <button onClick={centerMap}>Focus on Coordinates</button> {/* Add a button to center the map */}
-        </div>
-      </MissionCards>
+        </MissionCards>
+      ))}
     </div>
   );
 }

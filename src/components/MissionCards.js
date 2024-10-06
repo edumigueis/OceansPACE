@@ -18,7 +18,7 @@ function MissionCard({ children }) {
 
   return (
     <div className="mission-card">
-      <motion.div 
+      <motion.div
         key={currentIndex} // Use currentIndex for the key
         initial={{ y: screenHeight }}  // Use screen height for initial position
         animate={{ y: 0 }}

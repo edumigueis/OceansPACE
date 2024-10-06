@@ -88,7 +88,6 @@ export default function App() {
   turbidity={6}              // Aumenta o turbidity para um efeito mais difuso
   rayleigh={2}               // Aumenta o Rayleigh para uma atmosfera mais clara
 />
-
       </Canvas>
       
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 2 }}>

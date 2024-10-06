@@ -29,7 +29,7 @@ const LpContent = ({ setDifficulty }) => {
         UNDERSTAND OCEAN CHARACTERISTICS THROUGH PACE SATELLITE DATA TO
         UNDERSTAND THE IMPACTS OF GLOBAL WARMING ON THE OCEAN
       </p>
-      
+
       <div className="selection-box">
         <button className="arrow" onClick={handlePrev}>
           &#x3c;
@@ -39,7 +39,7 @@ const LpContent = ({ setDifficulty }) => {
           &#x3e;
         </button>
       </div>
-      
+
       <p className="footer-text">
         DIFFICULTY LEVEL CHANGES THE OCEAN'S PACE
       </p>

@@ -1,0 +1,21 @@
+.map-reading-guide {
+    position: fixed;
+    left: 20px; /* Distância da esquerda */
+    top: 20px; /* Distância do topo */
+    width: 300px; /* Largura da janela */
+    background-color: #ffffff; /* Cor de fundo da janela */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efeito de flutuação */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    z-index: 1000; /* Certifique-se de que a janela fique acima de outros elementos */
+    transition: transform 0.6s ease; /* Transição suave para a animação */
+  }
+  
+  .map-reading-guide.animate {
+    transform: translate(-30px, 30px); /* Mova para a esquerda e para baixo */
+  }
+  
+  .map-reading-guide.animate + .map-reading-guide {
+    transform: translate(30px, 30px); /* Mova para a direita e para baixo */
+  }
+  

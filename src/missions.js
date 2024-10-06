@@ -3,11 +3,24 @@ import gulf_of_maine from './assets/gulf_of_maine.jpg';
 import pace_clouds from './assets/pace_introduction_clouds.png';
 import pace_water from './assets/pace_introduction_land.png';
 import pace_water from './assets/pace_introduction_water.png';
-import oman_picture from './assets/oman_picture.jpg';
+import pace_maine from './assets/pace_introdction_image_maine.png';
+import pace_snow from './assets/apce_introduction_snow.png';
 import oman_pace from './assets/oman_pace.jpg';
 import oman_green from './assets/oman_green.png';
 import saginaw_bay from './assets/saginaw_bay.jpg';
-
+import cyanobacteria from './assets/cyanobacteria.jpg';
+import image_globe from './assets/image_globe.jpg';
+import marine_food_chain from './assets/marine_food_chain.jpg';
+import mauritania from './assets/mauritania.jpg';
+import mauritania_pace from './assets/mauritania_pace.png';
+import mud_spill_rebuilding from './assets/mud_spill_rebulding.jpg';
+import mud_spill from './assets/mud_spill.jpg';
+import oman_picture from './assets/oman_picture.jpg';
+import saginaw_pace from './assets/pace_saginaw_bay_stain.png';
+import phytoplankton from './assets/phytoplankton.jpg';
+import saginaw_bay_river_mud from './assets/saginaw_bay_river_mud.png';
+import saharra_winds from './assets/saharra_winds.jpg';
+import salton_sea_pace from './assets/salton_sea_pace.jpg';
 import badgeFigure from './assets/Badge.png';
 import omanData from './assets/data/oman_winter_norm.csv';
 import volcaData from './assets/data/vulcan_erupting_norm.csv';
@@ -31,7 +44,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     lat: 42.81671,
                     lng: -69.95354,
                     location: "Northeastern United States and Canada",
-                    image: pace_introduction,
+                    image: pace_maine,
                     text: "✨ Your first mission is coming up: We’ll be diving into the ocean’s colors, discovering how the light bouncing off the water can reveal hidden secrets about life in the whole world! The region, encompassing Georges Bank and the Gulf of Maine, is renowned for its rich biological productivity, historically making it a commercial fishing hub. However, overfishing and climate change now pose significant threats to this vital ecosystem.",
                     initialViewState: {
                         latitude: -16.83678,
@@ -59,7 +72,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     stages: [
                         {
                             displayMap: false,
-                            fallbackImage: pace_introduction,
+                            fallbackImage:pace_maine ,
                             next: 1,
                             component: (
                                 <OnlyOneQuestion
@@ -75,7 +88,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: pace_introduction,
+                            fallbackImage: pace_maine,
                             next: 2,
                             component: (
                                 <InformativeSectionStage nextStage={2}>
@@ -87,7 +100,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         <h3>Here are some tips to help tell them apart:</h3>
                                         <ul>
                                             <div className="image-container">
-                                                <img src={oman}></img>
+                                                <img src={pace_clouds}></img>
                                             </div>
                                             <li>Clouds:</li>
                                             <ul>
@@ -96,7 +109,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                                 </li>
                                             </ul>
                                             <div className="image-container">
-                                                <img src={oman}></img>
+                                                <img src={pace_snow}></img>
                                             </div>
                                             <li>Snow:</li>
                                             <ul>
@@ -138,7 +151,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         <h4>Here's some quick facts about it!</h4>
                                     </div>
                                     <div className="image-container">
-                                        <img src={oman}></img>
+                                        <img src={phytoplankton}></img>
                                     </div>
                                     <div className="text">
                                         <p>Phytoplankton are like tiny algae that live in the ocean, lakes, and rivers. Even though they're super small, they’re really important because they make food from sunlight, just like plants in a garden! They also give off oxygen, which helps animals (and us!) breathe. You can think of them as the ocean’s little helpers, keeping everything healthy and full of life!
@@ -157,7 +170,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         {
                                             lat: 24.618875,
                                             lng: 57.455609,
-                                            image: pace_introduction,
+                                            image: image_globe,
                                             title: "alooo",
                                             text: "aaai",
                                             zoom: 7,
@@ -192,10 +205,10 @@ const getMissionsByDifficulty = (difficulty) => {
                     lat: 43.671677,
                     lng: -83.821499,
                     location: "Saginaw Bay, Michigan, US",
-                    image: oman,
+                    image: saginaw_bay,
                     text: "Unusual changes are happening in Saginaw Bay after a big storm. The waters are shifting, and things aren’t quite right. Your mission is to explore the bay, uncover what’s causing the trouble. Can you help us solve the challenge before it’s too late? Saginaw Bay Saginaw Bay is a big, shallow area of water in eastern Michigan, right next to Lake Huron. It’s home to all kinds of amazing animals, like fish, birds, and other wildlife. Many people come here to fish, and birds love to visit the nearby wetlands. But over the years, the bay has faced some problems, like pollution and losing important habitats for animals. Thankfully, people are working hard to protect it and keep it healthy so that the bay can stay beautiful and full of life for years to come!",
                     displayMap: true,
-                    fallbackImage: oman,
+                    fallbackImage: saginaw_bay,
                     csvPath: sagiData,
                     initialViewState: {
                         latitude: -16.83678,
@@ -222,7 +235,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     stages: [
                         {
                             displayMap: false,
-                            fallbackImage: oman,
+                            fallbackImage: saginaw_pace,
                             next: 1,
                             component: (
                                 <OnlyOneQuestion

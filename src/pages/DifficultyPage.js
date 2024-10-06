@@ -31,51 +31,47 @@ function Ocean({ speed }) {
     [waterNormals]
   );
 
-  // Use the speed passed in props to control the water movement speed
   useFrame((state, delta) => (ref.current.material.uniforms.time.value += delta * speed));
-  
+
   return <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />;
 }
 
 export default function App() {
-  const [difficulty, setDifficulty] = useState('MEDIUM'); // Default difficulty
-  const [isPlaying, setIsPlaying] = useState(false); // Controls if audio is playing
-  const audioRef = useRef(new Audio(backgroundMusic)); // Creates a reference to the audio
+  const [difficulty, setDifficulty] = useState('MEDIUM');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(new Audio(backgroundMusic));
 
-  // Function to toggle audio playback
   const toggleAudio = () => {
     const audio = audioRef.current;
     if (isPlaying) {
       audio.pause();
     } else {
       audio.loop = true;
-      audio.play().catch(error => console.log('Audio play failed:', error));
+      audio.play().catch((error) => console.log('Audio play failed:', error));
     }
     setIsPlaying(!isPlaying);
   };
 
-  // Function to change speed based on difficulty
   const getSpeed = () => {
     switch (difficulty) {
       case 'EASY':
-        return 0.5; // Slow speed
+        return 0.5;
       case 'MEDIUM':
-        return 1; // Normal speed
+        return 1;
       case 'HARD':
-        return 2; // Fast speed
+        return 2;
       default:
-        return 1; // Default to normal speed
+        return 1;
     }
   };
 
-  // Function to change speed based on difficulty and save the choice
-const setDifficultyAndSave = (level) => {
-  setDifficulty(level);
-  localStorage.setItem('selectedDifficulty', level); // Save the chosen difficulty in localStorage
-};
-  // Function to navigate to the next page
+  const setDifficultyAndSave = (level) => {
+    setDifficulty(level);
+    localStorage.setItem('selectedDifficulty', level);
+  };
+
   const goToNextPage = () => {
-    window.location.href = '/'; // Adjust this to your desired route or URL
+    window.location.href = '/main';
   };
 
   return (
@@ -84,20 +80,14 @@ const setDifficultyAndSave = (level) => {
         <pointLight position={[100, 100, 100]} />
         <pointLight position={[-100, -100, -100]} />
         <Suspense fallback={null}>
-          <Ocean speed={getSpeed()} /> {/* Pass the calculated speed */}
+          <Ocean speed={getSpeed()} />
         </Suspense>
-        <Sky 
-  scale={1000} 
-  sunPosition={[0, 0, 50]}  // Ajuste a posição do sol para mais próximo do horizonte
-  sunColor="yellow"          
-  turbidity={6}              // Aumenta o turbidity para um efeito mais difuso
-  rayleigh={2}               // Aumenta o Rayleigh para uma atmosfera mais clara
-/>
+        <Sky scale={1000} sunPosition={[0, 0, 50]} sunColor="yellow" turbidity={6} rayleigh={2} />
       </Canvas>
-      
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 2 }}>
-      <LpContent setDifficulty={setDifficultyAndSave} /> {/* Use the updated setDifficultyAndSave */}
-    </div>
+
+      <div className="lp-content-container">
+        <LpContent setDifficulty={setDifficultyAndSave} />
+      </div>
 
       <button
         onClick={toggleAudio}
@@ -116,26 +106,9 @@ const setDifficultyAndSave = (level) => {
       >
         {isPlaying ? 'Mute' : 'Unmute'}
       </button>
-
-      {/* Button to go to the next page */}
-      <button 
-        onClick={goToNextPage} 
-        style={{
-          position: 'absolute',
-          bottom: '10%',
-          right: '5%',
-          padding: '15px 30px',
-          backgroundColor: '#1CAAD9',
-          color: 'white',
-          border: 'none',
-          borderRadius: '10px',
-          cursor: 'pointer',
-          fontSize: '18px'
-        }}
-      >
+      <button className="start-mission-button" onClick={goToNextPage}>
         START MISSION
       </button>
     </>
   );
 }
-

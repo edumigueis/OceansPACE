@@ -18,7 +18,7 @@ import { title } from 'framer-motion/client';
 const missions = [
   {
     index: 0,
-    concluded: true,
+    concluded: false,
     title: "The Omani Bloom",
     lat: 24.618875,
     lng: 57.455609,
@@ -76,7 +76,6 @@ const missions = [
       />,
       <FinalStage
         onArrival={() => console.log('Final stage reached!')}
-        briefing={{}}
       />
     ],
     csvPath: cloroData,
@@ -240,7 +239,6 @@ function App() {
     />,
     <FinalStage 
     onArrival={() => console.log('Final stage reached!')} 
-    briefing={briefings[0]} 
   />
   ];
 
@@ -288,8 +286,7 @@ function App() {
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />,
     <FinalStage 
-    onArrival={() => console.log('Final stage reached!')} 
-    briefing={briefings[1]} 
+    onArrival={() => console.log('Final stage reached!')}
   />
   ];
 

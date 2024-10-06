@@ -52,17 +52,7 @@
     font-size: 14px;
     color: #fff;
   }
-  
-=======
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: #046b8b;
-  color: white;
-  height: 100vh;
-  justify-content: center;
-}
+
 
 .logo {
   width: 100px;

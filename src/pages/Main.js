@@ -58,7 +58,7 @@ function Main({ missions }) {
   };
 
   useEffect(() => {
-    audioRef.current.volume = 3 / 20; // Set the fixed volume at 3 on load
+    audioRef.current.volume = 3 / 20;
   }, []);
 
   useEffect(() => {

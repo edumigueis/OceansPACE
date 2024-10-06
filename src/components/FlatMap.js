@@ -32,7 +32,7 @@ const FlatMap = forwardRef(({ csvUrl, initialViewState, heatmapConfig, tileLayer
               return [lon, lat, intensity];
             }).filter(item => item !== null);
 
-            console.log(formattedData);
+            console.log("Formatted Data:", formattedData);
             setHeatData(formattedData);
           },
           error: (error) => {
@@ -55,15 +55,11 @@ const FlatMap = forwardRef(({ csvUrl, initialViewState, heatmapConfig, tileLayer
         zoom: zoomLevel,
         pitch: 0,
         bearing: 0,
-        transitionDuration: 1000, // Duration in milliseconds
+        transitionDuration: 1000,
         transitionInterpolator: new LinearInterpolator(),
       };
 
-      // Update the viewState to animate
-      setViewState((prevViewState) => ({
-        ...prevViewState,
-        ...newViewState,
-      }));
+      setViewState(newViewState);
     },
   }));
 
@@ -107,7 +103,9 @@ const FlatMap = forwardRef(({ csvUrl, initialViewState, heatmapConfig, tileLayer
         viewState={viewState}
         controller={true}
         layers={layers}
+        onViewStateChange={({ viewState }) => setViewState(viewState)}  // Update viewState on user interaction
         style={{ height: '100vh', width: '100%' }}
+        onClick={() => console.log('Map clicked!')}  // Test click event
       />
     </div>
   );

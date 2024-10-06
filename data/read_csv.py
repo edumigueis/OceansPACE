@@ -52,21 +52,38 @@ def nc_to_csv(nc_file, output_csv, variable_name, center_lat, center_lon, radius
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    nc_file = "./data/datasets/vulcan_after.nc"
-    output_csv = "./data/output/converted/vulcan_after.csv"
-    variable_name = "Rrs_531"  #vulcan
+    nc_file = "./data/datasets/mauritania.nc"
+    output_csv = "./data/output/converted/mauritania.csv"
+    #variable_name = "Rrs_531"  #vulcan
     #variable_name = "adg_unc_443" #oman
-    
+    #variable_name = "bb_645" #saginaw
+    #variable_name = "bb_678" #salton
+    variable_name = "aot_869" #mauritania
+
     # oman
     #center_lat = 20.51865
     #center_lon = 56.22683
     #radius_km = 1600
     
     #vulcan
-    center_lat = -20.56944
-    center_lon = -175.37863
-    radius_km = 800
+    #center_lat = -20.56944
+    #center_lon = -175.37863
+    #radius_km = 800
 
+    #saginaw
+    #center_lat = 43.81451
+    #center_lon = -83.66810
+    #radius_km = 400
+
+    #salton
+    #center_lat = 33.37499
+    #center_lon = -115.88938
+    #radius_km = 800
+
+    #mauritania
+    center_lat = 19.96057
+    center_lon = -16.70246
+    radius_km = 1600
 
 
     nc_to_csv(nc_file, output_csv, variable_name, center_lat, center_lon, radius_km)

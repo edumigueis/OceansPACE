@@ -278,7 +278,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             fallbackImage: null,
                             next: 5,
                             component: (
-                                <InformativeSectionStage nextStage={3}>
+                                <InformativeSectionStage nextStage={5}>
                                     <div className="mission-card-header">
                                         <h2>Mud flows</h2>
                                         <h4>Here's some quick facts about it!</h4>
@@ -297,7 +297,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         {
                             displayMap: true,
                             fallbackImage: null,
-                            next: 5,
+                            next: 6,
                             component: (
                                 <OnlyOneQuestion
                                     questionText={"How can we solve this problem?"}
@@ -309,7 +309,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         { id: 'e', text: 'Take palliative measures', explanation: "Palliative measures are helpful for sure. Whether it’s temporary barriers or other strategies, they can provide some relief in the short term." },
                                     ]}
                                     correctAnswerId={null}
-                                    nextStage={5}
+                                    nextStage={6}
                                 />
                             ),
                         },

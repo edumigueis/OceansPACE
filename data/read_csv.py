@@ -52,13 +52,21 @@ def nc_to_csv(nc_file, output_csv, variable_name, center_lat, center_lon, radius
         print(f"Error: {e}")
 
 if __name__ == "__main__":
-    nc_file = "./data/datasets/volcano_2.nc"
-    output_csv = "./data/output/converted/volcano_2.csv"
-    variable_name = "Rrs_531"
+    nc_file = "./data/datasets/vulcan_after.nc"
+    output_csv = "./data/output/converted/vulcan_after.csv"
+    variable_name = "Rrs_531"  #vulcan
+    #variable_name = "adg_unc_443" #oman
     
-    # Center coordinates and radius in kilometers
-    center_lat = -16.83678
-    center_lon = -174.25968
-    radius_km = 1600
+    # oman
+    #center_lat = 20.51865
+    #center_lon = 56.22683
+    #radius_km = 1600
     
+    #vulcan
+    center_lat = -20.56944
+    center_lon = -175.37863
+    radius_km = 800
+
+
+
     nc_to_csv(nc_file, output_csv, variable_name, center_lat, center_lon, radius_km)

@@ -128,7 +128,7 @@ export default function App() {
           fontSize: '18px'
         }}
       >
-        Next Page
+        START MISSION
       </button>
     </>
   );

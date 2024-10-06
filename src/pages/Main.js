@@ -48,23 +48,31 @@ function Main() {
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
 
-  // Função para pausar o áudio da Main
+  // Function to pause the audio in Main
   const pauseMainAudio = () => {
     const audio = audioRef.current;
     audio.pause();
-    setIsPlaying(false); // Atualiza o estado para refletir que o áudio foi pausado
+    setIsPlaying(false); // Update the state to reflect that the audio has been paused
   };
 
   const toggleAudio = () => {
     const audio = audioRef.current;
+    audio.volume = 3 / 20; // Set the volume fixed at 3
     if (isPlaying) {
       audio.pause();
+      console.log('Audio paused');
     } else {
       audio.loop = true;
-      audio.play().catch(error => console.log('Audio play failed:', error));
+      audio.play().then(() => {
+        console.log('Audio is playing at volume:', audio.volume);
+      }).catch(error => console.log('Audio play failed:', error));
     }
     setIsPlaying(!isPlaying);
   };
+
+  useEffect(() => {
+    audioRef.current.volume = 3 / 20; // Set the fixed volume at 3 on load
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -140,7 +148,7 @@ function Main() {
           image: oman,
           question: "What is the capital of France?"
         }}
-        pauseMainAudio={pauseMainAudio} // Passa a função para o componente MissionBriefing
+        pauseMainAudio={pauseMainAudio} // Pass the function to the MissionBriefing component
       />
       <button
         onClick={toggleAudio}
@@ -159,6 +167,15 @@ function Main() {
       >
         {isPlaying ? 'Mute' : 'Unmute'}
       </button>
+      <div style={{
+        position: 'absolute',
+        bottom: '160px',
+        right: '20px',
+        zIndex: 11,
+        color: 'white'
+      }}>
+        
+      </div>
     </div>
   );
 }

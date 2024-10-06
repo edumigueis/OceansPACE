@@ -1,45 +1,53 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion'; // Para animações
-import '../styles/MissionBriefing.css'; // Certifique-se que o CSS está correto
-import backgroundMusic from '../assets/sounds/background_ocean.wav'; // Música de fundo para o briefing
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion'; // For animations
+import '../styles/MissionBriefing.css'; // Ensure the CSS is correct
+import backgroundMusic from '../assets/sounds/background_ocean.wav'; // Background music for the briefing
 
 const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
-    const [isPlaying, setIsPlaying] = useState(false); // Controle do som
-    const audioRef = useRef(new Audio(backgroundMusic)); // Referência ao som de background do briefing
+    const [isPlaying, setIsPlaying] = useState(false); // Sound control
+    const audioRef = useRef(new Audio(backgroundMusic)); // Reference to the background sound of the briefing
 
     const toggleAudio = () => {
         const audio = audioRef.current;
+        audio.volume = 5 / 20; // Set the volume fixed at 3
         if (isPlaying) {
-            audio.pause(); // Pausa a música do briefing
+          audio.pause();
+          console.log('Audio paused');
         } else {
-            pauseMainAudio(); // Pausa o som da página principal
-            audio.loop = true; // Define a música para tocar em loop
-            audio.play().catch(error => console.log('Audio play failed:', error)); // Toca a música
+          audio.loop = true;
+          audio.play().then(() => {
+            console.log('Audio is playing at volume:', audio.volume);
+          }).catch(error => console.log('Audio play failed:', error));
         }
-        setIsPlaying(!isPlaying); // Alterna entre tocar e pausar
-    };
+        setIsPlaying(!isPlaying);
+      };
+    
+      useEffect(() => {
+        audioRef.current.volume = 5 / 20; // Set the fixed volume at 3 on load
+      }, []);
+    
 
-    // Se o modal não estiver aberto, não renderiza o conteúdo
+    // If the modal is not open, do not render the content
     if (!isOpen) return null;
 
-    const { title, lat, lng, location, image, question } = missionData; // Dados da missão
+    const { title, lat, lng, location, image, question } = missionData; // Mission data
 
     return (
         <motion.div
-            className="modal-overlay" // Overlay do modal
-            initial={{ opacity: 0 }} // Animação inicial de opacidade zero
-            animate={{ opacity: 1 }} // Animação de opacidade 100%
-            exit={{ opacity: 0 }} // Animação de fechamento
-            onClick={onClose} // Fecha o modal ao clicar fora do conteúdo
+            className="modal-overlay" // Modal overlay
+            initial={{ opacity: 0 }} // Initial opacity animation
+            animate={{ opacity: 1 }} // Animation for 100% opacity
+            exit={{ opacity: 0 }} // Exit animation
+            onClick={onClose} // Close the modal when clicking outside the content
         >
             <motion.div
-                className="modal-content" // Conteúdo do modal
-                initial={{ y: "-100vh" }} // Animação inicial de fora da tela (parte superior)
-                animate={{ y: "0" }} // Animação para trazer o modal ao centro
-                exit={{ y: "-100vh" }} // Animação de saída para fora da tela
-                onClick={(e) => e.stopPropagation()} // Previne que o clique dentro do modal feche ele
+                className="modal-content" // Modal content
+                initial={{ y: "-100vh" }} // Initial animation from outside the screen (top)
+                animate={{ y: "0" }} // Animation to bring the modal to the center
+                exit={{ y: "-100vh" }} // Exit animation to go outside the screen
+                onClick={(e) => e.stopPropagation()} // Prevent clicks inside the modal from closing it
             >
-                {/* Coluna esquerda - Detalhes da missão */}
+                {/* Left column - Mission details */}
                 <div className="column column-left">
                     <div className="box spaced">
                         <div className="top">
@@ -60,7 +68,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                     </div>
                 </div>
 
-                {/* Coluna do meio - Imagem da localização */}
+                {/* Middle column - Location image */}
                 <div className="column column-middle">
                     <div className="top-box">
                         <h3>Location: {location}</h3>
@@ -70,13 +78,13 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                     </div>
                 </div>
 
-                {/* Coluna direita - Questão */}
+                {/* Right column - Question */}
                 <div className="column column-right">
                     <div className="quiz-question">
                         <h3>{question}</h3>
                     </div>
 
-                    {/* Botão para controlar o som */}
+                    {/* Button to control sound */}
                     <button
                         onClick={toggleAudio}
                         style={{

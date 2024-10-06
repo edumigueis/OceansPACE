@@ -118,6 +118,15 @@ function Main() {
     globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
+  // State to hold the difficulty level
+  const [difficulty, setDifficulty] = useState('MEDIUM'); // Default value
+
+  useEffect(() => {
+    // Get the selected difficulty from localStorage
+    const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'MEDIUM';
+    setDifficulty(savedDifficulty); // Update the state with the saved difficulty
+  }, []);
+
   return (
     <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', left: '50px', top: 'calc(50% - 80px)', zIndex: 10, pointerEvents: 'none' }}>
@@ -169,14 +178,20 @@ function Main() {
       >
         {isPlaying ? 'Mute' : 'Unmute'}
       </button>
+
+      {/* Display the selected difficulty at the bottom-left */}
       <div style={{
         position: 'absolute',
-        bottom: '160px',
-        right: '20px',
+        bottom: '20px',
+        left: '20px',
         zIndex: 11,
-        color: 'white'
+        color: 'white',
+        fontSize: '18px',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: '10px',
+        borderRadius: '5px'
       }}>
-        
+        Difficulty: {difficulty}
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useMap } from './MapProvider';
-import MissionCards from '../MissionCards';
 import '../../styles/MapFocusStage.css';
 
 function MapFocusStage({ images, setMissionStageIndex }) {
   const { focusOnCoordinates } = useMap();
   const [visibleMissions, setVisibleMissions] = useState([images[0]]);
+  const [readMissions, setReadMissions] = useState([]); // Adicionando um estado para rastrear as missões lidas
 
   const focusOnCoordinatesNow = (mission) => {
     if (focusOnCoordinates) {

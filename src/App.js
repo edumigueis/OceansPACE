@@ -15,13 +15,13 @@ import FinalStage from './components/stages/FinalStage';
 const missions = [
   {
     index: 0,
-    concluded: false,
+    concluded: true,
     title: "The Omani Bloom",
     lat: 24.618875,
     lng: 57.455609,
     location: "The Omani Sea",
     image: oman,
-    question: "What is the capital of France?",
+    text: "Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
     stages: [
       <SingleQuestionStage
         question={{

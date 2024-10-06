@@ -90,6 +90,10 @@
     text-align: left;
 }
 
+.top-box h3{
+    margin: 0;
+}
+
 .column-middle .bottom-box {
     background-color: white;
     flex-grow: 1;
@@ -104,11 +108,14 @@
     background-color: white;
     padding: 20px;
     text-align: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 5px;
+    height: 100%;
 }
+
+.column-right .quiz-question p{
+    font-size: 1.1rem;
+}
+
 
 .column-left .button {
     background-color: #f5f5f5;
@@ -139,6 +146,10 @@
 
 .column-left .button:hover h1 {
     color: #ddd;
+}
+
+.completed{
+    background-color: greenyellow !important;
 }
 
 @media (max-width: 900px) {

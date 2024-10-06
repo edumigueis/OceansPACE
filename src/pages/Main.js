@@ -62,10 +62,10 @@ function Main({ missions }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setRingsData(gData.filter(mission => !mission.concluded));
-      setPointsData(gData.filter(mission => !mission.concluded).map(e => ({
+      setPointsData(gData.map(e => ({
         lat: e.lat,
         lng: e.lng,
-        color: e.color,
+        color: e.concluded ? "green": e.color,
         altitude: 0.0001,
       })));
       setIsInteractive(true);

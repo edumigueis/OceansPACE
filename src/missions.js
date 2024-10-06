@@ -1,7 +1,8 @@
 import oman from './assets/oman.jpg';
 import badgeFigure from './assets/Badge.png';
-import cloroData from './assets/data/oman_winter_norm.csv';
-import aeroData from './assets/data/vulcan_erupting_norm.csv';
+import omanData from './assets/data/oman_winter_norm.csv';
+import volcaData from './assets/data/vulcan_erupting_norm.csv';
+import sagiData from './assets/data/saginaw_bay_norm.csv';
 import MultipleQuestionStage from './components/stages/MultipleQuestionStage';
 import FinalStage from './components/stages/FinalStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
@@ -45,6 +46,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         maxZoom: 19,
                         tileSize: 256,
                     },
+                    csvPath: sagiData,
                     stages: [
                         {
                             displayMap: false,
@@ -167,7 +169,6 @@ const getMissionsByDifficulty = (difficulty) => {
                             />
                         },
                     ],
-                    csvPath: cloroData,
                 },
                 {
                     index: 1,
@@ -180,7 +181,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     text: "Unusual changes are happening in Saginaw Bay after a big storm. The waters are shifting, and things aren’t quite right. Your mission is to explore the bay, uncover what’s causing the trouble. Can you help us solve the challenge before it’s too late? Saginaw Bay Saginaw Bay is a big, shallow area of water in eastern Michigan, right next to Lake Huron. It’s home to all kinds of amazing animals, like fish, birds, and other wildlife. Many people come here to fish, and birds love to visit the nearby wetlands. But over the years, the bay has faced some problems, like pollution and losing important habitats for animals. Thankfully, people are working hard to protect it and keep it healthy so that the bay can stay beautiful and full of life for years to come!",
                     displayMap: true,
                     fallbackImage: oman,
-                    csvPath: aeroData,
+                    csvPath: sagiData,
                     initialViewState: {
                         latitude: -16.83678,
                         longitude: -174.25968,
@@ -349,7 +350,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     text: "The water is full of all kinds of phytoplankton species, and right now, the main way to tell them apart is by scooping up water samples—talk about time-consuming and pricey! But what if we could use images to tell them apart instead, and maybe even discover more? Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
                     displayMap: true,
                     fallbackImage: oman,
-                    csvPath: aeroData,
+                    csvPath: omanData,
                     initialViewState: {
                         latitude: -16.83678,
                         longitude: -174.25968,
@@ -530,131 +531,10 @@ const getMissionsByDifficulty = (difficulty) => {
             ];
 
         case 'MEDIUM':
-            return [
-                {
-                    index: 0,
-                    concluded: false,
-                    title: "The Omani Bloom (Medium)",
-                    lat: 24.618875,
-                    lng: 57.455609,
-                    location: "The Omani Sea",
-                    image: oman,
-                    stages: [
-                        {
-                            displayMap: true,
-                            next: 1,
-                            component: (
-                                <InformativeSectionStage>
-                                    <div className="mission-card-header">
-                                        <h2>Mission 1</h2>
-                                        <h4>The Arabian Peninsula Ecosystem</h4>
-                                    </div>
-                                    <div className="list">
-                                        <ul>
-                                            <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen.</li>
-                                        </ul>
-                                    </div>
-                                </InformativeSectionStage>
-                            ),
-                        },
-                        {
-                            displayMap: true,
-                            fallbackImage: oman,
-                            component: <MultipleQuestionStage questionStages={[
-                                {
-                                    text: "Why is the water green?",
-                                    options: [
-                                        { id: 1, text: "Algae", nextQuestionId: 1 },
-                                        { id: 2, text: "Pollution", nextQuestionId: 2 },
-                                    ],
-                                },
-                                {
-                                    text: "What could cause the growth of algae?",
-                                    options: [
-                                        { id: 1, text: "Nutrient-rich waters", nextQuestionId: 3 },
-                                        { id: 2, text: "Warmer temperatures", nextQuestionId: 3 },
-                                    ],
-                                },
-                            ]} />,
-                        },
-                        {
-                            component: <FinalStage
-                                onArrival={() => console.log('Final stage (Medium) reached!')}
-                                briefing={{
-                                    title: "The Omani Bloom (Medium)",
-                                    location: "The Omani Sea",
-                                    image: oman
-                                }}
-                            />
-                        }
-                    ],
-                    csvPath: cloroData,
-                },
-                // Mais missões "MEDIUM" podem ser adicionadas aqui
-            ];
+            return [];
 
         case 'HARD':
-            return [
-                {
-                    index: 0,
-                    concluded: false,
-                    title: "The Omani Bloom (Hard)",
-                    lat: 24.618875,
-                    lng: 57.455609,
-                    location: "The Omani Sea",
-                    image: oman,
-                    stages: [
-                        {
-                            displayMap: true,
-                            next: 1,
-                            component: (
-                                <InformativeSectionStage>
-                                    <div className="mission-card-header">
-                                        <h2>Mission 1</h2>
-                                        <h4>The Complex Ecosystem of The Omani Sea</h4>
-                                    </div>
-                                    <div className="list">
-                                        <ul>
-                                            <li>Explore the intricate balance of marine life in the Omani Sea.</li>
-                                        </ul>
-                                    </div>
-                                </InformativeSectionStage>
-                            ),
-                        },
-                        {
-                            displayMap: true,
-                            fallbackImage: oman,
-                            component: <MultipleQuestionStage questionStages={[
-                                {
-                                    text: "What environmental factors could affect the algae growth?",
-                                    options: [
-                                        { id: 1, text: "Increased CO2 levels", nextQuestionId: 1 },
-                                        { id: 2, text: "Ocean currents", nextQuestionId: 2 },
-                                    ],
-                                },
-                                {
-                                    text: "How can phytoplankton impact marine life?",
-                                    options: [
-                                        { id: 1, text: "They provide food", nextQuestionId: 3 },
-                                        { id: 2, text: "They block sunlight", nextQuestionId: 3 },
-                                    ],
-                                },
-                            ]} />,
-                        },
-                        {
-                            component: <FinalStage
-                                onArrival={() => console.log('Final stage (Hard) reached!')}
-                                briefing={{
-                                    title: "The Omani Bloom (Hard)",
-                                    location: "The Omani Sea",
-                                    image: oman
-                                }}
-                            />
-                        }
-                    ],
-                    csvPath: cloroData,
-                },
-            ];
+            return [];
 
         default:
             return [];

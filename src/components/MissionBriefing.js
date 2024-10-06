@@ -32,7 +32,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
     // If the modal is not open, do not render the content
     if (!isOpen) return null;
 
-    const { title, lat, lng, location, image, text } = missionData; // Mission data
+    const { title, lat, lng, location, image, question } = missionData; // Mission data
 
     return (
         <motion.div
@@ -83,7 +83,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                 {/* Right column - Question */}
                 <div className="column column-right">
                     <div className="quiz-question">
-                        <h3>{text}</h3>
+                        <h3>{question}</h3>
                     </div>
                     <button
                         onClick={toggleAudio}

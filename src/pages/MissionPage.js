@@ -1,4 +1,4 @@
-import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useRef } from 'react';
 import FlatMap from '../components/FlatMap';
 import { MapProvider } from '../components/stages/MapProvider';
 
@@ -13,11 +13,11 @@ const initialViewState = {
 const heatmapConfig = {
   intensity: 1,
   colorRange: [
-    [255, 0, 0, 255],   // Vermelho - Baixa intensidade
-    [255, 255, 0, 255], // Amarelo - Média-baixa intensidade
-    [0, 255, 0, 255],   // Verde - Média intensidade
-    [0, 255, 255, 255], // Ciano - Média-alta intensidade
-    [0, 0, 255, 255],   // Azul - Alta intensidade
+    [255, 0, 0, 255],
+    [255, 255, 0, 255],
+    [0, 255, 0, 255],
+    [0, 255, 255, 255],
+    [0, 0, 255, 255],
   ],
   threshold: 0.9,
 };
@@ -70,15 +70,9 @@ function HeatmapGradientLegend() {
   );
 }
 
-// Forward ref to expose setStageIndex
-const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
+function MissionPage({ stages, csvPath }) {
   const [stageIndex, setStageIndex] = useState(0);
   const mapRef = useRef(null);
-
-  // Expose setStageIndex to parent components
-  useImperativeHandle(ref, () => ({
-    setStageIndex,
-  }));
 
   const focusOnCoordinates = (latitude, longitude, zoomLevel) => {
     if (mapRef.current && mapRef.current.focusOnCoordinates) {
@@ -88,9 +82,8 @@ const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
   };
 
   const currentStage = React.cloneElement(stages[stageIndex].component, {
-    setStageIndex, // Pass setStageIndex to the current stage
+    setStageIndex,
   });
-  
 
   return (
     <MapProvider focusOnCoordinates={focusOnCoordinates}>
@@ -102,13 +95,16 @@ const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
         }
         <div style={{ flex: 1, zIndex: 0 }}>
           {stages[stageIndex].displayMap ? (
-            <FlatMap
-              ref={mapRef}
-              csvUrl={csvPath}
-              initialViewState={initialViewState}
-              heatmapConfig={heatmapConfig}
-              tileLayerConfig={tileLayerConfig}
-            />
+            <>
+              <FlatMap
+                ref={mapRef}
+                csvUrl={csvPath}
+                initialViewState={initialViewState}
+                heatmapConfig={heatmapConfig}
+                tileLayerConfig={tileLayerConfig}
+              />
+              <HeatmapGradientLegend /> {/* Adicionando a legenda da escala de calor */}
+            </>
           ) : (
             <img
               style={{ height: '100vh', width: '100vw', objectFit: 'cover' }}
@@ -116,8 +112,7 @@ const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
               alt="mission-location"
             />
           )}
-          <HeatmapGradientLegend />
-        </div>
+        </div>  
       </div>
       <div style={{ padding: '10px' }}>
         <button onClick={() => setStageIndex((prev) => Math.max(prev - 1, 0))}>Previous</button>
@@ -125,6 +120,6 @@ const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
       </div>
     </MapProvider>
   );
-});
+}
 
 export default MissionPage;

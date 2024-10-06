@@ -1,0 +1,98 @@
+.map-focus-stage {
+    width: 700px; /* Largura do contêiner principal */
+    background-color: #bed7e2; /* Cor de fundo do contêiner */
+    border-radius: 10px; /* Arredondamento dos cantos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do contêiner */
+    padding: 20px; /* Espaçamento interno */
+    margin: 0 auto; /* Centraliza o componente na tela */
+    display: flex; /* Usado para alinhar o conteúdo */
+    flex-direction: column; /* Alinha o conteúdo na coluna */
+    height: 100vh; /* Altura total da tela */
+    overflow: hidden; /* Adicionado para esconder overflow */
+}
+
+.mission-cards-container {
+    flex-grow: 1; /* Faz os cartões crescerem para ocupar o espaço disponível */
+    display: flex; /* Usado para alinhar os cartões */
+    flex-direction: column; /* Coloca os cartões em coluna */
+    justify-content: flex-start; /* Alinha os cartões no topo */
+}
+
+.mission-card-content {
+    position: relative; /* Permite o posicionamento absoluto da imagem */
+    background-color: #fff; /* Cor de fundo do cartão */
+    border: 1px solid #ddd; /* Borda do cartão */
+    border-radius: 8px; /* Arredondamento dos cantos do cartão */
+    padding: 15px; /* Espaçamento interno do cartão */
+    margin: 5px 0; /* Espaço reduzido entre os cartões */
+    overflow: hidden; /* Esconde partes da imagem que saem do cartão */
+    transition: box-shadow 0.3s ease; /* Transição suave para a sombra do cartão */
+    width: calc(100% - 1px); /* Aumenta a largura para preencher quase todo o contêiner pai */
+}
+
+.mission-card-content:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+.mission-card-content.read {
+    background-color: #fffa9e; /* Fundo claro para a missão lida */
+}
+
+.mission-card-header {
+    position: relative; /* Permite o posicionamento absoluto da imagem */
+    z-index: 2; /* Coloca o texto acima da imagem */
+}
+
+.mission-card-header.read {
+    background-color: #4caf50; /* Cor verde para cabeçalho da missão lida */
+}
+
+.mission-card-header h2 {
+    font-size: 1.5rem; /* Tamanho da fonte do título */
+    color: #fff; /* Cor do texto para branco */
+    margin-bottom: 5px; /* Espaço abaixo do título */
+}
+
+.mission-card-header img {
+    position: absolute; /* Posiciona a imagem absolutamente */
+    top: 0; /* Alinha ao topo do cartão */
+    left: 0; /* Alinha à esquerda do cartão */
+    width: 100%; /* Ocupa toda a largura do contêiner */
+    height: 100%; /* Ocupa toda a altura do contêiner */
+    object-fit: cover; /* Faz a imagem cobrir a área do contêiner */
+    z-index: 1; /* Coloca a imagem abaixo do texto */
+}
+
+.mission-card-header p {
+    font-size: 1rem; /* Tamanho da fonte do texto */
+    color: #fff; /* Cor do texto para branco */
+    margin: 100px 0; /* Espaço acima e abaixo do texto */
+}
+
+button {
+    background-color: #012056; /* Cor de fundo do botão */
+    color: rgb(255, 255, 255); /* Cor do texto do botão */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 15px; /* Espaçamento interno do botão */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo do botão */
+    margin-right: 10px; /* Espaço entre os botões */
+    position: relative; /* Para garantir que o botão fique acima da imagem */
+    z-index: 2; /* Coloca o botão acima da imagem */
+}
+
+button:hover {
+    background-color: #2d9d14; /* Cor do botão ao passar o mouse */
+}
+
+button:disabled {
+    background-color: #ccc; /* Cor do botão desativado */
+    cursor: not-allowed; /* Cursor de não permitido ao passar o mouse */
+}
+
+.mission-navigation {
+    display: flex; /* Usado para alinhar os botões de navegação */
+    justify-content: space-between; /* Espaço entre os botões */
+    margin-top: 20px; /* Espaço acima dos botões */
+}

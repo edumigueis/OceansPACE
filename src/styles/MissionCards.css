@@ -31,7 +31,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  
+
 }
 
 .mission-card-navigation button svg {
@@ -39,35 +39,120 @@
   fill: currentColor;
 }
 
-
-
-
-/* Estilo da seção informativa */
-.informative-section {
-  display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  width: 100%; /* Usa toda a largura disponível */
-  height: 100vh; /* Usa toda a altura da tela */
-  background-color: #f0f0f0;
-}
-
-/* Estilo para o conteúdo do cartão da missão */
-.mission-card-content {
-  width: 400px; /* Ajuste para caber no layout */
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+body {
   font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
 }
 
-.mission-card-content h2 {
-  font-size: 24px;
-  font-weight: bold;
+.informative-section {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  height: 100vh;
+}
+
+.mission-card-content {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  min-width: 300px;
+  width: 100%;
+  max-height: 70%;
+  overflow-y: scroll;
+  transition: transform 0.3s ease;
+  margin-left: 20px;
+}
+
+.mission-card-content:hover {
+  transform: scale(1.02);
+}
+
+.mission-card-header {
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.mission-card-header h2 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.mission-card-header h4 {
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h5 {
+  font-size: 20px;
+  color: #34495e;
   margin-bottom: 10px;
 }
+
+.list ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  color: #2c3e50;
+}
+
+.list ul li {
+  margin-bottom: 10px;
+}
+
+.text p {
+  font-size: 16px;
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .mission-card-content {
+    padding: 15px;
+  }
+
+  .mission-card-header h2 {
+    font-size: 22px;
+  }
+
+  .mission-card-header h4 {
+    font-size: 16px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  .image-container {
+    height: 200px;
+  }
+
+  .text p {
+    font-size: 14px;
+  }
+}
+
+
 
 /* Botão de foco nas coordenadas */
 .focus-button {
@@ -103,5 +188,3 @@
   margin-bottom: 10px;
   color: #333;
 }
-
-

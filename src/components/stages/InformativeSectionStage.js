@@ -2,21 +2,17 @@ import React from 'react';
 import MissionCards from '../MissionCards';
 import '../../styles/MissionCards.css';
 
-function InformativeSectionStage({ focusOnCoordinates, latitude, longitude, zoomLevel, children }) {
-  const centerMap = () => {
-    focusOnCoordinates(latitude, longitude, zoomLevel);
+function InformativeSectionStage({children, setMissionStageIndex}) {
+  const handleNextStage = (nextIndex) => {
+    setMissionStageIndex(nextIndex);
   };
 
   return (
     <div className="informative-section">
-      <MissionCards>
         <div className="mission-card-content">
           {children}
-          <button className="focus-button" onClick={centerMap}>
-            Focus on Coordinates
-          </button>
+          <button onClick={handleNextStage}>Next</button>
         </div>
-      </MissionCards>
     </div>
   );
 }

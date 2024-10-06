@@ -4,56 +4,29 @@ import CardWithAnimatedText from '../components/CardWithAnimatedText';
 import MissionBriefing from '../components/MissionBriefing';
 import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
-import oman from '../assets/oman.jpg';
 import backgroundMusic from '../assets/sounds/background_space.mp3';
 
-const gData = [
-  {
-    lat: 24.618875,
-    lng: 57.455609,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red'
-  },
-  {
-    lat: 17.112546,
-    lng: -16.917884,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red'
-  },
-  {
-    //Point Saginaw Bay 
-    lat: 43.9317,
-    lng: -83.1169,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red'
-  },
-    // Point Georges Bank and Gulf of Maine
-    {
-      lat: 43.6628,
-      lng: -61.3583,
-      maxR: 10,
-      propagationSpeed: 4,
-      repeatPeriod: 1000,
-      color: 'red'
-    }
-  
-];
-
-function Main() {
+function Main({ missions }) {
   const globeEl = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMission, setSelectedMission] = useState(null); // Estado para a missão selecionada
   const [ringsData, setRingsData] = useState([]);
   const [pointsData, setPointsData] = useState([]);
   const [isInteractive, setIsInteractive] = useState(false);
-  const [, setSelectedPoint] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
+
+  const gData = missions.map(
+    (mission) => ({
+      lat: mission.lat,
+      lng: mission.lng,
+      maxR: 10,
+      propagationSpeed: 4,
+      repeatPeriod: 1000,
+      color: 'red',
+      mission, // Armazena a missão diretamente aqui
+    })
+  );
 
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
@@ -91,7 +64,7 @@ function Main() {
       setPointsData(gData.map(e => ({
         lat: e.lat,
         lng: e.lng,
-        color: e.concluded ? "green": e.color,
+        color: e.concluded ? "green" : e.color,
         altitude: 0.0001,
       })));
       setIsInteractive(true);
@@ -114,7 +87,7 @@ function Main() {
         globeEl.current.pointOfView({ lat: ring.lat, lng: ring.lng, altitude: 0.4 }, 1000);
 
         setTimeout(() => {
-          setSelectedPoint(ring);
+          setSelectedMission(ring.mission); // Armazena a missão correspondente no estado
           setIsModalOpen(true);
         }, 1500);
 
@@ -125,17 +98,15 @@ function Main() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedPoint(null);
+    setSelectedMission(null); // Limpa a missão selecionada
     globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
-  // State to hold the difficulty level
   const [difficulty, setDifficulty] = useState('MEDIUM'); // Default value
 
   useEffect(() => {
-    // Get the selected difficulty from localStorage
     const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'MEDIUM';
-    setDifficulty(savedDifficulty); // Update the state with the saved difficulty
+    setDifficulty(savedDifficulty);
   }, []);
 
   return (
@@ -159,19 +130,14 @@ function Main() {
           pointRadius={0.3}
         />
       </div>
-      <MissionBriefing
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        missionData={{
-          title: "The Omani Bloom",
-          lat: 24.618875,
-          lng: 57.455609,
-          location: "The Omani Sea",
-          image: oman,
-          question: "What is the capital of France?"
-        }}
-        pauseMainAudio={pauseMainAudio} // Pass the function to the MissionBriefing component
-      />
+      {selectedMission && (
+        <MissionBriefing
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          missionData={selectedMission} // Passa os dados da missão selecionada
+          pauseMainAudio={pauseMainAudio}
+        />
+      )}
       <button
         onClick={toggleAudio}
         style={{
@@ -190,7 +156,6 @@ function Main() {
         {isPlaying ? 'Mute' : 'Unmute'}
       </button>
 
-      {/* Display the selected difficulty at the bottom-left */}
       <div style={{
         position: 'absolute',
         bottom: '20px',

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import MissionPage from './pages/MissionPage';
 import DifficultyPage from './pages/DifficultyPage';
+import InvitationPage from './pages/InvitationPage';
 import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
@@ -129,6 +130,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route path="/difficulty-selection" element={<DifficultyPage />} />
+        <Route path="/invitation" element={<InvitationPage />} />
         <Route 
           path="/mission-1" 
           element={

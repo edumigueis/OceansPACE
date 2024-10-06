@@ -23,7 +23,7 @@ function Ocean({ speed }) {
       waterNormals,
       sunDirection: new THREE.Vector3(),
       sunColor: 0xffffff,
-      waterColor: 0x001e0f,
+      waterColor: 0x003249,
       distortionScale: 0,
       fog: false,
       format: gl.encoding
@@ -82,12 +82,13 @@ export default function App() {
           <Ocean speed={getSpeed()} /> {/* Pass the calculated speed */}
         </Suspense>
         <Sky 
-          scale={1000} 
-          sunPosition={[0, -2, -55]}  
-          sunColor="white"         
-          turbidity={6}              
-          rayleigh={1}               
-        />
+  scale={1000} 
+  sunPosition={[0, 0, 50]}  // Ajuste a posição do sol para mais próximo do horizonte
+  sunColor="yellow"          
+  turbidity={6}              // Aumenta o turbidity para um efeito mais difuso
+  rayleigh={2}               // Aumenta o Rayleigh para uma atmosfera mais clara
+/>
+
       </Canvas>
       
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 2 }}>
@@ -98,11 +99,11 @@ export default function App() {
         onClick={toggleAudio}
         style={{
           position: 'absolute',
-          bottom: '20px',
-          right: '20px',
+          top: '20px',
+          left: '20px',
           zIndex: 11,
           padding: '10px 20px',
-          backgroundColor: isPlaying ? '#f44336' : '#4CAF50',
+          backgroundColor: isPlaying ? '#ECAA01' : '#1CAAD9',
           color: 'white',
           border: 'none',
           borderRadius: '5px',

@@ -64,7 +64,7 @@ function MissionPage({ stages, csvPath }) {
               alt="mission-location"
             />
           )}
-        </div>
+        </div>  
       </div>
       <div style={{ padding: '10px' }}>
         <button onClick={() => setStageIndex((prev) => Math.max(prev - 1, 0))}>Previous</button>

@@ -128,21 +128,6 @@ const missions = [
         stages: [
           {
             component: (
-              <SingleQuestionStage
-                question={{
-                  text: "What is the primary source of energy for photosynthesis in phytoplankton?",
-                  options: [
-                    { id: 1, text: "The Sun", isCorrect: true },
-                    { id: 2, text: "Volcanic heat", isCorrect: false },
-                    { id: 3, text: "Geothermal vents", isCorrect: false },
-                    { id: 4, text: "The Moon", isCorrect: false },
-                  ],
-                }}
-              />
-            ),
-          },
-          {
-            component: (
               <InformativeSectionStage>
                 <div className="mission-card-header">
                   <h2>Mission 2</h2>

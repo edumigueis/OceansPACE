@@ -1,3 +1,4 @@
+// SingleQuestionStage.js
 import React, { useState } from 'react';
 import Question from '../Question';
 
@@ -18,6 +19,9 @@ function SingleQuestionStage({ setStageIndex, question, answeredOptions = [] }) 
       )
     : [];
 
+  // Verifica se todas as opções foram respondidas
+  const allAnswered = filteredOptions.length === 0;
+
   return (
     <div className="question-stage-container">
       {/* Exibe a explicação, se disponível, acima da pergunta */}
@@ -27,13 +31,21 @@ function SingleQuestionStage({ setStageIndex, question, answeredOptions = [] }) 
         </div>
       )}
 
-      <Question
-        question={{ ...question, options: filteredOptions }} // Passa a pergunta atual com as opções filtradas
-        onAnswerClick={(answer) => {
-          handleAnswerClick(answer);
-          setStageIndex(answer); // Avança para a próxima pergunta
-        }} // Define a função a ser chamada ao clicar na resposta
-      />
+      {/* Verifica se ainda há opções disponíveis */}
+      {filteredOptions.length > 0 ? (
+        <Question
+          question={{ ...question, options: filteredOptions }} // Passa a pergunta atual com as opções filtradas
+          onAnswerClick={(answer) => {
+            handleAnswerClick(answer);
+            setStageIndex(answer); // Avança para a próxima pergunta
+          }} // Define a função a ser chamada ao clicar na resposta
+        />
+      ) : (
+        <div className="no-options-container">
+          <p>Todas as opções foram respondidas!</p>
+          <button onClick={() => setStageIndex(null)}>Seguir em frente</button> {/* Botão para seguir em frente */}
+        </div>
+      )}
     </div>
   );
 }

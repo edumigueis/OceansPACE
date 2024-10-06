@@ -28,23 +28,23 @@ const missions = [
                         text: "Start by looking closely at the picture. What do you see? What’s different or exciting? What caught your eye?",
                         options: [
                             { id: 1, text: "The White", explanation: "", nextQuestionId: 1 }, // Se escolher "The White", vai para ID 1
-                            { id: 2, text: "The green and blue", explanation: "Not quite. Volcanic heat is not involved in photosynthesis.", nextQuestionId: null },
-                            { id: 3, text: "The brown", explanation: "Incorrect. Geothermal vents are not the primary source of energy.", nextQuestionId: null },
+                            { id: 2, text: "The green and blue", explanation: "", nextQuestionId: 4 }, 
+                            { id: 3, text: "The brown", explanation: "Incorrect. Geothermal vents are not the primary source of energy.", nextQuestionId: 5 },
                         ],
                     },
                     {
                         // ID 1: Pergunta sobre os "The White"
                         text: "Is the white you see just one thing or more than one?",
                         options: [
-                            { id: 1, text: "It's all the same", explanation: "There are two white things in the picture: clouds and snow. Here are some tips to help tell them apart:\n\n**Clouds:**\nClouds appear as bright white, fluffy patches. They are often more irregular in shape and can be seen floating over land and water. In this image, clouds tend to have a softer, more diffuse appearance and are present in various parts, such as over the ocean on the right side, and some cover can also be seen over the land.\n\n**Snow:**\nSnow, on the other hand, covers large areas of the land, especially in the northern regions. It has a more uniform and textured look, as it blankets the surface evenly. The snow appears as a solid white or light gray color and tends to follow the contours of the land, particularly in the upper part of the image (towards the top center and left), where the land is covered by snow.", nextQuestionId: 2 },
-                            { id: 2, text: "There are different whites", explanation: "Congratulations on the observation! There are two different things in the images: the white of the snow and the white of the clouds. Here are some tips to help tell them apart:\n\n**Clouds:**\nClouds appear as bright white, fluffy patches. They are often more irregular in shape and can be seen floating over land and water. In this image, clouds tend to have a softer, more diffuse appearance and are present in various parts, such as over the ocean on the right side, and some cover can also be seen over the land.\n\n**Snow:**\nSnow, on the other hand, covers large areas of the land, especially in the northern regions. It has a more uniform and textured look, as it blankets the surface evenly. The snow appears as a solid white or light gray color and tends to follow the contours of the land, particularly in the upper part of the image (towards the top center and left), where the land is covered by snow.", nextQuestionId: 2 },
+                            { id: 1, text: "It's all the same", explanation: "There are two white things in the picture: clouds and snow.", nextQuestionId: 2 },
+                            { id: 2, text: "There are different whites", explanation: "Congratulations on the observation! There are two different things in the images: the white of the snow and the white of the clouds.", nextQuestionId: 2 },
                         ],
                     },
                     {
                         // ID 2: Pergunta sobre a aparência da neve
                         text: "Take a look at the snow, do you notice anything strange about how it looks?",
                         options: [
-                            { id: 1, text: "No!", explanation: "Take a closer look! While snow covers the ground, there are patches of brown earth peeking through. The snow itself seems cracked, like it’s resting on a layer of sediment.", nextQuestionId: 3 }, // Vai para 1.b.2
+                            { id: 1, text: "No!", explanation: "Take a closer look! While snow covers the ground, there are patches of brown earth peeking through. The snow itself seems cracked, like it’s resting on a layer of sediment.", nextQuestionId: 3 },
                             { id: 2, text: "Yes!", explanation: "Can you come up with some theory about what is happening here?", nextQuestionId: 3 },
                         ],
                     },
@@ -58,7 +58,26 @@ const missions = [
                             { id: 4, text: "Early signs of Spring", explanation: "Congratulations! You got it right! The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground.", nextQuestionId: 0 },
                         ],
                     },
+                    {
+                        // ID 4: Pergunta sobre o que é o verde
+                        text: "The blue is water, but the green what could be the green?",
+                        options: [
+                            { id: 1, text: "Algae", explanation: "Congratulations! You got it right! Phytoplankton are like tiny algae that live in the ocean, lakes, and rivers. Even though they're super small, they’re really important because they make food from sunlight, just like plants in a garden! They also give off oxygen, which helps animals (and us!) breathe. You can think of them as the ocean’s little helpers, keeping everything healthy and full of life! Here’s a fun fact! For a long time, people thought the Amazon rainforest was the ‘lungs of the Earth’ because of all the oxygen it produces. But guess what? It’s actually these tiny ocean algae, called phytoplankton, that do most of the work! They make most of the oxygen we breathe, so even though they’re small, they’re true heroes of the planet!", nextQuestionId: 0 },
+                            { id: 2, text: "Stinky thing", explanation: "Oops, looks like that’s not quite right! The correct answer is Algae. Phytoplankton are like tiny algae...", nextQuestionId: null },
+                            { id: 3, text: "Pollution", explanation: "Oops, looks like that’s not quite right! The correct answer is Algae. Phytoplankton are like tiny algae...", nextQuestionId: null },
+                            { id: 4, text: "A giant sea monster taking a bath", explanation: "Oops, looks like that’s not quite right! The correct answer is Algae. Phytoplankton are like tiny algae...", nextQuestionId: null },
+                        ],
+                    },
+                    {
+                        // ID 5: 
+                        text: "The brown ones are the continents, the land where we walk and live!",
+                        options: [
+                            { id: 1, text: "Back", explanation: "", nextQuestionId: 0 },
+                            
+                        ],
+                    },
                 ]} />,
+                
             },
             {
                 component: <FinalStage
@@ -104,6 +123,8 @@ const missions = [
         location: "Middle East",
         image: oman,
         question: "What is the capital of Oman?",
+        displayMap: true,
+        fallbackImage: oman,
         stages: [
             <SingleQuestionStage
                 question={{

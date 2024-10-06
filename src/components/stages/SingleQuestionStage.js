@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Question from '../Question';
 
-function SingleQuestionStage({ setStageIndex, question }) {
+function SingleQuestionStage({ setStageIndex, question, answeredOptions }) {
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -10,6 +10,11 @@ function SingleQuestionStage({ setStageIndex, question }) {
     setSelectedAnswer(answer);  // Define a resposta selecionada
     setQuestionAnswered(true);  // Marca como respondido
   };
+
+  // Filtra as opções que já foram respondidas
+  const filteredOptions = question.options.filter(
+    (option) => !answeredOptions.includes(option.id)
+  );
 
   return (
     <div className="question-stage-container">
@@ -21,10 +26,10 @@ function SingleQuestionStage({ setStageIndex, question }) {
       )}
 
       <Question
-        question={question} // Passa a pergunta atual recebida de MultipleQuestionsStage
+        question={{ ...question, options: filteredOptions }} // Passa a pergunta atual com as opções filtradas
         onAnswerClick={(answer) => {
           handleAnswerClick(answer);
-          setStageIndex(answer); // Avança para a próxima pergunta apenas após clicar em "Next"
+          setStageIndex(answer); // Avança para a próxima pergunta
         }} // Define a função a ser chamada ao clicar na resposta
       />
     </div>

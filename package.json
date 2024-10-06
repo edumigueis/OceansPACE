@@ -2,6 +2,7 @@
   "name": "nasa-space-app",
   "version": "0.1.0",
   "private": true,
+  "start": "react-scripts --max_old_space_size=4096 start",
   "build": "react-scripts --max_old_space_size=256 build",
   "dependencies": {
     "@deck.gl/aggregation-layers": "^9.0.32",

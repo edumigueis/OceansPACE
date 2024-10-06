@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import MissionPage from './pages/MissionPage';
 import DifficultyPage from './pages/DifficultyPage';
+import LastPage from './pages/LastPage';
 import './styles/App.css';
 import getMissionsByDifficulty from './missions'; // Caminho correto para importar
 
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main missions={missions} />} />
         <Route path="/difficulty-selection" element={<DifficultyPage />} />
+        <Route path="/congratulations" element={<LastPage />} />
         {missions.map((mission) => (
           <Route
             key={mission.index}

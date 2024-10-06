@@ -59,6 +59,7 @@ const FlatMap = forwardRef(({ csvUrl, initialViewState, heatmapConfig, tileLayer
         transitionInterpolator: new LinearInterpolator(),
       };
 
+      // Update the viewState to animate
       setViewState((prevViewState) => ({
         ...prevViewState,
         ...newViewState,

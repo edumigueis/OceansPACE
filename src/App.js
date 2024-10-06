@@ -25,27 +25,30 @@ const missions = [
     text: "Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
     stages: [
       {
-        displayMap: false,
+        displayMap: true,
         fallbackImage: oman,
         component: <SingleQuestionStage
-        question={{
-          text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
-          options: [
-            { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
-            { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
-            { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
-            { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
-          ],
-        }}
-      />
+          question={{
+            text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
+            options: [
+              { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
+              { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
+              { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
+              { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
+            ],
+          }}
+        />
       },
       {
         component: <FinalStage
-        onArrival={() => console.log('Final stage reached!')}
-      />
+          onArrival={() => console.log('Final stage reached!')}
+          briefing={{
+            title: "The Omani Bloom",
+            location: "The Omani Sea",
+            image: oman
+          }}
+        />
       }
-      
-      
     ],
     csvPath: cloroData,
     initialViewState: {
@@ -165,7 +168,7 @@ function App() {
   const missionOneStages = [
 
     <MapReadingGuide
-    setStageIndex
+      setStageIndex
     />,
 
     <SingleQuestionStage
@@ -206,29 +209,29 @@ function App() {
     <MapFocusStage
       focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
     />,
-    <FinalStage 
-    onArrival={() => console.log('Final stage reached!')} 
-  />
+    <FinalStage
+      onArrival={() => console.log('Final stage reached!')}
+    />
   ];
 
   const missionTwoStages = [
     <MapReadingGuide
-    setStageIndex
+      setStageIndex
     />,
 
     <SingleQuestionStage
-    setStageIndex={null}
-    question={{
-      text: "phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
-      options: [
-        { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
-        { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
-        { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
-        { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
-      ],
-    }}
-    handleCenterMap={() => {}}
-  />,
+      setStageIndex={null}
+      question={{
+        text: "phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
+        options: [
+          { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
+          { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
+          { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
+          { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
+        ],
+      }}
+      handleCenterMap={() => { }}
+    />,
     <InformativeSectionStage handleCenterMap={() => { }}>
       <div className="mission-card-header">
         <h2>Mission 1</h2>
@@ -254,9 +257,9 @@ function App() {
     <MapFocusStage
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />,
-    <FinalStage 
-    onArrival={() => console.log('Final stage reached!')}
-  />
+    <FinalStage
+      onArrival={() => console.log('Final stage reached!')}
+    />
   ];
 
   return (

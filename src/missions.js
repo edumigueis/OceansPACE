@@ -21,15 +21,39 @@ const missions = [
         stages: [
             {
                 displayMap: true,
+                fallbackImage: null,
+                component: <MapFocusStage
+                images={[
+                  {
+                    lat: 24.618875,
+                    lng: 57.455609,
+                    image: oman,
+                    title: "alooo",
+                    text: "aaai",
+                    zoom: 7,
+                  },
+                  {
+                    lat: 29.618875,
+                    lng: 57.455609,
+                    image: oman,
+                    title: "alooo",
+                    text: "aaai",
+                    zoom: 7,
+                  },
+                ]}
+              />
+            },
+            {
+                displayMap: true,
                 fallbackImage: oman,
                 component: <MultipleQuestionStage questionStages={[
                     {
                         // ID 0: Pergunta inicial
                         text: "Start by looking closely at the picture. What do you see? What’s different or exciting? What caught your eye?",
                         options: [
-                            { id: 1, text: "The White", explanation: "", nextQuestionId: 1 }, // Se escolher "The White", vai para ID 1
+                            { id: 1, text: "The White", explanation: "", nextQuestionId: 1}, // Se escolher "The White", vai para ID 1
                             { id: 2, text: "The green and blue", explanation: "", nextQuestionId: 4 }, 
-                            { id: 3, text: "The brown", explanation: "Incorrect. Geothermal vents are not the primary source of energy.", nextQuestionId: 5 },
+                            { id: 3, text: "The brown", explanation: "", nextQuestionId: 5 },
                         ],
                     },
                     {
@@ -126,21 +150,6 @@ const missions = [
         displayMap: true,
         fallbackImage: oman,
         stages: [
-          {
-            component: (
-              <SingleQuestionStage
-                question={{
-                  text: "What is the primary source of energy for photosynthesis in phytoplankton?",
-                  options: [
-                    { id: 1, text: "The Sun", isCorrect: true },
-                    { id: 2, text: "Volcanic heat", isCorrect: false },
-                    { id: 3, text: "Geothermal vents", isCorrect: false },
-                    { id: 4, text: "The Moon", isCorrect: false },
-                  ],
-                }}
-              />
-            ),
-          },
           {
             component: (
               <InformativeSectionStage>

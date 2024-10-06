@@ -21,7 +21,33 @@ const missions = [
         stages: [
             {
                 displayMap: true,
+                next: 1,
+                component: (
+                  <InformativeSectionStage>
+                    <div className="mission-card-header">
+                      <h2>Mission 2</h2>
+                      <h4>The Arabian Peninsula's Unique Ecosystem</h4>
+                    </div>
+                    <div className="image-container">
+                      <img src={oman}></img>
+                    </div>
+                    <h5>Fun Facts About Phytoplankton</h5>
+                    <div className="list">
+                    <ul>
+                      <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+                      <li>They are the foundation of the aquatic food web...</li>
+                    </ul>
+                    </div>
+                    <div className="text">
+                        <p>ALAOAAOAJAJJ</p>
+                    </div>
+                  </InformativeSectionStage>
+                ),
+              },
+            {
+                displayMap: true,
                 fallbackImage: null,
+                next: 1,
                 component: <MapFocusStage
                 images={[
                   {

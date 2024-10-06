@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import FlatMap from '../components/FlatMap';
 import { MapProvider } from '../components/stages/MapProvider';
 
@@ -29,7 +29,6 @@ const tileLayerConfig = {
   tileSize: 256,
 };
 
-// Função que gera a legenda baseada nos valores fornecidos
 function HeatmapGradientLegend() {
   const valueRange = ['0.01', '0.02', '0.05', '0.1', '0.2', '0.5', '1', '2', '5', '10', '20'];
 
@@ -71,9 +70,15 @@ function HeatmapGradientLegend() {
   );
 }
 
-function MissionPage({ stages, csvPath }) {
+// Forward ref to expose setStageIndex
+const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
   const [stageIndex, setStageIndex] = useState(0);
   const mapRef = useRef(null);
+
+  // Expose setStageIndex to parent components
+  useImperativeHandle(ref, () => ({
+    setStageIndex,
+  }));
 
   const focusOnCoordinates = (latitude, longitude, zoomLevel) => {
     if (mapRef.current && mapRef.current.focusOnCoordinates) {
@@ -83,7 +88,7 @@ function MissionPage({ stages, csvPath }) {
   };
 
   const currentStage = React.cloneElement(stages[stageIndex].component, {
-    setStageIndex,
+    setStageIndex, // Pass setStageIndex to the current stage
   });
 
   return (
@@ -119,6 +124,6 @@ function MissionPage({ stages, csvPath }) {
       </div>
     </MapProvider>
   );
-}
+});
 
 export default MissionPage;

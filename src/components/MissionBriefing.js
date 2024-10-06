@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion'; // For animations
 import '../styles/MissionBriefing.css'; // Ensure the CSS is correct
 import backgroundMusic from '../assets/sounds/background_water.mp3'; // Background music for the briefing
+import { useNavigate } from 'react-router-dom';
 
 const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
     const [isPlaying, setIsPlaying] = useState(false); // Sound control
     const audioRef = useRef(new Audio(backgroundMusic)); // Reference to the background sound of the briefing
+    const navigate = useNavigate()
 
     const toggleAudio = () => {
         const audio = audioRef.current;
@@ -23,6 +25,10 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
             }).catch(error => console.log('Audio play failed:', error));
         }
         setIsPlaying(!isPlaying);
+    };
+
+    const goToMission = () => {
+        navigate("/mission-" + missionData.mission.index);
     };
     
     useEffect(() => {
@@ -60,7 +66,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                             <p>LAT: {lat}, LNG: {lng}</p>
                         </div>
                     </div>
-                    <div className="box button">
+                    <div className="box button" onClick={goToMission}>
                         <h1>START MISSION</h1>
                         <div className="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -69,8 +75,6 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* Middle column - Location image */}
                 <div className="column column-middle">
                     <div className="top-box">
                         <h3>Location: {location}</h3>

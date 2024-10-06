@@ -23,8 +23,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main missions={missions} />} />
-        <Route path="/difficulty-selection" element={<DifficultyPage />} />
+        <Route path="/" element={<DifficultyPage />} />
+        <Route path="/main" element={<Main missions={missions} />} />
         <Route path="/congratulations" element={<LastPage />} />
         {missions.map((mission) => (
           <Route

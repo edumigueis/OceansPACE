@@ -8,6 +8,7 @@ import pace_snow from './assets/apce_introduction_snow.png';
 import oman_pace from './assets/oman_pace.jpg';
 import oman_green from './assets/oman_green.png';
 import saginaw_bay from './assets/saginaw_bay.jpg';
+import saginaw_pace from './assets/saginaw_pace.jpg';
 import cyanobacteria from './assets/cyanobacteria.jpg';
 import image_globe from './assets/image_globe.jpg';
 import marine_food_chain from './assets/marine_food_chain.jpg';
@@ -16,7 +17,7 @@ import mauritania_pace from './assets/mauritania_pace.png';
 import mud_spill_rebuilding from './assets/mud_spill_rebulding.jpg';
 import mud_spill from './assets/mud_spill.jpg';
 import oman_picture from './assets/oman_picture.jpg';
-import saginaw_pace from './assets/pace_saginaw_bay_stain.png';
+import saginaw_pace_stain from './assets/pace_saginaw_bay_stain.png';
 import phytoplankton from './assets/phytoplankton.jpg';
 import saginaw_bay_river_mud from './assets/saginaw_bay_river_mud.png';
 import saharra_winds from './assets/saharra_winds.jpg';
@@ -253,7 +254,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: oman,
+                            fallbackImage: saginaw_pace_stain,
                             next: 2,
                             component: (
                                 <OnlyOneQuestion
@@ -269,7 +270,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: oman,
+                            fallbackImage: saginaw_bay_river_mud,
                             next: 3,
                             component: (
                                 <OnlyOneQuestion
@@ -287,7 +288,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: oman,
+                            fallbackImage: mud_spill,
                             next: 4,
                             component: (
                                 <OnlyOneQuestion
@@ -303,7 +304,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: true,
-                            fallbackImage: null,
+                            fallbackImage: mud_spill,
                             next: 5,
                             component: (
                                 <InformativeSectionStage nextStage={5}>
@@ -312,7 +313,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         <h4>Here's some quick facts about it!</h4>
                                     </div>
                                     <div className="image-container">
-                                        <img src={oman}></img>
+                                        <img src={mud_spill_rebuilding}></img>
                                     </div>
                                     <div className="text">
                                         <p>When all this mud enters the water, it stirs up the ecosystem. The water gets murky, making it hard for sunlight to reach the bottom. Without enough sunlight, the plants and algae that need it for energy can’t do their job, and eventually, they start to die off. These algae are super important because they’re at the base of the food chain, feeding fish, crustaceans, and lots of other creatures.
@@ -324,7 +325,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: true,
-                            fallbackImage: null,
+                            fallbackImage: mud_spill_rebuilding,
                             next: 6,
                             component: (
                                 <OnlyOneQuestion
@@ -349,7 +350,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         {
                                             lat: 43.648052,
                                             lng: -83.850347,
-                                            image: oman,
+                                            image: image_globe,
                                             title: "alooo",
                                             text: "aaai",
                                             zoom: 7,
@@ -365,7 +366,7 @@ const getMissionsByDifficulty = (difficulty) => {
                  briefing={{
                    title: "The Omani Bloom",
                    location: "The Omani Sea",
-                   image: oman,
+                   image: oman_picture,
                    report: "Durante essa missão, você explorou a região do Mar de Omã e analisou o impacto dos plânctons na biodiversidade local.",
                    reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
                  }}
@@ -384,11 +385,11 @@ const getMissionsByDifficulty = (difficulty) => {
                     title: "Hidden Springs, Hidden Secrets",
                     lat: 24.772691,
                     lng: 57.524873,
-                    location: "Saginaw Bay, Michigan, US",
-                    image: oman,
+                    location: "Oman",
+                    image: oman_picture,
                     text: "The water is full of all kinds of phytoplankton species, and right now, the main way to tell them apart is by scooping up water samples—talk about time-consuming and pricey! But what if we could use images to tell them apart instead, and maybe even discover more? Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
                     displayMap: true,
-                    fallbackImage: oman,
+                    fallbackImage: oman_pace,
                     csvPath: omanData,
                     initialViewState: {
                         latitude: -16.83678,
@@ -415,7 +416,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     stages: [
                         {
                             displayMap: false,
-                            fallbackImage: oman,
+                            fallbackImage: oman_pace,
                             next: 1,
                             component: (
                                 <OnlyOneQuestion
@@ -472,7 +473,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         <h4>Here's some quick facts about it!</h4>
                                     </div>
                                     <div className="image-container">
-                                        <img src={oman}></img>
+                                        <img src={phytoplankton}></img>
                                     </div>
                                     <div className="text">
                                         <p>The food chain is kind of like nature’s dinner party! It’s all about who’s eating and who’s being eaten, with energy passing along the line. It starts with the chefs—plants and tiny phytoplankton—that whip up energy from sunlight. Then, little critters like zooplankton come along for a bite. After that, small fish snack on those critters, and bigger fish come in to munch on the smaller ones. It keeps going until we get to the ocean’s top diners, like sharks or whales!
@@ -528,7 +529,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: oman,
+                            fallbackImage: image_globe,
                             next: 5,
                             component: (
                                 <OnlyOneQuestion

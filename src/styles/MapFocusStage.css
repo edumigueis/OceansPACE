@@ -58,7 +58,7 @@
     top: 0; /* Alinha ao topo do cartão */
     left: 0; /* Alinha à esquerda do cartão */
     width: 100%; /* Ocupa toda a largura do contêiner */
-    height: 100%; /* Ocupa toda a altura do contêiner */
+    height: 500%; /* Ocupa toda a altura do contêiner */
     object-fit: cover; /* Faz a imagem cobrir a área do contêiner */
     z-index: 1; /* Coloca a imagem abaixo do texto */
 }

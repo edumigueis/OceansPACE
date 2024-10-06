@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useMap } from './MapProvider';
-import MissionCards from '../MissionCards';
 import '../../styles/MapFocusStage.css';
 
 function MapFocusStage({ images }) {
@@ -26,7 +25,6 @@ function MapFocusStage({ images }) {
     <div className="map-focus-stage">
       <div className="mission-cards-container">
         {visibleMissions.map((mission, index) => (
-          <MissionCards key={index}>
             <div className={`mission-card-content ${readMissions.includes(mission) ? 'read' : ''}`}>
               <div className={`mission-card-header ${readMissions.includes(mission) ? 'read' : ''}`}>
                 <h2>{mission.title}</h2>
@@ -38,7 +36,6 @@ function MapFocusStage({ images }) {
                 <button onClick={addMoreMissions}>More</button>
               )}
             </div>
-          </MissionCards>
         ))}
       </div>
       {/* Removendo a navegação anterior e próxima */}

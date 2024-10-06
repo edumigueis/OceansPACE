@@ -7,7 +7,7 @@
     margin: 0 auto; /* Centraliza o componente na tela */
     display: flex; /* Usado para alinhar o conteúdo */
     flex-direction: column; /* Alinha o conteúdo na coluna */
-    height: 115vh; /* Altura total da tela */
+    height: 100vh; /* Altura total da tela */
     overflow: hidden; /* Adicionado para esconder overflow */
 }
 

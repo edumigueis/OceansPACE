@@ -17,7 +17,6 @@ function App() {
     setDifficulty(savedDifficulty);
   }, []);
 
-  // Get missions based on the selected difficulty
   const missions = getMissionsByDifficulty(difficulty);
 
   return (

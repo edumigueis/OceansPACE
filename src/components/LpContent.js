@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import "../styles/SelectionComponent.css"; // Certifique-se de criar este arquivo CSS para estilos
+import "../styles/SelectionComponent.css"; // Ensure this file is properly linked
+import easyImage from '../assets/Badge.png'; // Replace with your image paths
+import mediumImage from '../assets/Badge.png';
+import hardImage from '../assets/Badge.png';
 
 const LpContent = ({ setDifficulty }) => {
-  const options = ["EASY", "MEDIUM", "HARD"]; // As opções para mudar
+  const options = [
+    { label: "EASY",text: "Satellite Scout", image: easyImage },
+    { label: "MEDIUM", text: "Data Detective", image: mediumImage },
+    { label: "HARD", text: "Geo-Wizard", image: hardImage },
+  ];
   const [currentIndex, setCurrentIndex] = useState(1); // Start at "MEDIUM"
 
   const handleNext = () => {
@@ -29,24 +36,26 @@ const LpContent = ({ setDifficulty }) => {
     <div className="selection-container">
       <img src="logooceanspace.png" alt="Ocean Logo" className="logo" />
       <h1>OCEANSPACE</h1>
-      <p>
-        Welcome to the world of remote sensing, explorer! Before we begin, pick your difficulty level and let the adventure begin! Will you be a Satellite Scout (EASY), a Data Detective (MEDIUM), or rise to the challenge as a Geo-Wizard (HARD)? The choice is yours!
-        <br /><br />
-        YOU WILL BE ABLE TO COMPREHEND <b>PACE SATELLITE</b> DATA THROUGH DIGESTIVE CONTENT.
+      <p className="text">
+        Welcome to the world of remote sensing, explorer! You have been selected to work on the <strong>OceansPACE</strong> program, where you will take on missions all over the world to generate reports and learn about <strong>PACE</strong> monitored fenomena and remote sensoring.
       </p>
+      <h6>Pick difficulty</h6>
 
-      <div className="selection-box">
-        <button className="arrow" onClick={handlePrev}>
-          &#x3c;
-        </button>
-        <div className="option-display">{options[currentIndex]}</div>
-        <button className="arrow" onClick={handleNext}>
-          &#x3e;
-        </button>
+      <div className="image-selection">
+        {options.map((option, index) => (
+          <div
+            key={option.label}
+            className={`image-button ${index === currentIndex ? 'selected' : ''}`}
+            onClick={() => handleSelection(index)}
+          >
+            <img src={option.image} alt={`${option.label} icon`} />
+            <p>{option.text}</p>
+          </div>
+        ))}
       </div>
 
       <p className="footer-text">
-        DIFFICULTY LEVEL CHANGES THE OCEAN'S PACE
+        Difficulty level changes content complexity and tutorial mode.
       </p>
     </div>
   );

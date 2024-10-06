@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Question from '../Question';
 
-function SingleQuestionStage({ setStageIndex, question, answeredOptions }) {
+function SingleQuestionStage({ setStageIndex, question, answeredOptions = [] }) {
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -11,10 +11,12 @@ function SingleQuestionStage({ setStageIndex, question, answeredOptions }) {
     setQuestionAnswered(true);  // Marca como respondido
   };
 
-  // Filtra as opções que já foram respondidas
-  const filteredOptions = question.options.filter(
-    (option) => !answeredOptions.includes(option.id)
-  );
+  // Verifica se question.options está definido e é um array
+  const filteredOptions = Array.isArray(question.options)
+    ? question.options.filter(
+        (option) => !answeredOptions.includes(option.id)
+      )
+    : [];
 
   return (
     <div className="question-stage-container">

@@ -7,45 +7,7 @@ import lowResEarth from '../assets/earth-min-1.jpg';
 import oman from '../assets/oman.jpg';
 import backgroundMusic from '../assets/sounds/background_space.mp3';
 
-const gData = [
-  {
-    lat: 24.618875,
-    lng: 57.455609,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red'
-  },
-  {
-    lat: 17.112546,
-    lng: -16.917884,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red'
-  },
-  {
-    //Point Saginaw Bay 
-    lat: 43.9317,
-    lng: -83.1169,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red'
-  },
-    // Point Georges Bank and Gulf of Maine
-    {
-      lat: 43.6628,
-      lng: -61.3583,
-      maxR: 10,
-      propagationSpeed: 4,
-      repeatPeriod: 1000,
-      color: 'red'
-    }
-  
-];
-
-function Main() {
+function Main({ missions }) {
   const globeEl = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ringsData, setRingsData] = useState([]);
@@ -54,7 +16,16 @@ function Main() {
   const [, setSelectedPoint] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
-
+  const gData = missions.map(
+    ({ lat, lng }) => ({
+      lat: lat,
+      lng: lng,
+      maxR: 10,
+      propagationSpeed: 4,
+      repeatPeriod: 1000,
+      color: 'red'
+    })
+  )
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
@@ -129,13 +100,11 @@ function Main() {
     globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
-  // State to hold the difficulty level
   const [difficulty, setDifficulty] = useState('MEDIUM'); // Default value
 
   useEffect(() => {
-    // Get the selected difficulty from localStorage
     const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'MEDIUM';
-    setDifficulty(savedDifficulty); // Update the state with the saved difficulty
+    setDifficulty(savedDifficulty);
   }, []);
 
   return (
@@ -170,7 +139,7 @@ function Main() {
           image: oman,
           question: "What is the capital of France?"
         }}
-        pauseMainAudio={pauseMainAudio} // Pass the function to the MissionBriefing component
+        pauseMainAudio={pauseMainAudio}
       />
       <button
         onClick={toggleAudio}

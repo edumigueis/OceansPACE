@@ -86,8 +86,8 @@ p {
 
 .option-display {
   padding: 10px 30px;
-  background-color: #e0e0e0;
-  color: #000;
+  background-color: rgb(28, 170, 217);
+  color: #ffffff;
   font-size: 18px;
   border-radius: 10px;
 }

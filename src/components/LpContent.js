@@ -26,8 +26,9 @@ const LpContent = ({ setDifficulty }) => {
       <img src="logooceanspace.png" alt="Ocean Logo" className="logo" />
       <h1>OCEANSPACE</h1>
       <p>
-        UNDERSTAND OCEAN CHARACTERISTICS THROUGH PACE SATELLITE DATA TO
-        UNDERSTAND THE IMPACTS OF GLOBAL WARMING ON THE OCEAN
+      Welcome to the world of remote sensing, explorer! Before we begin, pick your difficulty level and let the adventure begin! Will you be a Satellite Scout (EASY), a Data Detective (MEDIUM), or rise to the challenge as a Geo-Wizard (HARD)? The choice is yours!
+<br></br><br></br>
+      YOU WILL BE ABLE TO COMPREHEND <b>PACE SATELLITE</b> DATA THROUGH DIGESTIVE CONTENT.
       </p>
 
       <div className="selection-box">

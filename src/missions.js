@@ -23,6 +23,28 @@ const getMissionsByDifficulty = (difficulty) => {
                     location: "Northeastern United States and Canada",
                     image: oman,
                     text: "✨ Your first mission is coming up: We’ll be diving into the ocean’s colors, discovering how the light bouncing off the water can reveal hidden secrets about life in the whole world! The region, encompassing Georges Bank and the Gulf of Maine, is renowned for its rich biological productivity, historically making it a commercial fishing hub. However, overfishing and climate change now pose significant threats to this vital ecosystem.",
+                    initialViewState: {
+                        latitude: -16.83678,
+                        longitude: -174.25968,
+                        zoom: 7,
+                    },
+                    heatmapConfig: {
+                        intensity: 1,
+                        colorRange: [
+                            [255, 0, 0, 255],
+                            [255, 255, 0, 255],
+                            [0, 255, 0, 255],
+                            [0, 255, 255, 255],
+                            [0, 0, 255, 255],
+                        ],
+                        threshold: 0.9,
+                    },
+                    tileLayerConfig: {
+                        data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        minZoom: 0,
+                        maxZoom: 19,
+                        tileSize: 256,
+                    },
                     stages: [
                         {
                             displayMap: false,
@@ -158,6 +180,29 @@ const getMissionsByDifficulty = (difficulty) => {
                     text: "Unusual changes are happening in Saginaw Bay after a big storm. The waters are shifting, and things aren’t quite right. Your mission is to explore the bay, uncover what’s causing the trouble. Can you help us solve the challenge before it’s too late? Saginaw Bay Saginaw Bay is a big, shallow area of water in eastern Michigan, right next to Lake Huron. It’s home to all kinds of amazing animals, like fish, birds, and other wildlife. Many people come here to fish, and birds love to visit the nearby wetlands. But over the years, the bay has faced some problems, like pollution and losing important habitats for animals. Thankfully, people are working hard to protect it and keep it healthy so that the bay can stay beautiful and full of life for years to come!",
                     displayMap: true,
                     fallbackImage: oman,
+                    csvPath: aeroData,
+                    initialViewState: {
+                        latitude: -16.83678,
+                        longitude: -174.25968,
+                        zoom: 7,
+                    },
+                    heatmapConfig: {
+                        intensity: 1,
+                        colorRange: [
+                            [255, 0, 0, 255],
+                            [255, 255, 0, 255],
+                            [0, 255, 0, 255],
+                            [0, 255, 255, 255],
+                            [0, 0, 255, 255],
+                        ],
+                        threshold: 0.9,
+                    },
+                    tileLayerConfig: {
+                        data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        minZoom: 0,
+                        maxZoom: 19,
+                        tileSize: 256,
+                    },
                     stages: [
                         {
                             displayMap: false,
@@ -272,16 +317,8 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <MapFocusStage
                                     images={[
                                         {
-                                            lat: 24.618875,
-                                            lng: 57.455609,
-                                            image: oman,
-                                            title: "alooo",
-                                            text: "aaai",
-                                            zoom: 7,
-                                        },
-                                        {
-                                            lat: 29.618875,
-                                            lng: 57.455609,
+                                            lat: 43.648052,
+                                            lng: -83.850347,
                                             image: oman,
                                             title: "alooo",
                                             text: "aaai",
@@ -300,6 +337,18 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                     ],
+                },
+                {
+                    index: 2,
+                    concluded: false,
+                    title: "Hidden Springs, Hidden Secrets",
+                    lat: 43.671677,
+                    lng: -83.821499,
+                    location: "Saginaw Bay, Michigan, US",
+                    image: oman,
+                    text: "The water is full of all kinds of phytoplankton species, and right now, the main way to tell them apart is by scooping up water samples—talk about time-consuming and pricey! But what if we could use images to tell them apart instead, and maybe even discover more? Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
+                    displayMap: true,
+                    fallbackImage: oman,
                     csvPath: aeroData,
                     initialViewState: {
                         latitude: -16.83678,
@@ -323,6 +372,160 @@ const getMissionsByDifficulty = (difficulty) => {
                         maxZoom: 19,
                         tileSize: 256,
                     },
+                    stages: [
+                        {
+                            displayMap: false,
+                            fallbackImage: oman,
+                            next: 1,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"Oman is an amazing place, bursting with all kinds of life and beauty! Take a look at the image, can you spot that?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "Nope",
+                                            explanation: "Take a closer look at all that green! You can spot different shades, from deep, dark green to bright, light green. These colors could be showing us a variety of phytoplankton species living in this area."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: 'Absolutely',
+                                            explanation: "You’ve got it! Those different shades of green, from the darkest to the lightest, likely point to a variety of phytoplankton species hanging out in this region."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={1}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: true,
+                            fallbackImage: null,
+                            next: 2,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"Does the observed phytoplankton affect other species of animals?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "No",
+                                            explanation: "Look back at what we saw! Phytoplankton is super important; it’s the base of the food chain and helps keep the planet’s oxygen levels in check."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: 'Yes',
+                                            explanation: "You’re spot on! Phytoplankton plays a key role in the food chain and is essential for maintaining the planet's oxygen."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={2}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: true,
+                            fallbackImage: null,
+                            next: 3,
+                            component: (
+                                <InformativeSectionStage>
+                                    <div className="mission-card-header">
+                                        <h2>Phytoplankton</h2>
+                                        <h4>Here's some quick facts about it!</h4>
+                                    </div>
+                                    <div className="image-container">
+                                        <img src={oman}></img>
+                                    </div>
+                                    <div className="text">
+                                        <p>The food chain is kind of like nature’s dinner party! It’s all about who’s eating and who’s being eaten, with energy passing along the line. It starts with the chefs—plants and tiny phytoplankton—that whip up energy from sunlight. Then, little critters like zooplankton come along for a bite. After that, small fish snack on those critters, and bigger fish come in to munch on the smaller ones. It keeps going until we get to the ocean’s top diners, like sharks or whales!
+                                            Phytoplankton are the tiny heroes at the base of this party. Without them, no one else gets to eat, and the whole chain could fall apart. So, they’re super important to keep the food chain running smoothly!
+                                        </p>
+                                    </div>
+                                </InformativeSectionStage>
+                            ),
+                        },
+                        {
+                            displayMap: true,
+                            fallbackImage: null,
+                            next: 4,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"What do you think could happen if the numbers of phytoplankton start to drop?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "Phytoplankton will turn into seaweed",
+                                            explanation: "Nope, that’s not how it works! Phytoplankton are tiny and different from seaweed, and they can’t just transform."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: 'The oceans will dry up',
+                                            explanation: "Nah, oceans might get warmer, but they won’t vanish!"
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: 'Phytoplankton will move to live on land',
+                                            explanation: "No way! These little guys are ocean dwellers—they can't pack up and move to the land like plants."
+                                        },
+                                        {
+                                            id: 'd',
+                                            text: 'Fish will start producing their own food',
+                                            explanation: "Nope, fish can’t suddenly become chefs—they rely on what’s in the food chain!"
+                                        },
+                                        {
+                                            id: 'e',
+                                            text: 'Less food for marine life',
+                                            explanation: "Yep, if phytoplankton drop, sea creatures that rely on them might go hungry."
+                                        },
+                                        {
+                                            id: 'f',
+                                            text: 'Impact on oxygen levels',
+                                            explanation: "Correct! Phytoplankton help make oxygen, so fewer of them could affect the air we breathe."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={4}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: oman,
+                            next: 5,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"How can a picture like this help us protect nature and understand what’s happening?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "A picture shows us where nature might be in trouble!",
+                                            explanation: "Exactly! We can see changes in landscapes, spot endangered species, and track how healthy ecosystems are."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: 'It helps us find patterns!',
+                                            explanation: "Absolutely! By looking at images over time, we can spot changes like shrinking forests or fewer animals, giving us clues on what needs protecting."
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: 'Pictures let us see without disturbing!',
+                                            explanation: "You’re spot on! We can observe wildlife and nature from a distance, gathering information without interrupting the natural world."
+                                        },
+                                        {
+                                            id: 'd',
+                                            text: 'They spread the word!',
+                                            explanation: "Exactly! A powerful image can inspire others to care about nature and take action to protect it."
+                                        },
+                                        {
+                                            id: 'e',
+                                            text: 'It’s like a map for conservation!',
+                                            explanation: "Correct! Images help scientists and conservationists know where to focus their efforts to save biodiversity."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={5}
+                                />
+                            ),
+                        }
+                    ]
                 }
             ];
 

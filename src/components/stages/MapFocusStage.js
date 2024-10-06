@@ -33,7 +33,6 @@ function MapFocusStage({ images, setStageIndex, nextStage }) {
     <div className="map-focus-stage">
       <div className="mission-cards-container">
         {visibleMissions.map((mission, index) => (
-          <MissionCards key={index}>
             <div className={`mission-card-content ${readMissions.includes(mission) ? 'read' : ''}`}>
               <div className={`mission-card-header ${readMissions.includes(mission) ? 'read' : ''}`}>
                 <h2>{mission.title}</h2>
@@ -52,7 +51,6 @@ function MapFocusStage({ images, setStageIndex, nextStage }) {
                 <button onClick={() => handleNextStage(mission.next)}>Next</button> // Botão para ir ao próximo estágio
               )}
             </div>
-          </MissionCards>
         ))}
       </div>
     </div>

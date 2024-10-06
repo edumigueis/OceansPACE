@@ -48,8 +48,8 @@ const getMissionsByDifficulty = (difficulty) => {
                     image: pace_maine,
                     text: "✨ Your first mission is coming up: We’ll be diving into the ocean’s colors, discovering how the light bouncing off the water can reveal hidden secrets about life in the whole world! The region, encompassing Georges Bank and the Gulf of Maine, is renowned for its rich biological productivity, historically making it a commercial fishing hub. However, overfishing and climate change now pose significant threats to this vital ecosystem.",
                     initialViewState: {
-                        latitude: -16.83678,
-                        longitude: -174.25968,
+                        latitude: 42.81671,
+                        longitude: -69.95354,
                         zoom: 7,
                     },
                     heatmapConfig: {
@@ -69,7 +69,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         maxZoom: 19,
                         tileSize: 256,
                     },
-                    csvPath: sagiData,
+                    csvPath: null,
                     stages: [
                         {
                             displayMap: false,
@@ -212,8 +212,8 @@ const getMissionsByDifficulty = (difficulty) => {
                     fallbackImage: saginaw_bay,
                     csvPath: sagiData,
                     initialViewState: {
-                        latitude: -16.83678,
-                        longitude: -174.25968,
+                        latitude: 43.671677,
+                        longitude: -83.821499,
                         zoom: 7,
                     },
                     heatmapConfig: {
@@ -392,8 +392,8 @@ const getMissionsByDifficulty = (difficulty) => {
                     fallbackImage: oman_pace,
                     csvPath: omanData,
                     initialViewState: {
-                        latitude: -16.83678,
-                        longitude: -174.25968,
+                        latitude: 24.772691,
+                        longitude: 57.524873,
                         zoom: 7,
                     },
                     heatmapConfig: {

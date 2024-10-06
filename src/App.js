@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import MissionPage from './pages/MissionPage';
@@ -7,7 +7,8 @@ import './styles/App.css';
 import missions from './missions'; // Import the missions dataset
 
 function App() {
-  
+  const missionPageRef = useRef(); // Create a ref for the MissionPage
+
   return (
     <Router>
       <Routes>
@@ -19,7 +20,13 @@ function App() {
             path={`/mission-${mission.index + 1}`}
             element={
               <MissionPage
-                stages={mission.stages}
+                ref={missionPageRef} // Pass the ref to MissionPage
+                stages={mission.stages.map((stage) => ({
+                  ...stage,
+                  component: React.cloneElement(stage.component, {
+                    setMissionStageIndex: () => missionPageRef.current.setStageIndex(stage.next), // Use the ref to call setStageIndex
+                  }),
+                }))}
                 csvPath={mission.csvPath}
                 initialViewState={mission.initialViewState}
                 heatmapConfig={mission.heatmapConfig}

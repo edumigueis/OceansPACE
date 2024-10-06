@@ -8,14 +8,17 @@
     background-color: #000000; /* Fundo não transparente */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    color: #fff; /* Cor padrão do texto */
     z-index: 1000;
     animation: fadeIn 1s ease-in-out;
-    overflow: hidden; /* Remove barra de rolagem */
+    overflow: auto; 
+    overflow-x: hidden; /* Bloqueia a rolagem horizontal */
+
 }
 
+/* Animação de fade in */
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
@@ -28,6 +31,7 @@
     margin-bottom: 10px;
     text-align: center;
     transition: transform 0.3s ease, color 0.3s ease; /* Animação para o título */
+    margin-top: 180px; /* Adicionando margem para afastar do topo */
 }
 
 .title:hover {
@@ -38,12 +42,14 @@
 .subtitle {
     font-size: 1.8rem;
     margin-bottom: 15px;
+    color: white; /* Cor do subtítulo */
 }
 
 .mission-location {
     font-style: italic;
     margin-bottom: 15px;
     font-size: 1.2rem;
+    color: white; /* Cor da localização da missão */
 }
 
 /* Estilo da imagem da missão */
@@ -61,18 +67,27 @@
 
 /* Estilo do relatório da missão */
 .mission-report {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(231, 231, 231, 0.853); /* Fundo do relatório */
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 20px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
     text-align: center;
     max-width: 400px;
+    cursor: pointer; /* Mostra que é clicável */
+    transition: transform 0.2s, background-color 0.3s ease; /* Suaviza a animação de transformação */
+    color: white; /* Cor do texto do relatório */
+}
+
+.mission-report:hover {
+    transform: scale(1.05); /* Aumenta levemente o tamanho no hover */
+    background-color: rgba(255, 255, 255, 0.694); /* Muda a cor de fundo no hover */
 }
 
 .mission-report h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: black; /* Mantém o título do relatório em preto */
 }
 
 .mission-report p {
@@ -94,7 +109,9 @@
 }
 
 .badge-wrapper {
-    position: relative;
+    display: flex; /* Flex para alinhar o emblema e o texto */
+    flex-direction: column; /* Alinha verticalmente */
+    align-items: center; /* Centraliza o conteúdo */
 }
 
 .badge-image {
@@ -125,27 +142,20 @@
     transform: scale(1.05); /* Aumenta o botão no hover */
 }
 
-/* Estilo do relatório da missão */
-.mission-report {
-    background-color: rgba(231, 231, 231, 0.853);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-    text-align: center;
-    max-width: 400px;
-    cursor: pointer; /* Mostra que é clicável */
-    transition: transform 0.2s; /* Suaviza a animação de transformação */
-}
-
-.mission-report:hover {
-    transform: scale(1.05); /* Aumenta levemente o tamanho no hover */
-    background-color: rgba(255, 255, 255, 0.694); /* Muda a cor de fundo no hover */
-}
-
 /* Adiciona um ícone indicativo, se desejar */
 .mission-report-icon {
     margin-left: 5px; /* Espaço entre o texto e o ícone */
     font-size: 1.2rem; /* Tamanho do ícone */
     color: #007EA7; /* Cor do ícone */
+}
+
+.badge-title {
+    color: white; /* Define a cor do título "Badge" como branco */
+    font-size: 1.2rem; /* Ajuste o tamanho se necessário */
+    margin-bottom: 5px; /* Espaço abaixo do título */
+}
+
+.badge-text {
+    color: white; /* Define a cor do texto do emblema como branco */
+    font-size: 1rem; /* Ajuste o tamanho se necessário */
 }

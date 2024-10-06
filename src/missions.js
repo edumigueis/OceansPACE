@@ -22,6 +22,7 @@ const missions = [
             {
                 displayMap: true,
                 fallbackImage: null,
+                next: 1,
                 component: <MapFocusStage
                 images={[
                   {

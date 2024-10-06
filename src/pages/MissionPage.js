@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import FlatMap from '../components/FlatMap';
 import { MapProvider } from '../components/stages/MapProvider';
 
@@ -29,9 +29,15 @@ const tileLayerConfig = {
   tileSize: 256,
 };
 
-function MissionPage({ stages, csvPath }) {
+// Forward ref to expose setStageIndex
+const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
   const [stageIndex, setStageIndex] = useState(0);
   const mapRef = useRef(null);
+
+  // Expose setStageIndex to parent components
+  useImperativeHandle(ref, () => ({
+    setStageIndex,
+  }));
 
   const focusOnCoordinates = (latitude, longitude, zoomLevel) => {
     if (mapRef.current && mapRef.current.focusOnCoordinates) {
@@ -41,17 +47,14 @@ function MissionPage({ stages, csvPath }) {
   };
 
   const currentStage = React.cloneElement(stages[stageIndex].component, {
-    setStageIndex,
+    setStageIndex, // Pass setStageIndex to the current stage
   });
 
   return (
     <MapProvider focusOnCoordinates={focusOnCoordinates}>
       <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
         {currentStage}
-        {stages[stageIndex].displayMap ? (
-            <div></div>
-          ) : <span></span>
-          }
+        {stages[stageIndex].displayMap ? <div></div> : <span></span>}
         <div style={{ flex: 1, zIndex: 0 }}>
           {stages[stageIndex].displayMap ? (
             <FlatMap
@@ -68,7 +71,7 @@ function MissionPage({ stages, csvPath }) {
               alt="mission-location"
             />
           )}
-        </div>  
+        </div>
       </div>
       <div style={{ padding: '10px' }}>
         <button onClick={() => setStageIndex((prev) => Math.max(prev - 1, 0))}>Previous</button>
@@ -76,6 +79,6 @@ function MissionPage({ stages, csvPath }) {
       </div>
     </MapProvider>
   );
-}
+});
 
 export default MissionPage;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Question from '../Question';
 
-function SingleQuestionStage({ setStageIndex, question, answeredOptions = [] }) {
+function SingleQuestionStage({ setStageIndex, question, answeredOptions = [], nextStage }) {
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 

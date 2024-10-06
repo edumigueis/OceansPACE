@@ -90,6 +90,7 @@ const MissionPage = forwardRef(({ stages, csvPath }, ref) => {
   const currentStage = React.cloneElement(stages[stageIndex].component, {
     setStageIndex, // Pass setStageIndex to the current stage
   });
+  
 
   return (
     <MapProvider focusOnCoordinates={focusOnCoordinates}>

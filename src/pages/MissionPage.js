@@ -49,12 +49,6 @@ function MissionPage({ stages, csvPath }) {
       mapRef.current.setView([latitude, longitude]);
     }
   };
-
-  const focusOnCoordinates = (latitude, longitude, zoomLevel) => {
-    if (mapRef.current) {
-      mapRef.current.setView([latitude, longitude], zoomLevel);
-    }
-  };
   
   // Pass handleCenterMap and setStageIndex to the current stage
   const currentStage = React.cloneElement(stages[stageIndex], {

@@ -11,6 +11,7 @@ import cloroData from './assets/data/cloro.csv';
 import aeroData from './assets/data/aero.csv';
 import oman from './assets/missions/oman.jpg';
 import FinalStage from './components/stages/FinalStage';
+import MapReadingGuide from './components/stages/MapReadingGuide';
 
 const initialViewState = [
   {
@@ -69,6 +70,11 @@ const tileLayerConfig = {
 
 function App() {
   const missionOneStages = [
+
+    <MapReadingGuide
+    setStageIndex
+    />,
+
     <SingleQuestionStage
       question={{
         text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
@@ -114,17 +120,23 @@ function App() {
   ];
 
   const missionTwoStages = [
-    <SingleQuestionStage
-      question={{
-        text: "What is the primary source of energy for photosynthesis in phytoplankton?",
-        options: [
-          { id: 1, text: "The Sun", isCorrect: true },
-          { id: 2, text: "Volcanic heat", isCorrect: false },
-          { id: 3, text: "Geothermal vents", isCorrect: false },
-          { id: 4, text: "The Moon", isCorrect: false },
-        ],
-      }}
+    <MapReadingGuide
+    setStageIndex
     />,
+
+    <SingleQuestionStage
+    setStageIndex={null}
+    question={{
+      text: "phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
+      options: [
+        { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
+        { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
+        { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
+        { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
+      ],
+    }}
+    handleCenterMap={() => {}}
+  />,
     <InformativeSectionStage handleCenterMap={() => { }}>
       <div className="mission-card-header">
         <h2>Mission 1</h2>

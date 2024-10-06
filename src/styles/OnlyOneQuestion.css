@@ -1,0 +1,110 @@
+
+.only-one-question-container {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.only-one-question {
+    max-width: 600px;
+    min-width: 300px;
+    height: auto;
+    margin: 0 20px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .only-one-question:hover {
+    transform: translateY(-10px);
+  }
+  
+  .only-one-question h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  /* Button styling */
+  .only-one-question button {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    opacity: 0;
+    animation: slideUp 0.5s forwards;
+  }
+  
+  .only-one-question button:hover {
+    background-color: #005f87;
+    transform: scale(1.05);
+  }
+  
+  .only-one-question button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* Correct answer notification */
+  .correct-answer {
+    font-size: 18px;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeIn 0.8s 0.5s forwards;
+  }
+  
+  /* Continue button */
+  .continue-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .continue-btn:hover {
+    background-color: #357a38;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

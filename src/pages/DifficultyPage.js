@@ -68,6 +68,11 @@ export default function App() {
     }
   };
 
+  // Function to change speed based on difficulty and save the choice
+const setDifficultyAndSave = (level) => {
+  setDifficulty(level);
+  localStorage.setItem('selectedDifficulty', level); // Save the chosen difficulty in localStorage
+};
   // Function to navigate to the next page
   const goToNextPage = () => {
     window.location.href = '/'; // Adjust this to your desired route or URL
@@ -91,8 +96,8 @@ export default function App() {
       </Canvas>
       
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 2 }}>
-        <LpContent setDifficulty={setDifficulty} /> {/* Pass setDifficulty to change difficulty */}
-      </div>
+      <LpContent setDifficulty={setDifficultyAndSave} /> {/* Use the updated setDifficultyAndSave */}
+    </div>
 
       <button
         onClick={toggleAudio}

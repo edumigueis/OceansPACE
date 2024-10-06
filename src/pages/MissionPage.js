@@ -48,6 +48,10 @@ function MissionPage({ stages, csvPath }) {
     <MapProvider focusOnCoordinates={focusOnCoordinates}>
       <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
         {currentStage}
+        {stages[stageIndex].displayMap ? (
+            <div></div>
+          ) : <span></span>
+          }
         <div style={{ flex: 1, zIndex: 0 }}>
           {stages[stageIndex].displayMap ? (
             <FlatMap

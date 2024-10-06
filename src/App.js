@@ -12,40 +12,74 @@ import aeroData from './assets/data/vulcan_erupting_norm.csv';
 import oman from './assets/oman.jpg';
 import FinalStage from './components/stages/FinalStage';
 import MapReadingGuide from './components/stages/MapReadingGuide';
+import MultipleQuestionStage from './components/stages/MultipleQuestionStage';
+import { title } from 'framer-motion/client';
+
+const questionStages = [
+  {
+    // ID 0: Pergunta inicial
+    text: "Start by looking closely at the picture. What do you see? What’s different or exciting? What caught your eye?",
+    options: [
+      { id: 1, text: "The White", explanation: "", nextQuestionId: 1 }, // Se escolher "The White", vai para ID 1
+      { id: 2, text: "The green and blue", explanation: "Not quite. Volcanic heat is not involved in photosynthesis.", nextQuestionId: null },
+      { id: 3, text: "The brown", explanation: "Incorrect. Geothermal vents are not the primary source of energy.", nextQuestionId: null },
+    ],
+  },
+  {
+    // ID 1: Pergunta sobre os "The White"
+    text: "Is the white you see just one thing or more than one?",
+    options: [
+      { id: 1, text: "It's all the same", explanation: "There are two white things in the picture: clouds and snow. Here are some tips to help tell them apart:\n\n**Clouds:**\nClouds appear as bright white, fluffy patches. They are often more irregular in shape and can be seen floating over land and water. In this image, clouds tend to have a softer, more diffuse appearance and are present in various parts, such as over the ocean on the right side, and some cover can also be seen over the land.\n\n**Snow:**\nSnow, on the other hand, covers large areas of the land, especially in the northern regions. It has a more uniform and textured look, as it blankets the surface evenly. The snow appears as a solid white or light gray color and tends to follow the contours of the land, particularly in the upper part of the image (towards the top center and left), where the land is covered by snow.", nextQuestionId: 2 },
+      { id: 2, text: "There are different whites", explanation: "Congratulations on the observation! There are two different things in the images: the white of the snow and the white of the clouds. Here are some tips to help tell them apart:\n\n**Clouds:**\nClouds appear as bright white, fluffy patches. They are often more irregular in shape and can be seen floating over land and water. In this image, clouds tend to have a softer, more diffuse appearance and are present in various parts, such as over the ocean on the right side, and some cover can also be seen over the land.\n\n**Snow:**\nSnow, on the other hand, covers large areas of the land, especially in the northern regions. It has a more uniform and textured look, as it blankets the surface evenly. The snow appears as a solid white or light gray color and tends to follow the contours of the land, particularly in the upper part of the image (towards the top center and left), where the land is covered by snow.", nextQuestionId: 2 },
+    ],
+  },
+  {
+    // ID 2: Pergunta sobre a aparência da neve
+    text: "Take a look at the snow, do you notice anything strange about how it looks?",
+    options: [
+      { id: 1, text: "No!", explanation: "Take a closer look! While snow covers the ground, there are patches of brown earth peeking through. The snow itself seems cracked, like it’s resting on a layer of sediment.", nextQuestionId: 3 }, // Vai para 1.b.2
+      { id: 2, text: "Yes!", explanation: "Can you come up with some theory about what is happening here?", nextQuestionId: 3 },
+    ],
+  },
+  {
+    // ID 3: Teorias sobre o que está acontecendo
+    text: "Can you come up with some theory about what is happening here?",
+    options: [
+      { id: 1, text: "Alien activity", explanation: "Oops, looks like that’s not quite right! The correct answer is Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground.", nextQuestionId: null },
+      { id: 2, text: "Earthquake tremors", explanation: "Oops, looks like that’s not quite right! The correct answer is Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground.", nextQuestionId: null },
+      { id: 3, text: "Underground creatures", explanation: "Oops, looks like that’s not quite right! The correct answer is Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground.", nextQuestionId: null },
+      { id: 4, text: "Early signs of Spring", explanation: "Congratulations! You got it right! The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground.", nextQuestionId: 0 },
+    ],
+  },
+];
+
 
 const missions = [
   {
     index: 0,
     concluded: false,
     title: "The Omani Bloom",
-    lat: 24.618875,
+    lat: 24.618875, 
     lng: 57.455609,
     location: "The Omani Sea",
     image: oman,
     text: "Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
     stages: [
       {
-        displayMap: false,
+        displayMap: true,
         fallbackImage: oman,
-        component: <SingleQuestionStage
-        question={{
-          text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
-          options: [
-            { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
-            { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
-            { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
-            { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
-          ],
-        }}
-      />
+        component: <MultipleQuestionStage questionStages={questionStages}/>,
       },
       {
         component: <FinalStage
-        onArrival={() => console.log('Final stage reached!')}
-      />
+          onArrival={() => console.log('Final stage reached!')}
+          briefing={{
+            title: "The Omani Bloom",
+            location: "The Omani Sea",
+            image: oman
+          }}
+        />
       }
-      
-      
     ],
     csvPath: cloroData,
     initialViewState: {
@@ -165,7 +199,7 @@ function App() {
   const missionOneStages = [
 
     <MapReadingGuide
-    setStageIndex
+      setStageIndex
     />,
 
     <SingleQuestionStage
@@ -206,29 +240,29 @@ function App() {
     <MapFocusStage
       focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
     />,
-    <FinalStage 
-    onArrival={() => console.log('Final stage reached!')} 
-  />
+    <FinalStage
+      onArrival={() => console.log('Final stage reached!')}
+    />
   ];
 
   const missionTwoStages = [
     <MapReadingGuide
-    setStageIndex
+      setStageIndex
     />,
 
     <SingleQuestionStage
-    setStageIndex={null}
-    question={{
-      text: "phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
-      options: [
-        { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
-        { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
-        { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
-        { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
-      ],
-    }}
-    handleCenterMap={() => {}}
-  />,
+      setStageIndex={null}
+      question={{
+        text: "phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
+        options: [
+          { id: 1, text: "By releasing carbon dioxide and consuming oxygen.", isCorrect: false },
+          { id: 2, text: "By producing oxygen through photosynthesis and absorbing carbon dioxide.", isCorrect: true },
+          { id: 3, text: "By feeding on marine animals and increasing oxygen levels.", isCorrect: false },
+          { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
+        ],
+      }}
+      handleCenterMap={() => { }}
+    />,
     <InformativeSectionStage handleCenterMap={() => { }}>
       <div className="mission-card-header">
         <h2>Mission 1</h2>
@@ -254,9 +288,9 @@ function App() {
     <MapFocusStage
       focusData={{ title: "Mission 3", content: "Analyze Data" }}
     />,
-    <FinalStage 
-    onArrival={() => console.log('Final stage reached!')}
-  />
+    <FinalStage
+      onArrival={() => console.log('Final stage reached!')}
+    />
   ];
 
   return (

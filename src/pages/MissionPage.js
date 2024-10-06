@@ -49,25 +49,26 @@ function MissionPage({ stages, csvPath }) {
       <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
         {currentStage}
         <div style={{ flex: 1, zIndex: 0 }}>
-          {
-            stages[stageIndex].displayMap === false ?
-              <img style={{ position: 'relative', height: '100vh', width: '100vw' }} src={stages[stageIndex].fallbackImage} alt="mission-location" />
-              : <FlatMap
-                ref={mapRef}
-                csvUrl={csvPath}
-                initialViewState={initialViewState}
-                heatmapConfig={heatmapConfig}
-                tileLayerConfig={tileLayerConfig}
-              />
-          }
-
+          {stages[stageIndex].displayMap ? (
+            <FlatMap
+              ref={mapRef}
+              csvUrl={csvPath}
+              initialViewState={initialViewState}
+              heatmapConfig={heatmapConfig}
+              tileLayerConfig={tileLayerConfig}
+            />
+          ) : (
+            <img
+              style={{ height: '100vh', width: '100vw', objectFit: 'cover' }}
+              src={stages[stageIndex].fallbackImage}
+              alt="mission-location"
+            />
+          )}
         </div>
-        <div style={{ padding: '10px' }}>
-          <button onClick={() => setStageIndex((prev) => (prev > 0 ? prev - 1 : 0))}>Previous</button>
-          <button onClick={() => setStageIndex((prev) => (prev < stages.length - 1 ? prev + 1 : stages.length - 1))}>
-            Next
-          </button>
-        </div>
+      </div>
+      <div style={{ padding: '10px' }}>
+        <button onClick={() => setStageIndex((prev) => Math.max(prev - 1, 0))}>Previous</button>
+        <button onClick={() => setStageIndex((prev) => Math.min(prev + 1, stages.length - 1))}>Next</button>
       </div>
     </MapProvider>
   );

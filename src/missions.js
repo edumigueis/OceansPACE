@@ -7,6 +7,8 @@ import FinalStage from './components/stages/FinalStage';
 import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
+import OnlyQuestion from './components/stages/OnlyQuestion';
+
 
 const missions = [
     {

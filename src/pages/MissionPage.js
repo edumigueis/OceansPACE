@@ -85,6 +85,7 @@ function MissionPage({ stages, csvPath }) {
   const currentStage = React.cloneElement(stages[stageIndex].component, {
     setStageIndex,
   });
+  
 
   return (
     <MapProvider focusOnCoordinates={focusOnCoordinates}>

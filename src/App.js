@@ -7,6 +7,7 @@ import './styles/App.css';
 import missions from './missions'; // Import the missions dataset
 
 function App() {
+  
   return (
     <Router>
       <Routes>

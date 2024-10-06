@@ -531,7 +531,8 @@ const getMissionsByDifficulty = (difficulty) => {
             ];
 
         case 'MEDIUM':
-            return [];
+            return [
+            ];
 
         case 'HARD':
             return [];

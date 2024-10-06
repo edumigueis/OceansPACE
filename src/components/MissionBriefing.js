@@ -11,22 +11,24 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
         const audio = audioRef.current;
         audio.volume = 10 / 20; // Set the volume fixed at 3
         if (isPlaying) {
-          audio.pause();
-          console.log('Audio paused');
+            audio.pause();
+            console.log('Audio paused');
         } else {
-          audio.loop = true;
-          audio.play().then(() => {
-            console.log('Audio is playing at volume:', audio.volume);
-          }).catch(error => console.log('Audio play failed:', error));
+            // Pause main audio when unmuted
+            pauseMainAudio();
+
+            audio.loop = true;
+            audio.play().then(() => {
+                console.log('Audio is playing at volume:', audio.volume);
+            }).catch(error => console.log('Audio play failed:', error));
         }
         setIsPlaying(!isPlaying);
-      };
+    };
     
-      useEffect(() => {
+    useEffect(() => {
         audioRef.current.volume = 10 / 20; // Set the fixed volume at 3 on load
-      }, []);
+    }, []);
     
-
     // If the modal is not open, do not render the content
     if (!isOpen) return null;
 

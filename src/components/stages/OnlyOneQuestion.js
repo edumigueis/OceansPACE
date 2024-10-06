@@ -1,9 +1,9 @@
 import React from 'react';
 
-const OnlyQuestion = ({ questionText, options, correctAnswerId, nextStage, setStageIndex }) => {
+const OnlyOneQuestion = ({ questionText, options, correctAnswerId, nextStage, setStageIndex }) => {
   const handleAnswer = (id) => {
     if (id === correctAnswerId) {
-      setStageIndex(nextStage); // Aqui é onde chamamos setStageIndex
+      setStageIndex(nextStage); // Aqui, vamos direcionar para o próximo estágio
     } else {
       alert('Resposta incorreta');
     }
@@ -21,4 +21,4 @@ const OnlyQuestion = ({ questionText, options, correctAnswerId, nextStage, setSt
   );
 };
 
-export default OnlyQuestion;
+export default OnlyOneQuestion;

@@ -7,7 +7,7 @@ import FinalStage from './components/stages/FinalStage';
 import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
-import OnlyQuestion from './components/stages/OnlyQuestion';
+import OnlyOneQuestion from './components/stages/OnlyOneQuestion';
 
 
 const missions = [
@@ -70,6 +70,22 @@ const missions = [
                   },
                 ]}
               />
+            },
+            {
+                displayMap: true,
+                component: (
+                  <OnlyOneQuestion
+                    questionText={"Qual é a capital do Japão?"}
+                    options={[
+                      { id: 'a', text: 'Seul', explanation: 'Incorreto! Seul é a capital da Coreia do Sul.' },
+                      { id: 'b', text: 'Tóquio', explanation: 'Correto! Tóquio é a capital do Japão.' },
+                      { id: 'c', text: 'Pequim', explanation: 'Incorreto! Pequim é a capital da China.' },
+                    ]}
+                    correctAnswerId={'b'}
+                    nextStage={1} // Define o próximo estágio que será alcançado
+                  />
+                ),
+
             },
             {
                 displayMap: true,

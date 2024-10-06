@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useMap } from './MapProvider'; // Adjust the path as needed
+import { useMap } from './MapProvider';
 import MissionCards from '../MissionCards';
+import '../../styles/MapFocusStage.css'
 
 function MapFocusStage({ images }) {
   const { focusOnCoordinates } = useMap();

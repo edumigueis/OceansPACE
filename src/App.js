@@ -7,9 +7,9 @@ import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
 import './styles/App.css';
-import cloroData from './assets/data/cloro.csv';
-import aeroData from './assets/data/aero.csv';
-import oman from './assets/missions/oman.jpg';
+import cloroData from './assets/data/oman_winter_norm.csv';
+import aeroData from './assets/data/vulcan_erupting_norm.csv';
+import oman from './assets/oman.jpg';
 import FinalStage from './components/stages/FinalStage';
 import { title } from 'framer-motion/client';
 

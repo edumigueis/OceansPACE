@@ -12,9 +12,24 @@ const LpContent = ({ setDifficulty }) => {
   ];
   const [currentIndex, setCurrentIndex] = useState(1); // Start at "MEDIUM"
 
-  const handleSelection = (index) => {
-    setCurrentIndex(index);
-    setDifficulty(options[index].label); // Update difficulty in the parent component
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % options.length;
+      const newDifficulty = options[newIndex];
+      setDifficulty(newDifficulty); // Update difficulty in the parent component
+      localStorage.setItem('selectedDifficulty', newDifficulty); // Save to localStorage
+      return newIndex;
+    });
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + options.length) % options.length;
+      const newDifficulty = options[newIndex];
+      setDifficulty(newDifficulty); // Update difficulty in the parent component
+      localStorage.setItem('selectedDifficulty', newDifficulty); // Save to localStorage
+      return newIndex;
+    });
   };
 
   return (

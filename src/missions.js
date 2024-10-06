@@ -19,8 +19,8 @@ const getMissionsByDifficulty = (difficulty) => {
                     index: 0,
                     concluded: false,
                     title: "North America from Above",
-                    lat: 24.618875,
-                    lng: 57.455609,
+                    lat: 42.81671,
+                    lng: -69.95354,
                     location: "Northeastern United States and Canada",
                     image: oman,
                     text: "✨ Your first mission is coming up: We’ll be diving into the ocean’s colors, discovering how the light bouncing off the water can reveal hidden secrets about life in the whole world! The region, encompassing Georges Bank and the Gulf of Maine, is renowned for its rich biological productivity, historically making it a commercial fishing hub. However, overfishing and climate change now pose significant threats to this vital ecosystem.",
@@ -160,13 +160,19 @@ const getMissionsByDifficulty = (difficulty) => {
                         {
                             displayMap: false,
                             component: <FinalStage
-                                onArrival={() => console.log('Final stage (Easy) reached!')}
-                                briefing={{
-                                    title: "The Omani Bloom (Easy)",
-                                    location: "The Omani Sea",
-                                    image: oman
-                                }}
-                            />
+                   onArrival={() => console.log('Final stage reached!')}
+      briefing={{
+        title: "The Omani Bloom",
+        location: "The Omani Sea",
+        image: oman,
+        report: "Durante essa missão, você explorou a região do Mar de Omã e analisou o impacto dos plânctons na biodiversidade local.",
+        reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
+      }}
+      badge={{
+        name: "Emblema da Missão Omani Bloom",
+        image: badgeFigure
+      }}
+                />
                         },
                     ],
                 },
@@ -278,7 +284,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             fallbackImage: null,
                             next: 5,
                             component: (
-                                <InformativeSectionStage nextStage={3}>
+                                <InformativeSectionStage nextStage={5}>
                                     <div className="mission-card-header">
                                         <h2>Mud flows</h2>
                                         <h4>Here's some quick facts about it!</h4>
@@ -297,7 +303,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         {
                             displayMap: true,
                             fallbackImage: null,
-                            next: 5,
+                            next: 6,
                             component: (
                                 <OnlyOneQuestion
                                     questionText={"How can we solve this problem?"}
@@ -309,7 +315,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         { id: 'e', text: 'Take palliative measures', explanation: "Palliative measures are helpful for sure. Whether it’s temporary barriers or other strategies, they can provide some relief in the short term." },
                                     ]}
                                     correctAnswerId={null}
-                                    nextStage={5}
+                                    nextStage={6}
                                 />
                             ),
                         },
@@ -331,10 +337,20 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             component: (
-                                <FinalStage
-                                    onArrival={() => console.log("Final stage reached!")}
-                                    briefing={{}}
-                                />
+                              <FinalStage
+                              onArrival={() => console.log('Final stage reached!')}
+                 briefing={{
+                   title: "The Omani Bloom",
+                   location: "The Omani Sea",
+                   image: oman,
+                   report: "Durante essa missão, você explorou a região do Mar de Omã e analisou o impacto dos plânctons na biodiversidade local.",
+                   reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
+                 }}
+                 badge={{
+                   name: "Emblema da Missão Omani Bloom",
+                   image: badgeFigure
+                 }}
+                           />
                             ),
                         },
                     ],
@@ -343,8 +359,8 @@ const getMissionsByDifficulty = (difficulty) => {
                     index: 2,
                     concluded: false,
                     title: "Hidden Springs, Hidden Secrets",
-                    lat: 43.671677,
-                    lng: -83.821499,
+                    lat: 24.772691,
+                    lng: 57.524873,
                     location: "Saginaw Bay, Michigan, US",
                     image: oman,
                     text: "The water is full of all kinds of phytoplankton species, and right now, the main way to tell them apart is by scooping up water samples—talk about time-consuming and pricey! But what if we could use images to tell them apart instead, and maybe even discover more? Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",

@@ -63,8 +63,8 @@ function HeatmapGradientLegend() {
       }}>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '5px' }}>
-        <span>Baixa</span>
-        <span>Alta</span>
+        <span>Low</span>
+        <span>High</span>
       </div>
     </div>
   );
@@ -88,13 +88,13 @@ function MissionPage({ stages, csvPath }) {
 
   return (
     <MapProvider focusOnCoordinates={focusOnCoordinates}>
-      <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
+      <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw'}}>
         {currentStage}
         {stages[stageIndex].displayMap ? (
           <div></div>
         ) : <span></span>
         }
-        <div style={{ flex: 1, zIndex: 0 }}>
+        <div style={{ flex: 1, zIndex: 0}}>
           {stages[stageIndex].displayMap ? (
             <>
               <FlatMap
@@ -114,10 +114,6 @@ function MissionPage({ stages, csvPath }) {
             />
           )}
         </div>  
-      </div>
-      <div style={{ padding: '10px' }}>
-        <button onClick={() => setStageIndex((prev) => Math.max(prev - 1, 0))}>Previous</button>
-        <button onClick={() => setStageIndex((prev) => Math.min(prev + 1, stages.length - 1))}>Next</button>
       </div>
     </MapProvider>
   );

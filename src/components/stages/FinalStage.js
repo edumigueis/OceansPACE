@@ -39,17 +39,17 @@ function FinalStage({ onArrival, briefing, badge }) {
       <img className="mission-image" src={briefing.image} alt="Mission Briefing" />
       <p className="mission-location">{briefing.location}</p>
 
-      <div className="mission-report" onClick={handleReportClick}> {/* Adiciona onClick aqui */}
+      <div className="mission-report" onClick={handleReportClick}>
         <h3>Mission Report</h3>
-        <p>{displayedReport}</p> {/* Exibe o texto do relatório diretamente */}
+        <p>{displayedReport}</p>
       </div>
 
       <div className="badge-and-button">
         <div className="badge-section">
-          <h3>Badge</h3>
+          <h3 className="badge-title">Badge</h3>
           <div className="badge-wrapper">
             <img className="badge-image" src={badge.image} alt="Badge" />
-            <p className="badge-name">{badge.name}</p>
+            <p className="badge-name badge-text">{badge.name}</p>
           </div>
         </div>
 
@@ -58,7 +58,6 @@ function FinalStage({ onArrival, briefing, badge }) {
         </button>
       </div>
 
-      {/* Renderiza o Popup se isPopupOpen for true */}
       {isPopupOpen && (
         <PopupReport 
           reportDetails={briefing.reportAll} 

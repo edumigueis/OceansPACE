@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/OnlyOneQuestion.css';
 
 const OnlyOneQuestion = ({ questionText, options, correctAnswerId, nextStage, setStageIndex }) => {
@@ -7,20 +7,24 @@ const OnlyOneQuestion = ({ questionText, options, correctAnswerId, nextStage, se
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [selectedExplanation, setSelectedExplanation] = useState('');
 
+  useEffect(() => {
+    setIsAnswered(false);
+    setIsCorrect(null);
+    setSelectedAnswer('');
+    setSelectedExplanation('');
+  }, [questionText, nextStage]);
+
   const handleAnswer = (id, text, explanation) => {
     setIsAnswered(true);
     setSelectedAnswer(text);
     setSelectedExplanation(explanation);
 
     if (correctAnswerId === null) {
-      // If correctAnswerId is null, treat the answer as correct
       setIsCorrect(true);
     } else if (id === correctAnswerId) {
-      // If the selected answer is correct
       setIsCorrect(true);
       setStageIndex(nextStage);
     } else {
-      // If the selected answer is wrong
       setIsCorrect(false);
     }
   };

@@ -55,17 +55,17 @@ body {
 }
 
 .mission-card-content {
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 20px;
   max-width: 600px;
   min-width: 300px;
-  width: 100%;
-  max-height: 70%;
+  height: auto;
+  margin: 0 50px;
+  padding: 25px !important;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.4s ease-in-out;
   overflow-y: scroll;
-  transition: transform 0.3s ease;
-  margin-left: 20px;
 }
 
 .mission-card-content:hover {
@@ -81,13 +81,14 @@ body {
 .mission-card-header h2 {
   font-size: 26px;
   color: #2c3e50;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 .mission-card-header h4 {
   font-size: 18px;
   color: #7f8c8d;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 0;
 }
 
 .image-container {

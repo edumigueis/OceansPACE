@@ -18,18 +18,6 @@
     justify-content: flex-start; /* Alinha os cartões no topo */
 }
 
-.mission-card-content {
-    position: relative; /* Permite o posicionamento absoluto da imagem */
-    background-color: #fff; /* Cor de fundo do cartão */
-    border: 1px solid #ddd; /* Borda do cartão */
-    border-radius: 8px; /* Arredondamento dos cantos do cartão */
-    padding: 15px; /* Espaçamento interno do cartão */
-    margin: 5px 0; /* Espaço reduzido entre os cartões */
-    overflow: hidden; /* Esconde partes da imagem que saem do cartão */
-    transition: box-shadow 0.3s ease; /* Transição suave para a sombra do cartão */
-    width: calc(100% - 1px); /* Aumenta a largura para preencher quase todo o contêiner pai */
-}
-
 .mission-card-content:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
 }
@@ -47,18 +35,12 @@
     background-color: #4caf50; /* Cor verde para cabeçalho da missão lida */
 }
 
-.mission-card-header h2 {
-    font-size: 1.5rem; /* Tamanho da fonte do título */
-    color: #fff; /* Cor do texto para branco */
-    margin-bottom: 5px; /* Espaço abaixo do título */
-}
-
 .mission-card-header img {
     position: absolute; /* Posiciona a imagem absolutamente */
     top: 0; /* Alinha ao topo do cartão */
     left: 0; /* Alinha à esquerda do cartão */
     width: 100%; /* Ocupa toda a largura do contêiner */
-    height: 100%; /* Ocupa toda a altura do contêiner */
+    height: 500%; /* Ocupa toda a altura do contêiner */
     object-fit: cover; /* Faz a imagem cobrir a área do contêiner */
     z-index: 1; /* Coloca a imagem abaixo do texto */
 }

@@ -25,13 +25,24 @@ const gData = [
     color: 'red'
   },
   {
-    lat: 29.953204744601763,
-    lng: -90.08925929478903,
+    //Point Saginaw Bay 
+    lat: 43.9317,
+    lng: -83.1169,
     maxR: 10,
     propagationSpeed: 4,
     repeatPeriod: 1000,
     color: 'red'
-  }
+  },
+    // Point Georges Bank and Gulf of Maine
+    {
+      lat: 43.6628,
+      lng: -61.3583,
+      maxR: 10,
+      propagationSpeed: 4,
+      repeatPeriod: 1000,
+      color: 'red'
+    }
+  
 ];
 
 function Main() {

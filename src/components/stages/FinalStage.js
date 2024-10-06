@@ -1,24 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PopupReport from '../PopupReport'; // Importa o Popup
 import '../../styles/FinalStage.css';
 
 function FinalStage({ onArrival, briefing, badge }) {
   const navigate = useNavigate();
   const [displayedReport, setDisplayedReport] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // Estado para controlar o popup
 
   useEffect(() => {
     if (onArrival) {
       onArrival();
     }
 
-    // Define o relatório diretamente sem animação
+    // Atualiza o relatório imediatamente sem simulação
     if (briefing.report) {
-      setDisplayedReport(briefing.report); // Define o texto do relatório diretamente
+      setDisplayedReport(briefing.report);
     }
   }, [onArrival, briefing.report]);
 
   const handleClaimBadge = () => {
-    navigate('/'); // Redireciona imediatamente após clicar no botão
+    navigate('/'); 
+  };
+
+  const handleReportClick = () => {
+    setIsPopupOpen(true); // Abre o popup ao clicar no relatório
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false); // Fecha o popup
   };
 
   return (
@@ -29,7 +39,7 @@ function FinalStage({ onArrival, briefing, badge }) {
       <img className="mission-image" src={briefing.image} alt="Mission Briefing" />
       <p className="mission-location">{briefing.location}</p>
 
-      <div className="mission-report">
+      <div className="mission-report" onClick={handleReportClick}> {/* Adiciona onClick aqui */}
         <h3>Mission Report</h3>
         <p>{displayedReport}</p> {/* Exibe o texto do relatório diretamente */}
       </div>
@@ -47,6 +57,14 @@ function FinalStage({ onArrival, briefing, badge }) {
           Claim Badge
         </button>
       </div>
+
+      {/* Renderiza o Popup se isPopupOpen for true */}
+      {isPopupOpen && (
+        <PopupReport 
+          reportDetails={briefing.reportAll} 
+          onClose={handleClosePopup} 
+        />
+      )}
     </div>
   );
 }

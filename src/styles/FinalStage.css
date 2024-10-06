@@ -1,0 +1,126 @@
+/* Estilo base da página */
+.final-stage-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000; /* Fundo não transparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    z-index: 1000;
+    animation: fadeIn 1s ease-in-out;
+    overflow: hidden; /* Remove barra de rolagem */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Estilo dos textos */
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease; /* Animação para o título */
+}
+
+.title:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do título */
+    color: #4CAF50; /* Muda a cor do título no hover */
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.mission-location {
+    font-style: italic;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Estilo da imagem da missão */
+.mission-image {
+    width: 250px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease; /* Animação para a imagem */
+}
+
+.mission-image:hover {
+    transform: scale(1.05); /* Aumenta a imagem no hover */
+}
+
+/* Estilo do relatório da missão */
+.mission-report {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    max-width: 400px;
+}
+
+.mission-report h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.mission-report p {
+    font-size: 1.1rem;
+}
+
+/* Seção da badge e do botão lado a lado */
+.badge-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Estilo para a seção da badge */
+.badge-section {
+    text-align: center;
+    margin-right: 20px;
+}
+
+.badge-wrapper {
+    position: relative;
+}
+
+.badge-image {
+    width: 100px;
+    transition: transform 0.3s ease; /* Animação para o emblema */
+}
+
+.badge-image:hover {
+    transform: scale(1.1); /* Aumenta o emblema no hover */
+}
+
+/* Estilo do botão de reivindicação */
+.claim-badge-btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease; /* Animação para o botão */
+    margin-left: 20px;
+}
+
+.claim-badge-btn:hover {
+    background-color: #007EA7; /* Cor de fundo do botão no hover */
+    transform: scale(1.05); /* Aumenta o botão no hover */
+}

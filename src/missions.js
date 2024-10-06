@@ -1,4 +1,5 @@
 import oman from './assets/oman.jpg';
+import badgeFigure from './assets/Badge.png';
 import cloroData from './assets/data/oman_winter_norm.csv';
 import aeroData from './assets/data/vulcan_erupting_norm.csv';
 import MultipleQuestionStage from './components/stages/MultipleQuestionStage';

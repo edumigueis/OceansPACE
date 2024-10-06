@@ -13,11 +13,11 @@ const initialViewState = {
 const heatmapConfig = {
   intensity: 1,
   colorRange: [
-    [255, 0, 0, 255],   // Vermelho - Alta intensidade
-    [255, 255, 0, 255], // Amarelo - Média-alta intensidade
+    [255, 0, 0, 255],   // Vermelho - Baixa intensidade
+    [255, 255, 0, 255], // Amarelo - Média-baixa intensidade
     [0, 255, 0, 255],   // Verde - Média intensidade
-    [0, 255, 255, 255], // Ciano - Média-baixa intensidade
-    [0, 0, 255, 255],   // Azul - Baixa intensidade
+    [0, 255, 255, 255], // Ciano - Média-alta intensidade
+    [0, 0, 255, 255],   // Azul - Alta intensidade
   ],
   threshold: 0.9,
 };
@@ -29,8 +29,10 @@ const tileLayerConfig = {
   tileSize: 256,
 };
 
-// Componente de legenda em estilo gradiente com escala baseada nos dados reais
+// Função que gera a legenda baseada nos valores fornecidos
 function HeatmapGradientLegend() {
+  const valueRange = ['0.01', '0.02', '0.05', '0.1', '0.2', '0.5', '1', '2', '5', '10', '20'];
+
   return (
     <div style={{
       position: 'absolute',
@@ -44,20 +46,16 @@ function HeatmapGradientLegend() {
       alignItems: 'center',
       zIndex: 1,
     }}>
-      {/* Valores correspondentes ao gradiente */}
       <div style={{
         display: 'flex',
         justifyContent: 'space-between',
         width: '100%',
         marginBottom: '5px',
       }}>
-        <span style={{ fontSize: '8px' }}>0.0152</span> {/* Valor correspondente à cor azul */}
-        <span style={{ fontSize: '8px' }}>0.0156</span> {/* Valor correspondente à cor ciano */}
-        <span style={{ fontSize: '8px' }}>0.0165</span> {/* Valor correspondente à cor verde */}
-        <span style={{ fontSize: '8px' }}>0.0175</span> {/* Valor correspondente à cor amarelo */}
-        <span style={{ fontSize: '8px' }}>0.0185</span> {/* Valor correspondente à cor vermelha */}
+        {valueRange.map((value, index) => (
+          <span key={index} style={{ fontSize: '8px' }}>{value}</span>
+        ))}
       </div>
-      {/* Barra de gradiente */}
       <div style={{
         width: '200px',
         height: '20px',
@@ -65,7 +63,6 @@ function HeatmapGradientLegend() {
         border: '1px solid #ccc',
       }}>
       </div>
-      {/* Texto de intensidade */}
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '5px' }}>
         <span>Baixa</span>
         <span>Alta</span>
@@ -113,7 +110,7 @@ function MissionPage({ stages, csvPath }) {
               alt="mission-location"
             />
           )}
-          <HeatmapGradientLegend /> {/* Legenda em estilo gradiente com valores reais */}
+          <HeatmapGradientLegend />
         </div>
       </div>
       <div style={{ padding: '10px' }}>

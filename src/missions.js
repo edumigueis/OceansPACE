@@ -160,13 +160,19 @@ const getMissionsByDifficulty = (difficulty) => {
                         {
                             displayMap: false,
                             component: <FinalStage
-                                onArrival={() => console.log('Final stage (Easy) reached!')}
-                                briefing={{
-                                    title: "The Omani Bloom (Easy)",
-                                    location: "The Omani Sea",
-                                    image: oman
-                                }}
-                            />
+                   onArrival={() => console.log('Final stage reached!')}
+      briefing={{
+        title: "The Omani Bloom",
+        location: "The Omani Sea",
+        image: oman,
+        report: "Durante essa missão, você explorou a região do Mar de Omã e analisou o impacto dos plânctons na biodiversidade local.",
+        reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
+      }}
+      badge={{
+        name: "Emblema da Missão Omani Bloom",
+        image: badgeFigure
+      }}
+                />
                         },
                     ],
                 },
@@ -331,10 +337,20 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             component: (
-                                <FinalStage
-                                    onArrival={() => console.log("Final stage reached!")}
-                                    briefing={{}}
-                                />
+                              <FinalStage
+                              onArrival={() => console.log('Final stage reached!')}
+                 briefing={{
+                   title: "The Omani Bloom",
+                   location: "The Omani Sea",
+                   image: oman,
+                   report: "Durante essa missão, você explorou a região do Mar de Omã e analisou o impacto dos plânctons na biodiversidade local.",
+                   reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
+                 }}
+                 badge={{
+                   name: "Emblema da Missão Omani Bloom",
+                   image: badgeFigure
+                 }}
+                           />
                             ),
                         },
                     ],

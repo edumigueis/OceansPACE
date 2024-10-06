@@ -60,7 +60,7 @@ const gData = [
   }
 ];
 
-function Main() {
+function Main({ missions }) {
   const globeEl = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ringsData, setRingsData] = useState([]);
@@ -69,6 +69,22 @@ function Main() {
   const [selectedPoint, setSelectedPoint] = useState(null); // Armazena a missão selecionada
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
+
+  const gData = missions.map(
+    (mission) => ({
+      lat: mission.lat,
+      lng: mission.lng,
+      title: mission.title,
+      location: mission.location,
+      image: mission.image,
+      text: mission.text,
+      maxR: 10,
+      propagationSpeed: 4,
+      repeatPeriod: 1000,
+      color: 'red',
+      mission,
+    })
+  );
 
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`

@@ -137,7 +137,7 @@ function Main({ missions }) {
           lng: 57.455609,
           location: "The Omani Sea",
           image: oman,
-          question: "What is the capital of France?"
+          text: "What is the capital of France?"
         }}
         pauseMainAudio={pauseMainAudio}
       />
@@ -159,7 +159,6 @@ function Main({ missions }) {
         {isPlaying ? 'Mute' : 'Unmute'}
       </button>
 
-      {/* Display the selected difficulty at the bottom-left */}
       <div style={{
         position: 'absolute',
         bottom: '20px',

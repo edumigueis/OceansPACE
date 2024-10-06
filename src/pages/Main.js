@@ -14,7 +14,11 @@ const gData = [
     maxR: 10,
     propagationSpeed: 4,
     repeatPeriod: 1000,
-    color: 'red'
+    color: 'red',
+    title: "The Omani Bloom",
+    location: "The Omani Sea",
+    image: oman,
+    question: "What is the capital of Oman?",
   },
   {
     lat: 17.112546,
@@ -22,7 +26,11 @@ const gData = [
     maxR: 10,
     propagationSpeed: 4,
     repeatPeriod: 1000,
-    color: 'red'
+    color: 'red',
+    title: "The West African Coast",
+    location: "West Africa",
+    image: oman,
+    question: "What is the capital of Senegal?",
   },
   {
     //Point Saginaw Bay 
@@ -31,18 +39,25 @@ const gData = [
     maxR: 10,
     propagationSpeed: 4,
     repeatPeriod: 1000,
-    color: 'red'
+    color: 'red',
+    title: "Saginaw Bay Exploration",
+    location: "Saginaw Bay, USA",
+    image: oman,
+    question: "What is the largest freshwater lake in the world?",
   },
+  {
     // Point Georges Bank and Gulf of Maine
-    {
-      lat: 43.6628,
-      lng: -61.3583,
-      maxR: 10,
-      propagationSpeed: 4,
-      repeatPeriod: 1000,
-      color: 'red'
-    }
-  
+    lat: 43.6628,
+    lng: -61.3583,
+    maxR: 10,
+    propagationSpeed: 4,
+    repeatPeriod: 1000,
+    color: 'red',
+    title: "Georges Bank Expedition",
+    location: "Gulf of Maine",
+    image: oman,
+    question: "What is the capital of the United States?",
+  }
 ];
 
 function Main() {
@@ -51,7 +66,7 @@ function Main() {
   const [ringsData, setRingsData] = useState([]);
   const [pointsData, setPointsData] = useState([]);
   const [isInteractive, setIsInteractive] = useState(false);
-  const [, setSelectedPoint] = useState(null);
+  const [selectedPoint, setSelectedPoint] = useState(null); // Armazena a missão selecionada
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
 
@@ -91,7 +106,7 @@ function Main() {
       setPointsData(gData.map(e => ({
         lat: e.lat,
         lng: e.lng,
-        color: e.concluded ? "green": e.color,
+        color: e.concluded ? "green" : e.color,
         altitude: 0.0001,
       })));
       setIsInteractive(true);
@@ -114,8 +129,8 @@ function Main() {
         globeEl.current.pointOfView({ lat: ring.lat, lng: ring.lng, altitude: 0.4 }, 1000);
 
         setTimeout(() => {
-          setSelectedPoint(ring);
-          setIsModalOpen(true);
+          setSelectedPoint(ring); // Armazena a missão correspondente
+          setIsModalOpen(true);   // Abre o modal
         }, 1500);
 
         return;
@@ -125,7 +140,7 @@ function Main() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedPoint(null);
+    setSelectedPoint(null); // Limpa a missão selecionada
     globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
@@ -159,19 +174,14 @@ function Main() {
           pointRadius={0.3}
         />
       </div>
-      <MissionBriefing
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        missionData={{
-          title: "The Omani Bloom",
-          lat: 24.618875,
-          lng: 57.455609,
-          location: "The Omani Sea",
-          image: oman,
-          question: "What is the capital of France?"
-        }}
-        pauseMainAudio={pauseMainAudio} // Pass the function to the MissionBriefing component
-      />
+      {selectedPoint && (
+        <MissionBriefing
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          missionData={selectedPoint} // Passa os dados da missão selecionada
+          pauseMainAudio={pauseMainAudio} // Pass the function to the MissionBriefing component
+        />
+      )}
       <button
         onClick={toggleAudio}
         style={{

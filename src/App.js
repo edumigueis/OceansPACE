@@ -8,11 +8,11 @@ import getMissionsByDifficulty from './missions'; // Caminho correto para import
 
 function App() {
   const missionPageRef = useRef(); // Create a ref for the MissionPage
-  const [difficulty, setDifficulty] = useState('MEDIUM'); // Default difficulty
+  const [difficulty, setDifficulty] = useState('EASY'); // Default difficulty
 
   // UseEffect to get the selected difficulty from localStorage
   useEffect(() => {
-    const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'MEDIUM';
+    const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'EASY';
     setDifficulty(savedDifficulty);
   }, []);
 
@@ -27,14 +27,14 @@ function App() {
         {missions.map((mission) => (
           <Route
             key={mission.index}
-            path={`/mission-${mission.index + 1}`}
+            path={`/mission-${mission.index}`}
             element={
               <MissionPage
                 ref={missionPageRef} // Pass the ref to MissionPage
                 stages={mission.stages.map((stage) => ({
                   ...stage,
                   component: React.cloneElement(stage.component, {
-                    setMissionStageIndex: () => missionPageRef.current.setStageIndex(stage.next), // Use the ref to call setStageIndex
+                    setMissionStageIndex: () => missionPageRef.current.setStageIndex(stage.next),
                   }),
                 }))}
                 csvPath={mission.csvPath}

@@ -77,7 +77,7 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                 </div>
                 <div className="column column-middle">
                     <div className="top-box">
-                        <h3>Location: {location}</h3>
+                        <h3>{location}</h3>
                     </div>
                     <div className="bottom-box">
                         <img src={image} alt="mission-location" />

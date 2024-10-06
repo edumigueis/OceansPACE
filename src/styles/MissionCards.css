@@ -66,6 +66,7 @@ body {
   text-align: left;
   transition: transform 0.4s ease-in-out;
   overflow-y: scroll;
+  max-height: 70%;
 }
 
 .mission-card-content:hover {

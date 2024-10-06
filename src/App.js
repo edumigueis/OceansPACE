@@ -7,8 +7,8 @@ import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
 import './styles/App.css';
-import cloroData from './assets/data/oman_winter_norm.csv';
-import aeroData from './assets/data/vulcan_erupting_norm.csv';
+import omanData from './assets/data/oman_winter_norm.csv';
+import vulcanData from './assets/data/vulcan_erupting_norm.csv';
 import oman from './assets/oman.jpg';
 import FinalStage from './components/stages/FinalStage';
 
@@ -59,7 +59,7 @@ const missions = [
         briefing={{}} 
       />
     ],
-    csvPath: cloroData,
+    csvPath: omanData,
     initialViewState: {
       latitude: 22.87161,
       longitude: 60.58191,
@@ -129,7 +129,7 @@ const missions = [
         briefing={{}} 
       />
     ],
-    csvPath: aeroData,
+    csvPath: vulcanData,
     initialViewState: {
       latitude: -16.83678,
       longitude: -174.25968,

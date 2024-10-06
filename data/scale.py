@@ -27,8 +27,8 @@ def normalize_chlor_a(csv_file, output_file):
     os.makedirs(output_dir, exist_ok=True)
 
     df = pd.read_csv(csv_file)
-    #df['oman_normalized'] = df['adg_unc_443'].apply(lambda x: normalize_value(x,oman_scale , normalized_scale))
-    df['vulcan_normalized'] = df['Rrs_531'].apply(lambda x: normalize_value(x, vulcan_scale, normalized_scale))
+    #df['normalized'] = df['adg_unc_443'].apply(lambda x: normalize_value(x,oman_scale , normalized_scale))
+    df['normalized'] = df['Rrs_531'].apply(lambda x: normalize_value(x, vulcan_scale, normalized_scale))
     df.to_csv(output_file, index=False)
     print(f"Normalized data saved to {output_file}")
 

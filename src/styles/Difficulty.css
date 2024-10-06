@@ -14,7 +14,22 @@
   body {
     background: white;
   }
+  .canvas-container {
+    position: relative;
+    width: 100%; /* Adjust width to match your canvas size */
+    height: 100vh; /* Full screen height */
+  }
   
+  .black-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.24); /* Black with 50% opacity */
+    pointer-events: none; /* Allow interaction with the Canvas below */
+    z-index: 1; /* Ensure the overlay is on top of the Canvas */
+  }
   .start-mission-button {
     position: absolute;
     bottom: 30px;

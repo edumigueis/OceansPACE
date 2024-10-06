@@ -6,6 +6,8 @@ import { Water } from 'three-stdlib';
 import '../styles/Difficulty.css';
 import LpContent from '../components/LpContent.js';
 import backgroundMusic from '../assets/sounds/background_water.mp3';
+import { Const } from 'wgsl_reflect';
+import { useNavigate } from 'react-router-dom';
 
 extend({ Water });
 
@@ -40,6 +42,7 @@ export default function App() {
   const [difficulty, setDifficulty] = useState('MEDIUM');
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
+  const navigate = useNavigate()
 
   const toggleAudio = () => {
     const audio = audioRef.current;
@@ -71,19 +74,22 @@ export default function App() {
   };
 
   const goToNextPage = () => {
-    window.location.href = '/main';
+    navigate("/main");
   };
 
   return (
     <>
-      <Canvas camera={{ position: [0, 5, 100], fov: 55, near: 1, far: 20000 }}>
-        <pointLight position={[100, 100, 100]} />
-        <pointLight position={[-100, -100, -100]} />
-        <Suspense fallback={null}>
-          <Ocean speed={getSpeed()} />
-        </Suspense>
-        <Sky scale={1000} sunPosition={[0, 0, 50]} sunColor="yellow" turbidity={6} rayleigh={2} />
-      </Canvas>
+      <div className="canvas-container">
+        <Canvas camera={{ position: [0, 5, 100], fov: 55, near: 1, far: 20000 }}>
+          <pointLight position={[100, 100, 100]} />
+          <pointLight position={[-100, -100, -100]} />
+          <Suspense fallback={null}>
+            <Ocean speed={getSpeed()} />
+          </Suspense>
+          <Sky scale={1000} sunPosition={[0, 0, 50]} sunColor="yellow" turbidity={6} rayleigh={2} />
+        </Canvas>
+        <div className="black-overlay"></div>
+      </div>
 
       <div className="lp-content-container">
         <LpContent setDifficulty={setDifficultyAndSave} />

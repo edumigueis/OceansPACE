@@ -69,7 +69,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             fallbackImage: oman,
                             next: 2,
                             component: (
-                                <InformativeSectionStage>
+                                <InformativeSectionStage nextStage={2}>
                                     <div className="mission-card-header">
                                         <h2>The whites</h2>
                                         <h4>There are two white things in the picture: clouds and snow.</h4>
@@ -123,7 +123,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             fallbackImage: oman,
                             next: 4,
                             component: (
-                                <InformativeSectionStage>
+                                <InformativeSectionStage nextStage={4}>
                                     <div className="mission-card-header">
                                         <h2>The answer is: Algae</h2>
                                         <h4>Here's some quick facts about it!</h4>
@@ -278,7 +278,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             fallbackImage: null,
                             next: 5,
                             component: (
-                                <InformativeSectionStage>
+                                <InformativeSectionStage nextStage={3}>
                                     <div className="mission-card-header">
                                         <h2>Mud flows</h2>
                                         <h4>Here's some quick facts about it!</h4>
@@ -427,7 +427,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             fallbackImage: null,
                             next: 3,
                             component: (
-                                <InformativeSectionStage>
+                                <InformativeSectionStage nextStage={3}>
                                     <div className="mission-card-header">
                                         <h2>Phytoplankton</h2>
                                         <h4>Here's some quick facts about it!</h4>

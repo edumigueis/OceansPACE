@@ -2,9 +2,9 @@ import React from 'react';
 import MissionCards from '../MissionCards';
 import '../../styles/MissionCards.css';
 
-function InformativeSectionStage({children, setMissionStageIndex}) {
-  const handleNextStage = (nextIndex) => {
-    setMissionStageIndex(nextIndex);
+function InformativeSectionStage({children, nextStage, setStageIndex}) {
+  const handleNextStage = () => {
+    setStageIndex(nextStage);
   };
 
   return (

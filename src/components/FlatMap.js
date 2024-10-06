@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, forwardRef, useImperativeHandle } from 'react';
 import { DeckGL } from '@deck.gl/react';
 import { HeatmapLayer } from '@deck.gl/aggregation-layers';
 import { TileLayer } from '@deck.gl/geo-layers';
 import { BitmapLayer } from '@deck.gl/layers';
 import Papa from 'papaparse';
+import { LinearInterpolator } from '@deck.gl/core';
 
-function FlatMap({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }) {
+const FlatMap = forwardRef(({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }, ref) => {
   const [heatData, setHeatData] = useState([]);
+  const [viewState, setViewState] = useState(initialViewState);
 
   useEffect(() => {
     const loadCSV = async () => {
@@ -30,7 +32,7 @@ function FlatMap({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }) {
               return [lon, lat, intensity];
             }).filter(item => item !== null);
 
-            console.log(formattedData)
+            console.log("Formatted Data:", formattedData);
             setHeatData(formattedData);
           },
           error: (error) => {
@@ -44,6 +46,22 @@ function FlatMap({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }) {
 
     loadCSV();
   }, [csvUrl]);
+
+  useImperativeHandle(ref, () => ({
+    focusOnCoordinates: (latitude, longitude, zoomLevel) => {
+      const newViewState = {
+        longitude,
+        latitude,
+        zoom: zoomLevel,
+        pitch: 0,
+        bearing: 0,
+        transitionDuration: 1000,
+        transitionInterpolator: new LinearInterpolator(),
+      };
+
+      setViewState(newViewState);
+    },
+  }));
 
   const layers = [
     new TileLayer({
@@ -82,13 +100,15 @@ function FlatMap({ csvUrl, initialViewState, heatmapConfig, tileLayerConfig }) {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
       <DeckGL
-        initialViewState={initialViewState}
+        viewState={viewState}
         controller={true}
         layers={layers}
+        onViewStateChange={({ viewState }) => setViewState(viewState)}  // Update viewState on user interaction
         style={{ height: '100vh', width: '100%' }}
+        onClick={() => console.log('Map clicked!')}  // Test click event
       />
     </div>
   );
-}
+});
 
 export default FlatMap;

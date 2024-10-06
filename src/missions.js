@@ -144,111 +144,127 @@ const getMissionsByDifficulty = (difficulty) => {
                                 }}
                             />
                         },
-
-                        {
-                            displayMap: true,
-                            fallbackImage: oman,
-                            component: <MultipleQuestionStage questionStages={[
-                                {
-                                    // ID 0: Pergunta inicial
-                                    text: "Start by looking closely at the picture. What do you see? What’s different or exciting? What caught your eye?",
-                                    options: [
-                                        { id: 1, text: "The White", explanation: "", nextQuestionId: 1 }, // Se escolher "The White", vai para ID 1
-                                        { id: 2, text: "The green and blue", explanation: "", nextQuestionId: 4 },
-                                        { id: 3, text: "The brown", explanation: "", nextQuestionId: 5 },
-                                    ],
-                                },
-                                {
-                                    // ID 1: Pergunta sobre os "The White"
-                                    text: "Is the white you see just one thing or more than one?",
-                                    options: [
-                                        { id: 1, text: "It's all the same", explanation: "", nextQuestionId: 2 },
-                                        { id: 2, text: "There are different whites", explanation: "", nextQuestionId: 2 },
-                                    ],
-                                },
-                                {
-                                    // ID 2: Pergunta sobre a aparência da neve
-                                    text: "Take a look at the snow, do you notice anything strange about how it looks?",
-                                    options: [
-                                        { id: 1, text: "No!", explanation: "", nextQuestionId: 3 },
-                                        { id: 2, text: "Yes!", explanation: "", nextQuestionId: 3 },
-                                    ],
-                                },
-                                {
-                                    // ID 3: Teorias sobre o que está acontecendo
-                                    text: "Can you come up with some theory about what is happening here?",
-                                    options: [
-                                        { id: 1, text: "Alien activity", explanation: "", nextQuestionId: null },
-                                        { id: 2, text: "Earthquake tremors", explanation: "", nextQuestionId: null },
-                                        { id: 3, text: "Underground creatures", explanation: "", nextQuestionId: null },
-                                        { id: 4, text: "Early signs of Spring", explanation: "", nextQuestionId: 0 },
-                                    ],
-                                },
-                                {
-                                    // ID 4: Pergunta sobre o que é o verde
-                                    text: "The blue is water, but the green what could be the green?",
-                                    options: [
-                                        { id: 1, text: "Algae", explanation: "", nextQuestionId: 0 },
-                                        { id: 2, text: "Stinky thing", explanation: "", nextQuestionId: null },
-                                        { id: 3, text: "Pollution", explanation: "", nextQuestionId: null },
-                                        { id: 4, text: "A giant sea monster taking a bath", explanation: "", nextQuestionId: null },
-                                    ],
-                                },
-                                {
-                                    // ID 5: 
-                                    text: "The brown ones are the continents, the land where we walk and live!",
-                                    options: [
-                                        { id: 1, text: "Back", explanation: "", nextQuestionId: 0 },
-
-                                    ],
-                                },
-                            ]} />,
-
-                        },
-                        {
-                            component: <FinalStage
-                                onArrival={() => console.log('Final stage reached!')}
-                                briefing={{
-                                    title: "The Omani Bloom",
-                                    location: "The Omani Sea",
-                                    image: oman
-                                }}
-                            />
-                        }
                     ],
                     csvPath: cloroData,
                 },
                 {
                     index: 1,
                     concluded: false,
-                    title: "The Arabian Peninsula",
-                    lat: -16.83678,
-                    lng: -174.25968,
-                    location: "Middle East",
+                    title: "Stuck in a Mudstery",
+                    lat: 43.671677,
+                    lng: -83.821499,
+                    location: "Saginaw Bay, Michigan, US",
                     image: oman,
-                    question: "What is the capital of Oman?",
+                    text: "Unusual changes are happening in Saginaw Bay after a big storm. The waters are shifting, and things aren’t quite right. Your mission is to explore the bay, uncover what’s causing the trouble. Can you help us solve the challenge before it’s too late? Saginaw Bay Saginaw Bay is a big, shallow area of water in eastern Michigan, right next to Lake Huron. It’s home to all kinds of amazing animals, like fish, birds, and other wildlife. Many people come here to fish, and birds love to visit the nearby wetlands. But over the years, the bay has faced some problems, like pollution and losing important habitats for animals. Thankfully, people are working hard to protect it and keep it healthy so that the bay can stay beautiful and full of life for years to come!",
                     displayMap: true,
                     fallbackImage: oman,
                     stages: [
                         {
+                            displayMap: false,
+                            fallbackImage: oman,
+                            next: 1,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"What catches your eye in this image?"}
+                                    options={[
+                                        { id: 'a', text: 'The lack of vibrant green in the water', explanation: 'Hmm, it looks like this area is missing that bright, lush green we saw in the last mission.' },
+                                        { id: 'b', text: 'The blue is no as bright', explanation: 'Looks like that brown stain is messing up the water’s sparkle! Time to put on our detective hats and see what’s behind it.' },
+                                        { id: 'c', text: 'The squares around the water', explanation: 'Look at all those little squares around the bay—they\'re homes, just like yours and mine! But what really catches our eye is that big brown stain in the water. Let’s dig in and see what’s going on!' },
+                                        { id: 'c', text: 'That brown stain is definitely standing out—it’s affecting the area for sure. Let’s get to the bottom of it and find out what’s happening!' },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={1}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: oman,
+                            next: 2,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"Could it be nature doing its thing, or do you think something’s up with the environment? What’s your guess?"}
+                                    options={[
+                                        { id: 'a', text: 'It\'s natural! Mother Nature’s just changing the scenery.', explanation: 'Good thinking! It could just be how this region looks without all the phytoplankton. But hey, that big brown splotch in the water is hard to miss! Let’s dive deeper and figure out what it is and what kind of splash it’s making!' },
+                                        { id: 'b', text: 'It’s an environmental impact! Something’s affecting this spot.', explanation: 'You’ve got a sharp eye! That brown stain is definitely up to no good here. Time to roll up our sleeves and investigate what\'s really going on!' },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={2}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: oman,
+                            next: 3,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"Where did this brown stain come from?"}
+                                    options={[
+                                        { id: 'a', text: 'It looks like it came from a river', explanation: 'Zooming in, we can spot a river hiding in plain sight! Its waters are the same shade of brown as the land around it. It seems like that’s the source, but the mystery continues—something outside the image might have started it all.' },
+                                        { id: 'b', text: 'It came from somewhere outside the image', explanation: 'Zooming in, we can spot a river hiding in plain sight! Its waters are the same shade of brown as the land around it. It seems like that’s the source, but the mystery continues—something outside the image might have started it all.' },
+                                        { id: 'c', text: 'It appeared spontaneously', explanation: 'Hmm, the storm might have stirred up more than just a breeze! After taking a closer peek, we can spot a river sneaking through. Its waters are so brown, they blend right into the land, looks like that’s where the brown stain is coming from!' },
+                                        { id: 'd', text: 'Many people swimming stirred up sediment from the bottom of the water', explanation: 'Hmm, the storm might have stirred up more than just a breeze! After taking a closer peek, we can spot a river sneaking through. Its waters are so brown, they blend right into the land, looks like that’s where the brown stain is coming from!' },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={3}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: oman,
+                            next: 4,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"It seems that those heavy rains brought more than just a downpour. Some water reservoirs couldn’t handle it, and now a whole lot of mud has found its way into the river and out into the bay. What do you think this could mean for the creatures living here?"}
+                                    options={[
+                                        { id: 'a', text: "There was no impact, it's just mud!", explanation: "A little mud is no big deal, but we’re talking about a lot of mud here! Imagine the biggest swimming pool you’ve ever seen filled to the brim with mud, and now imagine that times 100. That’s a whole lot of mud, and it can really shake things up." },
+                                        { id: 'b', text: 'Many fish and algae may have died', explanation: "You're right, that amount of mud is terrible!" },
+                                    ]}
+                                    correctAnswerId={'b'}
+                                    nextStage={4}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: true,
+                            fallbackImage: null,
+                            next: 5,
                             component: (
                                 <InformativeSectionStage>
                                     <div className="mission-card-header">
-                                        <h2>Mission 2</h2>
-                                        <h4>The Arabian Peninsula's Unique Ecosystem</h4>
+                                        <h2>Mud flows</h2>
+                                        <h4>Here's some quick facts about it!</h4>
                                     </div>
-                                    <div className="interactive-infographic">
-                                        <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+                                    <div className="image-container">
+                                        <img src={oman}></img>
                                     </div>
-                                    <div className="animated-diagram">
-                                        <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+                                    <div className="text">
+                                        <p>When all this mud enters the water, it stirs up the ecosystem. The water gets murky, making it hard for sunlight to reach the bottom. Without enough sunlight, the plants and algae that need it for energy can’t do their job, and eventually, they start to die off. These algae are super important because they’re at the base of the food chain, feeding fish, crustaceans, and lots of other creatures.
+                                            But that’s not all. All that mud also brings a load of organic matter with it. As this matter breaks down, it uses up the oxygen in the water. This can cause hypoxia, which is a fancy way of saying there’s not enough oxygen for fish and other animals to breathe. Without oxygen, many of them might not survive. So, this big muddy mess can throw off the whole balance of the bay, making it tough for the creatures that call it home.
+                                        </p>
                                     </div>
-                                    <h5>Fun Facts About Phytoplankton</h5>
-                                    <ul>
-                                        <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-                                        <li>They are the foundation of the aquatic food web...</li>
-                                    </ul>
                                 </InformativeSectionStage>
+                            ),
+                        },
+                        {
+                            displayMap: true,
+                            fallbackImage: null,
+                            next: 5,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"How can we solve this problem?"}
+                                    options={[
+                                        { id: 'a', text: "There is nothing to be done", explanation: "Come on, don’t be so gloomy! There’s always something we can do! Let’s head back and think again." },
+                                        { id: 'b', text: 'Stop the mud', explanation: "Stopping the mud completely is a tall order and pretty costly too. The real trick is to focus on making sure this doesn’t happen again in the future." },
+                                        { id: 'c', text: 'Invent a method that does not yet exist', explanation: "I love your creativity! New ideas are always welcome, and who knows what we’ll discover in the future. For now, though, we need to take steps to stop the problem from getting worse and, of course, prevent it from happening again." },
+                                        { id: 'd', text: 'Take measures to prevent it from happening again', explanation: "Exactly! Preventive measures are the way to go if we want to stop this from becoming a recurring issue." },
+                                        { id: 'e', text: 'Take palliative measures', explanation: "Palliative measures are helpful for sure. Whether it’s temporary barriers or other strategies, they can provide some relief in the short term." },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={5}
+                                />
                             ),
                         },
                         {
@@ -308,7 +324,6 @@ const getMissionsByDifficulty = (difficulty) => {
                         tileSize: 256,
                     },
                 }
-
             ];
 
         case 'MEDIUM':

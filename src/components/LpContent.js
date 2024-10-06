@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import "../styles/SelectionComponent.css"; // Certifique-se de criar este arquivo CSS para estilos
 
-const LpContent = () => {
+const LpContent = ({ setDifficulty }) => {
   const options = ["EASY", "MEDIUM", "HARD"]; // As opções para mudar
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1); // Start at "MEDIUM"
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % options.length); // Avança na lista
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % options.length;
+      setDifficulty(options[newIndex]); // Update difficulty in the parent component
+      return newIndex;
+    });
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + options.length) % options.length); // Volta na lista
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + options.length) % options.length;
+      setDifficulty(options[newIndex]); // Update difficulty in the parent component
+      return newIndex;
+    });
   };
 
   return (
@@ -33,7 +41,7 @@ const LpContent = () => {
       </div>
 
       <p className="footer-text">
-        DIFFICULTY LEVEL CHANGES THE OCEANS PACE
+        DIFFICULTY LEVEL CHANGES THE OCEAN'S PACE
       </p>
     </div>
   );

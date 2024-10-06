@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/MissionBriefing.css';
@@ -11,19 +12,20 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
 
     return (
         <motion.div
-            className="modal-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
+            className="modal-overlay" // Modal overlay
+            initial={{ opacity: 0 }} // Initial opacity animation
+            animate={{ opacity: 1 }} // Animation for 100% opacity
+            exit={{ opacity: 0 }} // Exit animation
+            onClick={onClose} // Close the modal when clicking outside the content
         >
             <motion.div
-                className="modal-content"
-                initial={{ y: "-100vh" }}
-                animate={{ y: "0" }}
-                exit={{ y: "-100vh" }}
-                onClick={(e) => e.stopPropagation()}
+                className="modal-content" // Modal content
+                initial={{ y: "-100vh" }} // Initial animation from outside the screen (top)
+                animate={{ y: "0" }} // Animation to bring the modal to the center
+                exit={{ y: "-100vh" }} // Exit animation to go outside the screen
+                onClick={(e) => e.stopPropagation()} // Prevent clicks inside the modal from closing it
             >
+                {/* Left column - Mission details */}
                 <div className="column column-left">
                     <div className="box spaced">
                         <div className="top">
@@ -77,12 +79,31 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                         <img src={image} alt="mission-location" />
                     </div>
                 </div>
-
+                
                 <div className="column column-right">
                     <div className="quiz-question">
                         <h3>Location description</h3>
                         <p>{text}</p>
                     </div>
+
+                    {/* Button to control sound */}
+                    <button
+                        onClick={toggleAudio}
+                        style={{
+                            position: 'absolute',
+                            bottom: '20px',
+                            right: '20px',
+                            zIndex: 11,
+                            padding: '10px 20px',
+                            backgroundColor: isPlaying ? '#f44336' : '#4CAF50',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {isPlaying ? 'Mute' : 'Unmute'}
+                    </button>
                 </div>
             </motion.div>
         </motion.div>

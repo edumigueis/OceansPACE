@@ -4,61 +4,7 @@ import CardWithAnimatedText from '../components/CardWithAnimatedText';
 import MissionBriefing from '../components/MissionBriefing';
 import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
-import oman from '../assets/oman.jpg';
 import backgroundMusic from '../assets/sounds/background_space.mp3';
-
-const gData = [
-  {
-    lat: 24.618875,
-    lng: 57.455609,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red',
-    title: "The Omani Bloom",
-    location: "The Omani Sea",
-    image: oman,
-    question: "What is the capital of Oman?",
-  },
-  {
-    lat: 17.112546,
-    lng: -16.917884,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red',
-    title: "The West African Coast",
-    location: "West Africa",
-    image: oman,
-    question: "What is the capital of Senegal?",
-  },
-  {
-    //Point Saginaw Bay 
-    lat: 43.9317,
-    lng: -83.1169,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red',
-    title: "Saginaw Bay Exploration",
-    location: "Saginaw Bay, USA",
-    image: oman,
-    question: "What is the largest freshwater lake in the world?",
-  },
-  {
-    // Point Georges Bank and Gulf of Maine
-    lat: 43.6628,
-    lng: -61.3583,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
-    color: 'red',
-    title: "Georges Bank Expedition",
-    location: "Gulf of Maine",
-    image: oman,
-    question: "What is the capital of the United States?",
-  }
-];
 
 function Main({ missions }) {
   const globeEl = useRef();
@@ -194,8 +140,8 @@ function Main({ missions }) {
         <MissionBriefing
           isOpen={isModalOpen}
           onClose={closeModal}
-          missionData={selectedPoint} // Passa os dados da missão selecionada
-          pauseMainAudio={pauseMainAudio} // Pass the function to the MissionBriefing component
+          missionData={selectedPoint}
+          pauseMainAudio={pauseMainAudio}
         />
       )}
       <button

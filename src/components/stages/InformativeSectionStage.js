@@ -1,5 +1,4 @@
 import React from 'react';
-import MissionCards from '../MissionCards';
 import '../../styles/MissionCards.css';
 
 function InformativeSectionStage({children, nextStage, setStageIndex}) {

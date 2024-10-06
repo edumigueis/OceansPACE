@@ -143,7 +143,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             displayMap: true,
                             next: 5,
                             component: (
-                                <MapFocusStage
+                                <MapFocusStage nextStage={5}
                                     images={[
                                         {
                                             lat: 24.618875,
@@ -320,8 +320,9 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
+                            next: 7,
                             component: (
-                                <MapFocusStage
+                                <MapFocusStage nextStage={7}
                                     images={[
                                         {
                                             lat: 43.648052,

@@ -3,7 +3,7 @@ import { useMap } from './MapProvider';
 import MissionCards from '../MissionCards';
 import '../../styles/MapFocusStage.css';
 
-function MapFocusStage({ images, setMissionStageIndex }) {
+function MapFocusStage({ images, setStageIndex, nextStage }) {
   const { focusOnCoordinates } = useMap();
   const [visibleMissions, setVisibleMissions] = useState([images[0]]);
   const [readMissions, setReadMissions] = useState([]); // Rastreia missões lidas
@@ -25,8 +25,8 @@ function MapFocusStage({ images, setMissionStageIndex }) {
   };
 
   // Função para avançar para o próximo estágio
-  const handleNextStage = (nextIndex) => {
-    setMissionStageIndex(nextIndex);
+  const handleNextStage = () => {
+    setStageIndex(nextStage);
   };
 
   return (

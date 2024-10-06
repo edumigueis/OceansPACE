@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import Question from '../Question';
 
-function SingleQuestionStage({ setStageIndex, handleCenterMap }) {
+function SingleQuestionStage({ setStageIndex }) {
   const [questionAnswered, setQuestionAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer);
     setQuestionAnswered(true);
-
-    handleCenterMap(22.8, 60.5);
 
     if (answer.isCorrect) {
       setTimeout(() => {

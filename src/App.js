@@ -11,6 +11,7 @@ import cloroData from './assets/data/cloro.csv';
 import aeroData from './assets/data/aero.csv';
 import oman from './assets/missions/oman.jpg';
 import FinalStage from './components/stages/FinalStage';
+import { title } from 'framer-motion/client';
 
 const missions = [
   {
@@ -34,7 +35,7 @@ const missions = [
           ],
         }}
       />,
-      <InformativeSectionStage handleCenterMap={() => { }}>
+      <InformativeSectionStage>
         <div className="mission-card-header">
           <h2>Mission 1</h2>
           <h4>The Role of Phytoplankton</h4>
@@ -52,11 +53,28 @@ const missions = [
         </ul>
       </InformativeSectionStage>,
       <MapFocusStage
-        focusData={{ title: "Mission 3", content: "Complete Your Goals" }}
+        images={[
+          {
+            lat: 24.618875,
+            lng: 57.455609,
+            image: oman,
+            title: "alooo",
+            text: "aaai",
+            zoom: 7
+          },
+          {
+            lat: 29.618875,
+            lng: 57.455609,
+            image: oman,
+            title: "alooo",
+            text: "aaai",
+            zoom: 7
+          }
+        ]}
       />,
-      <FinalStage 
-        onArrival={() => console.log('Final stage reached!')} 
-        briefing={{}} 
+      <FinalStage
+        onArrival={() => console.log('Final stage reached!')}
+        briefing={{}}
       />
     ],
     csvPath: cloroData,
@@ -104,7 +122,7 @@ const missions = [
           ],
         }}
       />,
-      <InformativeSectionStage handleCenterMap={() => { }}>
+      <InformativeSectionStage>
         <div className="mission-card-header">
           <h2>Mission 2</h2>
           <h4>The Arabian Peninsula's Unique Ecosystem</h4>
@@ -122,11 +140,28 @@ const missions = [
         </ul>
       </InformativeSectionStage>,
       <MapFocusStage
-        focusData={{ title: "Mission 3", content: "Analyze Data" }}
+        images={[
+          {
+            lat: 24.618875,
+            lng: 57.455609,
+            image: oman,
+            title: "alooo",
+            text: "aaai",
+            zoom: 7
+          },
+          {
+            lat: 29.618875,
+            lng: 57.455609,
+            image: oman,
+            title: "alooo",
+            text: "aaai",
+            zoom: 7
+          }
+        ]}
       />,
-      <FinalStage 
-        onArrival={() => console.log('Final stage reached!')} 
-        briefing={{}} 
+      <FinalStage
+        onArrival={() => console.log('Final stage reached!')}
+        briefing={{}}
       />
     ],
     csvPath: aeroData,

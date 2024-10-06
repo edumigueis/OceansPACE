@@ -34,8 +34,6 @@ const MissionBriefing = ({ isOpen, onClose, missionData }) => {
                             <p>LAT: {lat}, LNG: {lng}</p>
                         </div>
                     </div>
-
-                    {/* Conditional Button based on 'concluded' status */}
                     <div
                         className={`box button ${concluded ? 'completed' : ''}`}
                         onClick={() => !concluded && navigator("/mission-" + (index + 1))}

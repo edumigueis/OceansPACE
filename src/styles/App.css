@@ -64,3 +64,45 @@
     font-size: 0.875rem;
   }
 }
+
+/* Main container for the globe and cards */
+.main-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Coordinates card with animated text */
+.coordinates-card {
+  position: absolute;
+  left: 50px;
+  top: calc(50% - 80px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Globe container styling */
+.globe-container {
+  position: relative;
+  z-index: 9;
+  pointer-events: all;
+}
+
+/* Button to toggle background music */
+.audio-toggle-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 11;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.audio-toggle-button:active {
+  background-color: #f44336;
+}

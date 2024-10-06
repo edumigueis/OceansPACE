@@ -6,7 +6,7 @@ import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
 import backgroundMusic from '../assets/sounds/background_space.mp3';
 
-function Main({ coordinates, briefings }) {
+function Main({ missions }) {
   const globeEl = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ringsData, setRingsData] = useState([]);
@@ -14,17 +14,22 @@ function Main({ coordinates, briefings }) {
   const [isInteractive, setIsInteractive] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(new Audio(backgroundMusic));
+  const audioRef = useRef(null);
 
-  // Create globe data including index for each coordinate
-  const gData = coordinates.map(({ index, latitude, longitude }) => ({
+  const maxR = 16;
+  const propagationSpeed = 6;
+  
+  const repeatPeriod = (maxR / propagationSpeed) * 0.3 * 1000;
+
+  const gData = missions.map((mission, index) => ({
     index,
-    lat: latitude,
-    lng: longitude,
-    maxR: 10,
-    propagationSpeed: 4,
-    repeatPeriod: 1000,
+    lat: mission.lat,
+    lng: mission.lng,
+    maxR: maxR,
+    propagationSpeed: propagationSpeed,
+    repeatPeriod: repeatPeriod,
     color: 'red',
+    concluded: mission.concluded,
   }));
 
   const coordinatesText = gData.map(
@@ -32,46 +37,53 @@ function Main({ coordinates, briefings }) {
   );
 
   const toggleAudio = () => {
-    const audio = audioRef.current;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.loop = true;
-      audio.play().catch(error => console.log('Audio play failed:', error));
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.loop = true;
+        audioRef.current.play().catch(error => console.error('Audio play failed:', error));
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setRingsData(gData);
-      setPointsData(gData.map(e => ({ lat: e.lat, lng: e.lng, color: e.color, altitude: 0.0001 })));
-      setIsInteractive(true);
-    }, 4000);
+    audioRef.current = new Audio(backgroundMusic);
 
     return () => {
-      clearTimeout(timer);
-      audioRef.current.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
     };
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRingsData(gData.filter(mission => !mission.concluded));
+      setPointsData(gData.map(e => ({
+        lat: e.lat,
+        lng: e.lng,
+        color: e.concluded ? "green": e.color,
+        altitude: 0.0001,
+      })));
+      setIsInteractive(true);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [gData]);
 
   const handleClick = (e) => {
     if (!isInteractive) return;
 
     const { lat, lng } = e;
-
     for (const ring of gData) {
-      const distance = Math.sqrt(
-        Math.pow(lat - ring.lat, 2) + Math.pow(lng - ring.lng, 2)
-      );
-
+      const distance = Math.sqrt(Math.pow(lat - ring.lat, 2) + Math.pow(lng - ring.lng, 2));
       if (distance < ring.maxR * 1.2) {
         globeEl.current.pointOfView({ lat: ring.lat, lng: ring.lng, altitude: 0.4 }, 1000);
-
-        // Immediately update the selected point and open modal
         setSelectedPoint(ring);
         setIsModalOpen(true);
-
         return;
       }
     }
@@ -83,15 +95,14 @@ function Main({ coordinates, briefings }) {
     globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
-  // Get the briefing corresponding to the selected point
-  const selectedBriefing = selectedPoint ? briefings[selectedPoint.index] : null;
+  const selectedBriefing = selectedPoint ? missions[selectedPoint.index] : null;
 
   return (
-    <div style={{ display: 'flex', width: '100vw', height: '100vh', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', left: '50px', top: 'calc(50% - 80px)', zIndex: 10, pointerEvents: 'none' }}>
+    <div className="main-container">
+      <div className="coordinates-card">
         <CardWithAnimatedText coordinates={coordinatesText} />
       </div>
-      <div style={{ position: 'relative', zIndex: 9, pointerEvents: 'all' }}>
+      <div className="globe-container">
         <Globe
           ref={globeEl}
           globeImageUrl={lowResEarth}
@@ -111,24 +122,10 @@ function Main({ coordinates, briefings }) {
         <MissionBriefing
           isOpen={isModalOpen}
           onClose={closeModal}
-          missionData={selectedBriefing} // Pass the selected briefing
+          missionData={selectedBriefing}
         />
       )}
-      <button
-        onClick={toggleAudio}
-        style={{
-          position: 'absolute',
-          bottom: '20px',
-          right: '20px',
-          zIndex: 11,
-          padding: '10px 20px',
-          backgroundColor: isPlaying ? '#f44336' : '#4CAF50',
-          color: 'white',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer'
-        }}
-      >
+      <button className="audio-toggle-button" onClick={toggleAudio}>
         {isPlaying ? 'Mute' : 'Unmute'}
       </button>
     </div>

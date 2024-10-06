@@ -1,4 +1,5 @@
 import oman from './assets/oman.jpg';
+import badgeFigure from './assets/Badge.png';
 import cloroData from './assets/data/oman_winter_norm.csv';
 import aeroData from './assets/data/vulcan_erupting_norm.csv';
 import MultipleQuestionStage from './components/stages/MultipleQuestionStage';
@@ -64,16 +65,6 @@ const getMissionsByDifficulty = (difficulty) => {
                   ],
                 },
               ]} />,
-            },
-            {
-              component: <FinalStage
-                onArrival={() => console.log('Final stage (Easy) reached!')}
-                briefing={{
-                  title: "The Omani Bloom (Easy)",
-                  location: "The Omani Sea",
-                  image: oman
-                }}
-              />
             },
             {
                 displayMap: true,
@@ -153,12 +144,17 @@ const getMissionsByDifficulty = (difficulty) => {
             },
             {
                 component: <FinalStage
-                    onArrival={() => console.log('Final stage reached!')}
-                    briefing={{
-                        title: "The Omani Bloom",
-                        location: "The Omani Sea",
-                        image: oman
-                    }}
+                   onArrival={() => console.log('Final stage reached!')}
+      briefing={{
+        title: "The Omani Bloom",
+        location: "The Omani Sea",
+        image: oman,
+        report: "Durante essa missão, você explorou a região do Mar de Omã e analisou o impacto dos plânctons na biodiversidade local."
+      }}
+      badge={{
+        name: "Emblema da Missão Omani Bloom",
+        image: badgeFigure
+      }}
                 />
             }
           ],

@@ -1,47 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/FinalStage.css';
 
-function FinalStage({ onArrival, briefing }) {
+function FinalStage({ onArrival, briefing, badge }) {
   const navigate = useNavigate();
+  const [displayedReport, setDisplayedReport] = useState('');
 
   useEffect(() => {
     if (onArrival) {
       onArrival();
     }
-  }, [onArrival]);
 
+    // Define o relatório diretamente sem animação
+    if (briefing.report) {
+      setDisplayedReport(briefing.report); // Define o texto do relatório diretamente
+    }
+  }, [onArrival, briefing.report]);
 
-  const handleRedirect = () => {
-    navigate('/');
+  const handleClaimBadge = () => {
+    navigate('/'); // Redireciona imediatamente após clicar no botão
   };
 
   return (
-    <div
-      style={{
-        position: 'absolute', 
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        color: '#fff', 
-        zIndex: 1000, 
-      }}
-    >
-      <h1>Final Stage Completed!</h1>
-      <h2>{briefing.title}</h2>
-      <img src={briefing.image} alt="Mission Briefing" style={{ width: '200px', marginBottom: '20px' }} />
-      <p>{briefing.location}</p>
-      <button
-        style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
-        onClick={handleRedirect} // Chama a função para redirecionar
-      >
-        Claim Badge
-      </button>
+    <div className="final-stage-container">
+      <h1 className="title">Congratulations, Scientist!</h1>
+      <h2 className="subtitle">Mission Completed: {briefing.title}</h2>
+
+      <img className="mission-image" src={briefing.image} alt="Mission Briefing" />
+      <p className="mission-location">{briefing.location}</p>
+
+      <div className="mission-report">
+        <h3>Mission Report</h3>
+        <p>{displayedReport}</p> {/* Exibe o texto do relatório diretamente */}
+      </div>
+
+      <div className="badge-and-button">
+        <div className="badge-section">
+          <h3>Badge</h3>
+          <div className="badge-wrapper">
+            <img className="badge-image" src={badge.image} alt="Badge" />
+            <p className="badge-name">{badge.name}</p>
+          </div>
+        </div>
+
+        <button className="claim-badge-btn" onClick={handleClaimBadge}>
+          Claim Badge
+        </button>
+      </div>
     </div>
   );
 }

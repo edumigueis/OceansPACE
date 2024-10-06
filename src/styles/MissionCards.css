@@ -31,9 +31,77 @@
   background: none;
   border: none;
   cursor: pointer;
+  
 }
 
 .mission-card-navigation button svg {
   height: 32px;
   fill: currentColor;
 }
+
+
+
+
+/* Estilo da seção informativa */
+.informative-section {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  width: 100%; /* Usa toda a largura disponível */
+  height: 100vh; /* Usa toda a altura da tela */
+  background-color: #f0f0f0;
+}
+
+/* Estilo para o conteúdo do cartão da missão */
+.mission-card-content {
+  width: 400px; /* Ajuste para caber no layout */
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  font-family: Arial, sans-serif;
+}
+
+.mission-card-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Botão de foco nas coordenadas */
+.focus-button {
+  background-color: #00008b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.focus-button:hover {
+  background-color: #0055b3;
+}
+
+/* Ajuste das setas de navegação */
+.arrow {
+  font-size: 24px;
+  color: #00008b;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.arrow:hover {
+  color: #0055b3;
+}
+
+/* Ajustes para o texto */
+.mission-card-content p {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+

@@ -105,83 +105,98 @@ const missions = [
         image: oman,
         question: "What is the capital of Oman?",
         stages: [
-            <SingleQuestionStage
+          {
+            component: (
+              <SingleQuestionStage
                 question={{
-                    text: "What is the primary source of energy for photosynthesis in phytoplankton?",
-                    options: [
-                        { id: 1, text: "The Sun", isCorrect: true },
-                        { id: 2, text: "Volcanic heat", isCorrect: false },
-                        { id: 3, text: "Geothermal vents", isCorrect: false },
-                        { id: 4, text: "The Moon", isCorrect: false },
-                    ],
+                  text: "What is the primary source of energy for photosynthesis in phytoplankton?",
+                  options: [
+                    { id: 1, text: "The Sun", isCorrect: true },
+                    { id: 2, text: "Volcanic heat", isCorrect: false },
+                    { id: 3, text: "Geothermal vents", isCorrect: false },
+                    { id: 4, text: "The Moon", isCorrect: false },
+                  ],
                 }}
-            />,
-            <InformativeSectionStage>
+              />
+            ),
+          },
+          {
+            component: (
+              <InformativeSectionStage>
                 <div className="mission-card-header">
-                    <h2>Mission 2</h2>
-                    <h4>The Arabian Peninsula's Unique Ecosystem</h4>
+                  <h2>Mission 2</h2>
+                  <h4>The Arabian Peninsula's Unique Ecosystem</h4>
                 </div>
                 <div className="interactive-infographic">
-                    <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
+                  <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
                 </div>
                 <div className="animated-diagram">
-                    <h5>How Phytoplankton Contribute to Oxygen Production</h5>
+                  <h5>How Phytoplankton Contribute to Oxygen Production</h5>
                 </div>
                 <h5>Fun Facts About Phytoplankton</h5>
                 <ul>
-                    <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-                    <li>They are the foundation of the aquatic food web...</li>
+                  <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
+                  <li>They are the foundation of the aquatic food web...</li>
                 </ul>
-            </InformativeSectionStage>,
-            <MapFocusStage
+              </InformativeSectionStage>
+            ),
+          },
+          {
+            component: (
+              <MapFocusStage
                 images={[
-                    {
-                        lat: 24.618875,
-                        lng: 57.455609,
-                        image: oman,
-                        title: "alooo",
-                        text: "aaai",
-                        zoom: 7,
-                    },
-                    {
-                        lat: 29.618875,
-                        lng: 57.455609,
-                        image: oman,
-                        title: "alooo",
-                        text: "aaai",
-                        zoom: 7,
-                    },
+                  {
+                    lat: 24.618875,
+                    lng: 57.455609,
+                    image: oman,
+                    title: "alooo",
+                    text: "aaai",
+                    zoom: 7,
+                  },
+                  {
+                    lat: 29.618875,
+                    lng: 57.455609,
+                    image: oman,
+                    title: "alooo",
+                    text: "aaai",
+                    zoom: 7,
+                  },
                 ]}
-            />,
-            <FinalStage
-                onArrival={() => console.log('Final stage reached!')}
+              />
+            ),
+          },
+          {
+            component: (
+              <FinalStage
+                onArrival={() => console.log("Final stage reached!")}
                 briefing={{}}
-            />
+              />
+            ),
+          },
         ],
         csvPath: aeroData,
         initialViewState: {
-            latitude: -16.83678,
-            longitude: -174.25968,
-            zoom: 7,
+          latitude: -16.83678,
+          longitude: -174.25968,
+          zoom: 7,
         },
         heatmapConfig: {
-            intensity: 1,
-            colorRange: [
-                [255, 0, 0, 255],
-                [255, 255, 0, 255],
-                [0, 255, 0, 255],
-                [0, 255, 255, 255],
-                [0, 0, 255, 255],
-            ],
-            threshold: 0.9,
+          intensity: 1,
+          colorRange: [
+            [255, 0, 0, 255],
+            [255, 255, 0, 255],
+            [0, 255, 0, 255],
+            [0, 255, 255, 255],
+            [0, 0, 255, 255],
+          ],
+          threshold: 0.9,
         },
         tileLayerConfig: {
-            data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            minZoom: 0,
-            maxZoom: 19,
-            tileSize: 256,
+          data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          minZoom: 0,
+          maxZoom: 19,
+          tileSize: 256,
         },
-    },
-];
+      },];
 
 export default missions;

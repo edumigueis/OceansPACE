@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import MissionPage from './pages/MissionPage';
 import DifficultyPage from './pages/DifficultyPage';
-import InvitationPage from './pages/InvitationPage';
 import SingleQuestionStage from './components/stages/SingleQuestionStage';
 import InformativeSectionStage from './components/stages/InformativeSectionStage';
 import MapFocusStage from './components/stages/MapFocusStage';
@@ -13,7 +12,6 @@ import aeroData from './assets/data/vulcan_erupting_norm.csv';
 import oman from './assets/oman.jpg';
 import FinalStage from './components/stages/FinalStage';
 import MapReadingGuide from './components/stages/MapReadingGuide';
-import { title } from 'framer-motion/client';
 
 const missions = [
   {
@@ -26,7 +24,10 @@ const missions = [
     image: oman,
     text: "Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
     stages: [
-      <SingleQuestionStage
+      {
+        displayMap: false,
+        fallbackImage: oman,
+        component: <SingleQuestionStage
         question={{
           text: "How do phytoplankton contribute to the Earth's oxygen production and carbon cycling in the ocean?",
           options: [
@@ -36,47 +37,15 @@ const missions = [
             { id: 4, text: "By reducing sunlight and increasing carbon dioxide in the atmosphere.", isCorrect: false },
           ],
         }}
-      />,
-      <InformativeSectionStage>
-        <div className="mission-card-header">
-          <h2>Mission 1</h2>
-          <h4>The Role of Phytoplankton</h4>
-        </div>
-        <div className="interactive-infographic">
-          <h5>Interactive Infographic: The Life Cycle of Phytoplankton</h5>
-        </div>
-        <div className="animated-diagram">
-          <h5>How Phytoplankton Contribute to Oxygen Production</h5>
-        </div>
-        <h5>Fun Facts About Phytoplankton</h5>
-        <ul>
-          <li>Phytoplankton are responsible for producing about 50% of the Earth's oxygen!</li>
-          <li>They are the foundation of the aquatic food web, supporting a vast array of marine life.</li>
-        </ul>
-      </InformativeSectionStage>,
-      <MapFocusStage
-        images={[
-          {
-            lat: 24.618875,
-            lng: 57.455609,
-            image: oman,
-            title: "alooo",
-            text: "aaai",
-            zoom: 7
-          },
-          {
-            lat: 29.618875,
-            lng: 57.455609,
-            image: oman,
-            title: "alooo",
-            text: "aaai",
-            zoom: 7
-          }
-        ]}
-      />,
-      <FinalStage
+      />
+      },
+      {
+        component: <FinalStage
         onArrival={() => console.log('Final stage reached!')}
       />
+      }
+      
+      
     ],
     csvPath: cloroData,
     initialViewState: {
@@ -295,7 +264,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Main missions={missions} />} />
         <Route path="/difficulty-selection" element={<DifficultyPage />} />
-        <Route path="/invitation" element={<InvitationPage />} />
         {missions.map((mission) => (
           <Route
             key={mission.index}

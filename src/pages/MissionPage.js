@@ -40,7 +40,7 @@ function MissionPage({ stages, csvPath }) {
     console.log("Focused on coordinates");
   };
 
-  const currentStage = React.cloneElement(stages[stageIndex], {
+  const currentStage = React.cloneElement(stages[stageIndex].component, {
     setStageIndex,
   });
 
@@ -49,13 +49,18 @@ function MissionPage({ stages, csvPath }) {
       <div style={{ position: 'relative', display: 'flex', height: '100vh', width: '100vw' }}>
         {currentStage}
         <div style={{ flex: 1, zIndex: 0 }}>
-          <FlatMap
-            ref={mapRef}
-            csvUrl={csvPath}
-            initialViewState={initialViewState}
-            heatmapConfig={heatmapConfig}
-            tileLayerConfig={tileLayerConfig}
-          />
+          {
+            stages[stageIndex].displayMap === false ?
+              <img style={{ position: 'relative', height: '100vh', width: '100vw' }} src={stages[stageIndex].fallbackImage} alt="mission-location" />
+              : <FlatMap
+                ref={mapRef}
+                csvUrl={csvPath}
+                initialViewState={initialViewState}
+                heatmapConfig={heatmapConfig}
+                tileLayerConfig={tileLayerConfig}
+              />
+          }
+
         </div>
         <div style={{ padding: '10px' }}>
           <button onClick={() => setStageIndex((prev) => (prev > 0 ? prev - 1 : 0))}>Previous</button>

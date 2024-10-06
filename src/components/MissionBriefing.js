@@ -83,8 +83,6 @@ const MissionBriefing = ({ isOpen, onClose, missionData, pauseMainAudio }) => {
                     <div className="quiz-question">
                         <h3>{question}</h3>
                     </div>
-
-                    {/* Button to control sound */}
                     <button
                         onClick={toggleAudio}
                         style={{

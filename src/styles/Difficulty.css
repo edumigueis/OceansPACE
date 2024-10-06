@@ -17,8 +17,8 @@
   
   .start-mission-button {
     position: absolute;
-    bottom: 10%;
-    right: 5%;
+    bottom: 30px;
+    right: 20px;
     padding: 15px 30px;
     background-color: #1CAAD9;
     color: white;
@@ -35,4 +35,3 @@
     transform: translate(-50%, -50%);
     z-index: 2;
   }
-  

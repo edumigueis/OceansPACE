@@ -1,112 +1,36 @@
 .selection-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #0000;
-    color: white;
-    height: 100vh;
-    justify-content: center;
-  }
-  
-  .logo {
-    width: 100px;
-    height: 100px;
-  }
-  
-  h1 {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-  
-  p {
-    font-size: 14px;
-    margin-bottom: 30px;
-  }
-  
-  .selection-box {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin: 20px 0;
-  }
-  
-  .arrow {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-  }
-  
-  .option-display {
-    padding: 10px 30px;
-    background-color: #e0e0e0;
-    color: #000;
-    font-size: 18px;
-    border-radius: 10px;
-  }
-  
-  .footer-text {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #fff;
-  }
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* This helps push the footer to the bottom */
+  text-align: center;
+  color: white;
+  height: 100vh; /* Full height to ensure footer stays at the bottom */
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100vw;
+}
 
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
+  object-fit: contain; /* Ensures the logo maintains its aspect ratio */
+  margin-bottom: 20px;
 }
 
 h1 {
   font-size: 36px;
   margin: 20px 0;
+  color: #FFFFFF; /* Bright yellow color for better contrast */
+  letter-spacing: 1.5px;
 }
 
-p {
-  font-size: 14px;
+.text {
+  font-size: 20px !important; /* Increased font size for better readability */
   margin-bottom: 30px;
-}
-
-.selection-box {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.arrow {
-  background-color: transparent;
-  border: none;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.option-display {
-  padding: 10px 30px;
-  background-color: rgb(28, 170, 217);
-  color: #ffffff;
-  font-size: 18px;
-  border-radius: 10px;
-}
-
-.footer-text {
-  margin-top: 30px;
-  font-size: 14px;
-  color: #fff;
-}
-
-.selection-container {
-  text-align: center;
-  color: white;
-  padding: 20px;
-}
-
-.logo {
-  width: 150px;
-  margin-bottom: 20px;
+  color: #ddd !important; /* Slightly lighter shade for text readability */
+  line-height: 1.5; /* Improved spacing between lines */
+  max-width: 900px; /* To keep the text blocks at a comfortable reading width */
 }
 
 .image-selection {
@@ -125,10 +49,10 @@ p {
 }
 
 .image-button img {
-  width: 100px;
-  height: 100px;
+  width: 120px; /* Slightly bigger for better visual impact */
+  height: 120px;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 4px solid white;
   transition: transform 0.3s;
 }
 
@@ -149,6 +73,27 @@ p {
 }
 
 .footer-text {
-  margin-top: 20px;
   font-size: 14px;
+  color: #bbb; /* Lighter shade for the footer text */
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
+
+/* Ensure footer stays at the bottom */
+.footer-wrapper {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+h6{
+  margin-top: 50px;
+  margin-bottom: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+

@@ -6,9 +6,9 @@ import hardImage from '../assets/Badge.png';
 
 const LpContent = ({ setDifficulty }) => {
   const options = [
-    { label: "Satellite Scout", image: easyImage },
-    { label: "Data Detective", image: mediumImage },
-    { label: "Geo-Wizard", image: hardImage },
+    { label: "EASY",text: "Satellite Scout", image: easyImage },
+    { label: "MEDIUM", text: "Data Detective", image: mediumImage },
+    { label: "HARD", text: "Geo-Wizard", image: hardImage },
   ];
   const [currentIndex, setCurrentIndex] = useState(1); // Start at "MEDIUM"
 
@@ -21,12 +21,10 @@ const LpContent = ({ setDifficulty }) => {
     <div className="selection-container">
       <img src="logooceanspace.png" alt="Ocean Logo" className="logo" />
       <h1>OCEANSPACE</h1>
-      <p>
+      <p className="text">
         Welcome to the world of remote sensing, explorer! You have been selected to work on the <strong>OceansPACE</strong> program, where you will take on missions all over the world to generate reports and learn about <strong>PACE</strong> monitored fenomena and remote sensoring.
-        <br />
-        <br />
-        COMPREHEND <b>PACE SATELLITE</b> DATA THROUGH DIGESTIVE CONTENT.
       </p>
+      <h6>Pick difficulty</h6>
 
       <div className="image-selection">
         {options.map((option, index) => (
@@ -36,7 +34,7 @@ const LpContent = ({ setDifficulty }) => {
             onClick={() => handleSelection(index)}
           >
             <img src={option.image} alt={`${option.label} icon`} />
-            <p>{option.label}</p>
+            <p>{option.text}</p>
           </div>
         ))}
       </div>

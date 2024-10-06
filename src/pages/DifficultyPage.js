@@ -5,7 +5,7 @@ import { Sky } from '@react-three/drei';
 import { Water } from 'three-stdlib';
 import '../styles/Difficulty.css';
 import LpContent from '../components/LpContent.js';
-import backgroundMusic from '../assets/sounds/background_ocean.wav';
+import backgroundMusic from '../assets/sounds/background_water.mp3';
 
 extend({ Water });
 

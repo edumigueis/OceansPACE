@@ -75,6 +75,7 @@ function MissionPage({ stages, csvPath }) {
   const mapRef = useRef(null);
 
   const focusOnCoordinates = (latitude, longitude, zoomLevel) => {
+    console.log("aloo");
     if (mapRef.current && mapRef.current.focusOnCoordinates) {
       mapRef.current.focusOnCoordinates(latitude, longitude, zoomLevel);
     }
@@ -103,7 +104,7 @@ function MissionPage({ stages, csvPath }) {
                 heatmapConfig={heatmapConfig}
                 tileLayerConfig={tileLayerConfig}
               />
-              <HeatmapGradientLegend /> {/* Adicionando a legenda da escala de calor */}
+              <HeatmapGradientLegend />
             </>
           ) : (
             <img

@@ -12,35 +12,37 @@ const FlatMap = forwardRef(({ csvUrl, initialViewState, heatmapConfig, tileLayer
 
   useEffect(() => {
     const loadCSV = async () => {
-      try {
-        const response = await fetch(csvUrl);
-        const text = await response.text();
+      if (csvUrl != null) {
+        try {
+          const response = await fetch(csvUrl);
+          const text = await response.text();
 
-        Papa.parse(text, {
-          header: true,
-          complete: (results) => {
-            const formattedData = results.data.map((row) => {
-              const lat = parseFloat(row.lat);
-              const lon = parseFloat(row.lon);
-              const intensity = parseFloat(row.normalized);
+          Papa.parse(text, {
+            header: true,
+            complete: (results) => {
+              const formattedData = results.data.map((row) => {
+                const lat = parseFloat(row.lat);
+                const lon = parseFloat(row.lon);
+                const intensity = parseFloat(row.normalized);
 
-              if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-                console.warn(`Invalid coordinates: lat=${lat}, lon=${lon}`);
-                return null;
-              }
+                if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+                  console.warn(`Invalid coordinates: lat=${lat}, lon=${lon}`);
+                  return null;
+                }
 
-              return [lon, lat, intensity];
-            }).filter(item => item !== null);
+                return [lon, lat, intensity];
+              }).filter(item => item !== null);
 
-            console.log("Formatted Data:", formattedData);
-            setHeatData(formattedData);
-          },
-          error: (error) => {
-            console.error("Error parsing CSV:", error);
-          },
-        });
-      } catch (error) {
-        console.error("Error fetching CSV:", error);
+              console.log("Formatted Data:", formattedData);
+              setHeatData(formattedData);
+            },
+            error: (error) => {
+              console.error("Error parsing CSV:", error);
+            },
+          });
+        } catch (error) {
+          console.error("Error fetching CSV:", error);
+        }
       }
     };
 

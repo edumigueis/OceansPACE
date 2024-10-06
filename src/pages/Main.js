@@ -4,28 +4,30 @@ import CardWithAnimatedText from '../components/CardWithAnimatedText';
 import MissionBriefing from '../components/MissionBriefing';
 import '../styles/App.css';
 import lowResEarth from '../assets/earth-min-1.jpg';
-import oman from '../assets/oman.jpg';
 import backgroundMusic from '../assets/sounds/background_space.mp3';
 
 function Main({ missions }) {
   const globeEl = useRef();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMission, setSelectedMission] = useState(null); // Estado para a missão selecionada
   const [ringsData, setRingsData] = useState([]);
   const [pointsData, setPointsData] = useState([]);
   const [isInteractive, setIsInteractive] = useState(false);
-  const [, setSelectedPoint] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
+
   const gData = missions.map(
-    ({ lat, lng }) => ({
-      lat: lat,
-      lng: lng,
+    (mission) => ({
+      lat: mission.lat,
+      lng: mission.lng,
       maxR: 10,
       propagationSpeed: 4,
       repeatPeriod: 1000,
-      color: 'red'
+      color: 'red',
+      mission, // Armazena a missão diretamente aqui
     })
-  )
+  );
+
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
@@ -62,7 +64,7 @@ function Main({ missions }) {
       setPointsData(gData.map(e => ({
         lat: e.lat,
         lng: e.lng,
-        color: e.concluded ? "green": e.color,
+        color: e.concluded ? "green" : e.color,
         altitude: 0.0001,
       })));
       setIsInteractive(true);
@@ -85,7 +87,7 @@ function Main({ missions }) {
         globeEl.current.pointOfView({ lat: ring.lat, lng: ring.lng, altitude: 0.4 }, 1000);
 
         setTimeout(() => {
-          setSelectedPoint(ring);
+          setSelectedMission(ring.mission); // Armazena a missão correspondente no estado
           setIsModalOpen(true);
         }, 1500);
 
@@ -96,7 +98,7 @@ function Main({ missions }) {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedPoint(null);
+    setSelectedMission(null); // Limpa a missão selecionada
     globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.4 }, 1000);
   };
 
@@ -128,19 +130,14 @@ function Main({ missions }) {
           pointRadius={0.3}
         />
       </div>
-      <MissionBriefing
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        missionData={{
-          title: "The Omani Bloom",
-          lat: 24.618875,
-          lng: 57.455609,
-          location: "The Omani Sea",
-          image: oman,
-          text: "What is the capital of France?"
-        }}
-        pauseMainAudio={pauseMainAudio}
-      />
+      {selectedMission && (
+        <MissionBriefing
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          missionData={selectedMission} // Passa os dados da missão selecionada
+          pauseMainAudio={pauseMainAudio}
+        />
+      )}
       <button
         onClick={toggleAudio}
         style={{

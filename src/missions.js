@@ -135,68 +135,104 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: pace_water,
+                            fallbackImage: pace_snow,
                             next: 3,
                             component: (
                                 <OnlyOneQuestion
-                                    questionText={"The blue is water as we can see, but what could be the green?"}
+                                    questionText={"Take a look at the snow, do you notice anything strange about how it looks?"}
                                     options={[
-                                        { id: 'a', text: 'Algae', explanation: 'Totally! Let\'s look further' },
-                                        { id: 'b', text: 'Pollution', explanation: 'Not in this case! Pollution can look like many colors including green, however we would be able to identify it by other impacts in the environment, like flora and fauna dying and other disturbences' },
-                                        { id: 'c', text: 'Waste', explanation: 'Not in this case, altought waste could be this color, we would be able to see its origin and it would be negatevely impacting the environment around it' },
-                                        { id: 'd', text: 'A giant sea monster taking a bath', explanation: 'Fortunetly, or unfortunetly, no animals exist in our ocean that are that big and green, but the thought  that this is an alive being (a collection of them) is correct!' }
+                                        { id: 'a', text: 'No', explanation: 'Take a closer look! While snow covers the ground, there are patches of brown earth peeking through. The snow itself seems cracked, like it’s resting on a layer of sediment.' },
+                                        { id: 'b', text: 'Yes', explanation: 'Correct, now we can look closer' }
                                     ]}
-                                    correctAnswerId={'a'}
+                                    correctAnswerId={'b'}
                                     nextStage={3}
                                 />
                             ),
                         },
                         {
                             displayMap: false,
-                            fallbackImage: pace_water,
+                            fallbackImage: pace_snow,
                             next: 4,
                             component: (
-                                <InformativeSectionStage nextStage={4}>
-                                    <div className="mission-card-header">
-                                        <h2>The answer is: Algae</h2>
-                                        <h4>Here's some quick facts about it!</h4>
-                                    </div>
-                                    <div className="image-container">
-                                        <img src={phytoplankton}></img>
-                                    </div>
-                                    <div className="text">
-                                        <p>Phytoplankton are like tiny algae that live in the ocean, lakes, and rivers. Even though they're super small, they’re really important because they make food from sunlight, just like plants in a garden! They also give off oxygen, which helps animals (and us!) breathe. You can think of them as the ocean’s little helpers, keeping everything healthy and full of life!
-                                            Here’s a fun fact! For a long time, people thought the Amazon rainforest was the ‘lungs of the Earth’ because of all the oxygen it produces. But guess what? It’s actually these tiny ocean algae, called phytoplankton, that do most of the work! They make most of the oxygen we breathe, so even though they’re small, they’re true heroes of the planet!
-                                        </p>
-                                    </div>
-                                </InformativeSectionStage>
-                            ),
-                        },
-                        {
-                            displayMap: true,
-                            next: 5,
-                            component: (
-                                <MapFocusStage nextStage={5}
-                                    images={[
-                                        {
-                                            lat: 42.81671,
-                                            lng: -69.95354,
-                                            image: maine_to_george,
-                                            title: "This is the coast we were looking at!",
-                                            text: "With the satellite image we could see all its beauty!",
-                                            zoom: 7,
-                                        }
+                                <OnlyOneQuestion
+                                    questionText={"Can you come up with some theory about what is happening here? "}
+                                    options={[
+                                        { id: 'a', text: 'Alien activity: The cracks in the snow were caused by UFOs landing, leaving behind traces of extraterrestrial visitors!', explanation: 'Oops, looks like that’s not quite right! The correct answer is Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground' },
+                                        { id: 'b', text: 'Earthquake tremors: The cracked snow is due to small earthquake tremors, shaking the ground and splitting the snow layer.', explanation: 'Oops, looks like that’s not quite right! The correct answer is Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground' },
+                                        { id: 'c', text: 'Underground creatures: A colony of giant moles is tunneling just beneath the surface, causing the snow to crack and reveal patches of dirt.', explanation: 'Oops, looks like that’s not quite right! The correct answer is Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground' },
+                                        { id: 'd', text: 'A giant sea monster Early signs of Spring: The warmth of the approaching Spring is causing the snow to melt unevenly, leaving cracks and patches of exposed ground.taking a bath', explanation: 'Congratulations! You got it right!' }
                                     ]}
+                                    correctAnswerId={'a'}
+                                    nextStage={4}
                                 />
                             ),
                         },
+                    
+                            {
+                                displayMap: false,
+                                fallbackImage: pace_water,
+                                next: 5,
+                                component: (
+                                    <OnlyOneQuestion
+                                        questionText={"The blue is water as we can see, but what could be the green?"}
+                                        options={[
+                                            { id: 'a', text: 'Algae', explanation: 'Totally! Let\'s look further' },
+                                            { id: 'b', text: 'Pollution', explanation: 'Not in this case! Pollution can look like many colors including green, however we would be able to identify it by other impacts in the environment, like flora and fauna dying and other disturbances' },
+                                            { id: 'c', text: 'Waste', explanation: 'Not in this case, although waste could be this color, we would be able to see its origin and it would negatively impact the environment around it' },
+                                            { id: 'd', text: 'A giant sea monster taking a bath', explanation: 'Fortunately, or unfortunately, no animals exist in our ocean that are that big and green, but the thought that this is a living being (a collection of them) is correct!' }
+                                        ]}
+                                        correctAnswerId={'a'}
+                                        nextStage={6}  // Ensure this links correctly
+                                    />
+                                ),
+                            },
+                            {
+                                displayMap: false,
+                                fallbackImage: pace_water,
+                                next: 6,
+                                component: (
+                                    <InformativeSectionStage nextStage={7}> {/* Update nextStage properly */}
+                                        <div className="mission-card-header">
+                                            <h2>The answer is: Algae</h2>
+                                            <h4>Here's some quick facts about it!</h4>
+                                        </div>
+                                        <div className="image-container">
+                                            <img src={phytoplankton}></img>
+                                        </div>
+                                        <div className="text">
+                                            <p>Phytoplankton are like tiny algae that live in the ocean, lakes, and rivers. Even though they're super small, they’re really important because they make food from sunlight, just like plants in a garden! They also give off oxygen, which helps animals (and us!) breathe. You can think of them as the ocean’s little helpers, keeping everything healthy and full of life!
+                                                Here’s a fun fact! For a long time, people thought the Amazon rainforest was the ‘lungs of the Earth’ because of all the oxygen it produces. But guess what? It’s actually these tiny ocean algae, called phytoplankton, that do most of the work! They make most of the oxygen we breathe, so even though they’re small, they’re true heroes of the planet!
+                                            </p>
+                                        </div>
+                                    </InformativeSectionStage>
+                                ),
+                            },
+                            {
+                                displayMap: true,
+                                next: 7,
+                                component: (
+                                    <MapFocusStage nextStage={8} // Make sure the progression continues logically
+                                        images={[
+                                            {
+                                                lat: 42.81671,
+                                                lng: -69.95354,
+                                                image: maine_to_george,
+                                                title: "This is the coast we were looking at!",
+                                                text: "With the satellite image we could see all its beauty!",
+                                                zoom: 7,
+                                            }
+                                        ]}
+                                    />
+                                ),
+                            },
+
                         {
                             displayMap: true,
                             component: <FinalStage
                                 onArrival={() => console.log('Final stage reached!')}
                                 briefing={{
                                     title: "North America from Above",
-                                    location: "Northeastern United States and Canada",
+                                    location: "Northeastern US and Canada",
                                     image: pace_maine,
                                     report: "Congratulations! You’ve completed your first mission! Your skills are amazing, and we can’t wait to have your help on our next big adventure!",
                                     reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
@@ -1039,7 +1075,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             onArrival={() => console.log('Final stage reached!')}
                             briefing={{
                                 title: "North America from Above",
-                                location: "Northeastern United States and Canada",
+                                location: "Northeastern US and Canada",
                                 image: pace_maine,
                                 report: "Congratulations! You’ve completed your first mission! Your skills are amazing, and we can’t wait to have your help on our next big adventure!",
                                 reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"

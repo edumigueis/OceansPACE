@@ -20,7 +20,7 @@ function FinalStage({ onArrival, briefing, badge }) {
   }, [onArrival, briefing.report]);
 
   const handleClaimBadge = () => {
-    navigate('/'); 
+    navigate('/main'); 
   };
 
   const handleReportClick = () => {

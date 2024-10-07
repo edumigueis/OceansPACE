@@ -344,6 +344,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
+                            displayMap: true,
                             next: 7,
                             component: (
                                 <MapFocusStage nextStage={7}
@@ -354,7 +355,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                             image: saginaw_pace,
                                             title: "The Saginaw Bay is a beautiful area but it may need a little help!",
                                             text: "We humans impact the world around us, look around your own environment, how do you think you change it? How do you think you can help the world around you, humans, land and oceans alike?",
-                                            zoom: 7,
+                                            zoom: 10,
                                         },
                                     ]}
                                 />

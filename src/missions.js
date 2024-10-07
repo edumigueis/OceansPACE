@@ -865,14 +865,14 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <FinalStage
                                     onArrival={() => console.log('Final stage reached!')}
                                     briefing={{
-                                        title: "Hidden Springs, Hidden Secrets",
-                                        location: "Oman",
-                                        image: oman_picture,
-                                        report: "Woohoo! We did it! We figured out how to tell phytoplankton apart and went even further, chatting about just how important they are. Plus, we explored how their disappearance could impact not just the region, but the entire planet! What an adventure!.",
-                                        reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
+                                        title: "Tiny Travelers with Big Effects!",
+                                        location: "Mauritania",
+                                        image: mauritania,
+                                        report: "",
+                                        reportAll: "Congratulations, fellow scientist! We’ve explored the fascinating world of aerosols and their impact on phytoplankton, uncovering how the wind, desert, and ocean work together in surprising ways. From tiny particles floating in the air to nutrient-packed dust delivered by the wind, we now know that aerosols play a big role in shaping ecosystems like the vibrant marine life along Mauritania’s coast. Mission Complete: The Grand Wrap-Up: Throughout this journey, we’ve learned that nature is a vast, interconnected system where even the smallest things, like aerosols, can have powerful effects—some good, some not so much. By examining satellite images, forming hypotheses, and understanding the role of aerosols, we’ve gained valuable insights into how these microscopic particles help sustain life in our oceans. As we wrap up this mission, remember that the mysteries of nature are always waiting to be explored! With every new piece of information, we unlock more secrets, helping us not only to understand the world around us but also to protect it for the future."
                                     }}
                                     badge={{
-                                        name: "Hidden Springs, Hidden Secrets Mission Emblem",
+                                        name: "Tiny Travelers with Big Effects!",
                                         image: badgeFigure
                                     }}
                                 />

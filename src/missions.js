@@ -243,8 +243,8 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <OnlyOneQuestion
                                     questionText={"What catches your eye in this image?"}
                                     options={[
-                                        { id: 'a', text: 'The lack of vibrant green in the water', explanation: 'Hmm, it looks like this area is missing that bright, lush green we saw in the last mission.' },
-                                        { id: 'b', text: 'The blue is no as bright', explanation: 'Looks like that brown stain is messing up the water’s sparkle! Time to put on our detective hats and see what’s behind it.' },
+                                        { id: 'a', text: 'The lack of vibrant green in the water', explanation: 'Hmm, it looks like this area is missing that bright, lush green we would hope for.' },
+                                        { id: 'b', text: 'The blue is not very bright', explanation: 'Looks like that brown stain is messing up the water’s sparkle! Time to put on our detective hats and see what’s behind it.' },
                                         { id: 'c', text: 'The squares around the water', explanation: 'Look at all those little squares around the bay—they\'re homes, just like yours and mine! But what really catches our eye is that big brown stain in the water. Let’s dig in and see what’s going on!' },
                                         { id: 'c', text: 'That brown stain is definitely standing out—it’s affecting the area for sure. Let’s get to the bottom of it and find out what’s happening!' },
                                     ]}
@@ -271,7 +271,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: saginaw_bay_river_mud,
+                            fallbackImage: saginaw_pace,
                             next: 3,
                             component: (
                                 <OnlyOneQuestion
@@ -311,7 +311,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <InformativeSectionStage nextStage={5}>
                                     <div className="mission-card-header">
                                         <h2>Mud flows</h2>
-                                        <h4>Here's some quick facts about it!</h4>
+                                        <h4>This map shows the light reflection of the water! Bigger particles, like mud, can really affect it, that could be the reason behing all that dark blue! </h4>
                                     </div>
                                     <div className="image-container">
                                         <img src={mud_spill_rebuilding}></img>
@@ -336,7 +336,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                         { id: 'b', text: 'Stop the mud', explanation: "Stopping the mud completely is a tall order and pretty costly too. The real trick is to focus on making sure this doesn’t happen again in the future." },
                                         { id: 'c', text: 'Invent a method that does not yet exist', explanation: "I love your creativity! New ideas are always welcome, and who knows what we’ll discover in the future. For now, though, we need to take steps to stop the problem from getting worse and, of course, prevent it from happening again." },
                                         { id: 'd', text: 'Take measures to prevent it from happening again', explanation: "Exactly! Preventive measures are the way to go if we want to stop this from becoming a recurring issue." },
-                                        { id: 'e', text: 'Take palliative measures', explanation: "Palliative measures are helpful for sure. Whether it’s temporary barriers or other strategies, they can provide some relief in the short term." },
+                                        { id: 'e', text: 'Take palliative measures (measures to reduce the damage we cannot prevent)', explanation: "Palliative measures are helpful for sure. Whether it’s temporary barriers or other strategies, they can provide some relief in the short term." },
                                     ]}
                                     correctAnswerId={null}
                                     nextStage={6}
@@ -351,9 +351,9 @@ const getMissionsByDifficulty = (difficulty) => {
                                         {
                                             lat: 43.648052,
                                             lng: -83.850347,
-                                            image: image_globe,
-                                            title: "alooo",
-                                            text: "aaai",
+                                            image: saginaw_pace,
+                                            title: "The Saginaw Bay is a beautiful area but it may need a little help!",
+                                            text: "We humans impact the world around us, look around your own environment, how do you think you change it? How do you think you can help the world around you, humans, land and oceans alike?",
                                             zoom: 7,
                                         },
                                     ]}
@@ -367,7 +367,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                     briefing={{
                                         title: "Stuck in a Mudstery",
                                         location: "Saginaw Bay, Michigan, US",
-                                        image: oman_picture,
+                                        image: saginaw_bay,
                                         report: "Yay! Thanks to your help, we figured out what’s going on in Saginaw Bay with all this mud and started thinking up clever ways to fix it!",
                                         reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
                                     }}
@@ -388,7 +388,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     lng: 57.524873,
                     location: "Oman",
                     image: oman_picture,
-                    text: "The water is full of all kinds of phytoplankton species, and right now, the main way to tell them apart is by scooping up water samples—talk about time-consuming and pricey! But what if we could use images to tell them apart instead, and maybe even discover more? Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate, characterized by arid summers and mild winters. Its coastline, extending over 3,000 kilometers along the Sea of Oman and the Arabian Sea, boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination, where the sea and its marine life are integral parts of the national identity.",
+                    text: "The water is full of all kinds of phytoplankton species, and right now, the main way to tell them apart is by scooping up water samples—talk about time-consuming and pricey! But what if we could use images to tell them apart instead, and maybe even discover more? Oman, located at the southeastern tip of the Arabian Peninsula, is a country of stunning landscapes and warm climate. Its coastline boasts crystal-clear waters that are home to a rich marine biodiversity, including turtles and dolphins. The proliferation of phytoplankton in the coastal waters plays a crucial role in this ecosystem, serving as the foundation of the food chain and contributing to the health of the oceans. This connection between nature and culture highlights how Oman is a fascinating destination.",
                     displayMap: true,
                     fallbackImage: oman_pace,
                     csvPath: omanData,
@@ -445,7 +445,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             next: 2,
                             component: (
                                 <OnlyOneQuestion
-                                    questionText={"Does the observed phytoplankton affect other species of animals?"}
+                                    questionText={"This map helps us see the presence of phytoplankton in the oceans! We can get this data because they contain pigments like chlorophyll that absorb light at specific wavelengths, here we can see that in general, a darker blue indicates more of them! Does the observed phytoplankton affect other species of animals?"}
                                     options={[
                                         {
                                             id: 'a',

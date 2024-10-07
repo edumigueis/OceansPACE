@@ -64,7 +64,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             [0, 255, 0, 255],       // Green
                             [0, 255, 255, 255],     // Cyan
                             [0, 0, 255, 255],       // Blue
-                            [200, 162, 200, 255],    // Lilac
+                            [147, 112, 219, 255],    // Lilac
                             [128, 0, 128, 255],     // Purple
                             [128, 0, 0, 255]        // Wine
                         ],
@@ -235,7 +235,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             [0, 255, 0, 255],       // Green
                             [0, 255, 255, 255],     // Cyan
                             [0, 0, 255, 255],       // Blue
-                            [200, 162, 200, 255],    // Lilac
+                            [147, 112, 219, 255],    // Lilac
                             [128, 0, 128, 255],     // Purple
                             [128, 0, 0, 255]        // Wine
                         ],
@@ -425,7 +425,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             [0, 255, 0, 255],       // Green
                             [0, 255, 255, 255],     // Cyan
                             [0, 0, 255, 255],       // Blue
-                            [200, 162, 200, 255],    // Lilac
+                            [147, 112, 219, 255],    // Lilac
                             [128, 0, 128, 255],     // Purple
                             [128, 0, 0, 255]        // Wine
                         ],
@@ -642,7 +642,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             [0, 255, 0, 255],       // Green
                             [0, 255, 255, 255],     // Cyan
                             [0, 0, 255, 255],       // Blue
-                            [200, 162, 200, 255],    // Lilac
+                            [147, 112, 219, 255],    // Lilac
                             [128, 0, 128, 255],     // Purple
                             [128, 0, 0, 255]        // Wine
                         ],
@@ -812,7 +812,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             [0, 255, 0, 255],       // Green
                             [0, 255, 255, 255],     // Cyan
                             [0, 0, 255, 255],       // Blue
-                            [200, 162, 200, 255],    // Lilac
+                            [147, 112, 219, 255],    // Lilac
                             [128, 0, 128, 255],     // Purple
                             [128, 0, 0, 255]        // Wine
                         ],
@@ -999,7 +999,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             [0, 255, 0, 255],       // Green
                             [0, 255, 255, 255],     // Cyan
                             [0, 0, 255, 255],       // Blue
-                            [200, 162, 200, 255],    // Lilac
+                            [147, 112, 219, 255],    // Lilac
                             [128, 0, 128, 255],     // Purple
                             [128, 0, 0, 255]        // Wine
                         ],

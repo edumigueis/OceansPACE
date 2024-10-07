@@ -28,12 +28,27 @@ function HeatmapGradientLegend() {
           <span key={index} style={{ fontSize: '8px' }}>{value}</span>
         ))}
       </div>
-      <div style={{
-        width: '200px',
-        height: '20px',
-        background: 'linear-gradient(to right, red, yellow, green, cyan, blue)',
-        border: '1px solid #ccc',
-      }}>
+      <div
+        style={{
+          width: '200px',
+          height: '20px',
+          background: `linear-gradient(
+      to right,
+      rgb(128, 0, 0),      /* Wine */
+      rgb(128, 0, 128),    /* Purple */
+      rgb(147, 112, 219),   /* Lilac */
+      rgb(0, 0, 255),      /* Blue */
+      rgb(0, 255, 255),    /* Cyan */
+      rgb(0, 255, 0),      /* Green */
+      rgb(173, 255, 47),   /* GreenYellow */
+      rgb(255, 255, 0),    /* Yellow */
+      rgb(255, 165, 0),    /* Orange */
+      rgb(255, 0, 0),      /* Red */
+      rgb(178, 34, 34)     /* Brick */
+    )`,
+          border: '1px solid #ccc',
+        }}
+      >
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '5px' }}>
         <span>Low</span>

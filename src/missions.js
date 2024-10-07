@@ -311,7 +311,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <InformativeSectionStage nextStage={5}>
                                     <div className="mission-card-header">
                                         <h2>Mud flows</h2>
-                                        <h4>This map shows the light reflection of the water! Bigger particles, like mud, can really affect it, that could be the reason behing all that dark blue! </h4>
+                                        <h4>This map shows the light reflection of the water! Bigger particles, like mud, can really affect it, that could be the reason behind the patterns we observe in the map! </h4>
                                     </div>
                                     <div className="image-container">
                                         <img src={mud_spill_rebuilding}></img>
@@ -445,7 +445,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             next: 2,
                             component: (
                                 <OnlyOneQuestion
-                                    questionText={"This map helps us see the presence of phytoplankton in the oceans! We can get this data because they contain pigments like chlorophyll that absorb light at specific wavelengths, here we can see that in general, a darker blue indicates more of them! Does the observed phytoplankton affect other species of animals?"}
+                                    questionText={"This map helps us see the presence of phytoplankton in the oceans! We can get this data because they contain pigments like chlorophyll that absorb light at specific wavelengths. Look at the scale and explore the ocean around Oman a bit and search for them! Does the observed phytoplankton affect other species of animals?"}
                                     options={[
                                         {
                                             id: 'a',

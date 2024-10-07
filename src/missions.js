@@ -20,6 +20,8 @@ import mud_spill from './assets/mud_spill.jpg';
 import oman_picture from './assets/oman_picture.jpg';
 import saginaw_pace_stain from './assets/pace_saginaw_bay_stain.png';
 import phytoplankton from './assets/phytoplankton.jpg';
+import mauritania_above from './assets/mauritania_above.jpg';
+import mauritania_globe from './assets/mauritania_globe.png';
 import saginaw_bay_river_mud from './assets/saginaw_bay_river_mud.png';
 import saharra_winds from './assets/saharra_winds.jpg';
 import salton_sea_pace from './assets/salton_sea_pace.jpg';
@@ -592,6 +594,271 @@ const getMissionsByDifficulty = (difficulty) => {
                                 />
                             ),
                         },
+                        {
+                            displayMap: true,
+                            component: (
+                                <FinalStage
+                                    onArrival={() => console.log('Final stage reached!')}
+                                    briefing={{
+                                        title: "Hidden Springs, Hidden Secrets",
+                                        location: "Oman",
+                                        image: oman_picture,
+                                        report: "Woohoo! We did it! We figured out how to tell phytoplankton apart and went even further, chatting about just how important they are. Plus, we explored how their disappearance could impact not just the region, but the entire planet! What an adventure!.",
+                                        reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
+                                    }}
+                                    badge={{
+                                        name: "Hidden Springs, Hidden Secrets Mission Emblem",
+                                        image: badgeFigure
+                                    }}
+                                />
+                            ),
+                        },
+                    ]
+                },
+                {
+                    index: 3,
+                    concluded: false,
+                    title: "Tiny Travelers with Big Effects!",
+                    lat: 19.96057,
+                    lng: -16.70246,
+                    location: "Mauritania",
+                    image: mauritania,
+                    text: "Your mission, should you choose to accept it, is to dive into the world of aerosols and uncover how these tiny airborne particles impact the mighty phytoplankton population! Are aerosols helping them thrive, or causing a challenge for their growth? Time to find out! Mauritania is a large, mostly desert country located in Northwest Africa, bordered by the Atlantic Ocean to the west. Its vast landscapes range from sandy dunes to rocky plateaus and coastal plains. Much of Mauritania is dominated by the Sahara Desert, making it one of the driest nations in the world, with sparse vegetation and a harsh climate. Its coastal waters, particularly along the Canary Current, are renowned for a natural phenomenon called upwelling, where nutrient-rich waters from the ocean depths rise to the surface. This process sparks the Mauritania bloom, an explosion of microscopic algae, or phytoplankton, that supports a rich marine ecosystem. The Mauritania bloom plays a vital role in sustaining one of the world’s most productive fishing zones. Fish like sardines, mackerel, and other species thrive in these nutrient-rich waters, contributing significantly to the livelihoods of local communities and fueling the country's fishing industry. Mauritania’s coastal waters become a hotspot of marine life during the bloom season, attracting fishermen and birds alike.",
+                    displayMap: true,
+                    fallbackImage: mauritania,
+                    csvPath: omanData,
+                    initialViewState: {
+                        latitude: 19.96057,
+                        longitude: -16.70246,
+                        zoom: 8,
+                    },
+                    heatmapConfig: {
+                        intensity: 1,
+                        colorRange: [
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
+                        ],
+
+
+                        threshold: 0.9,
+                    },
+                    tileLayerConfig: {
+                        data: "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        minZoom: 0,
+                        maxZoom: 19,
+                        tileSize: 256,
+                    },
+                    stages: [
+                        {
+                            displayMap: false,
+                            fallbackImage: mauritania_pace,
+                            next: 1,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"What do you notice that is different in this image?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "The green showing the phytoplankton looks different.",
+                                            explanation: "Yes, the phytoplankton does seem to be forming an interesting pattern."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: "I notice the waves.",
+                                            explanation: "Actually, it’s not the waves I notice, but the phytoplankton itself forming a wave-like pattern."
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: "I can also spot a desert.",
+                                            explanation: "The desert could be significant for our analysis! Plus, the phytoplankton appears to be creating a unique pattern that might be worth exploring further."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={1}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: mauritania,
+                            next: 2,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"Let’s put on our scientist hats and come up with some fun hypotheses for what’s going on here:"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "The wind is blowing the phytoplankton around, spreading them across the water like confetti.",
+                                            explanation: "Not exactly! The wind isn’t giving the phytoplankton a lift, but it’s playing a big role by pushing surface waters westward and letting nutrient-filled water rise up from the deep ocean and could carry desert dust from the Sahara, which is full of iron and other goodies that help the phytoplankton grow. That’s where the phytoplankton get their feast!"
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: "The wind is carrying important nutrients to the surface that the phytoplankton need to grow big and strong.",
+                                            explanation: "You’re on the right track! The wind actually plays a big role by pushing surface waters westward and letting nutrient-filled water rise up from the deep ocean and could carry desert dust from the Sahara, which is full of iron and other goodies that help the phytoplankton grow."
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: "The desert is packed with nutrients, and its dust is sprinkling into the water, helping the ecosystem thrive.",
+                                            explanation: "You got it! The Sahara desert is like a big jar of nutrient-rich dust, full of iron. When the winds carry this dust over the ocean, it sprinkles into the water and gives the phytoplankton an extra boost, helping the whole ecosystem stay healthy. And the wind plays a big role too by pushing surface waters westward and letting nutrient-filled water rise up from the deep ocean."
+                                        },
+                                        {
+                                            id: 'd',
+                                            text: "The phytoplankton just love hanging out nearby – it’s their favorite spot!",
+                                            explanation: "Well, it’s not exactly their choice to live there, but they do thrive because the conditions are just perfect! Thanks to the nutrient-rich waters being pulled to the surface and a sprinkle of desert dust, it’s the ideal spot for them to bloom all year long."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={2}
+                                />
+                            ),
+                        },                        
+                        {
+                            displayMap: true,
+                            fallbackImage: null,
+                            next: 3,
+                            component: (
+                                <InformativeSectionStage nextStage={3}>
+                                    <div className="mission-card-header">
+                                        <h2>Phytoplankton</h2>
+                                        <h4>Here's some quick facts about it!</h4>
+                                    </div>
+                                    <div className="image-container">
+                                        <img src={phytoplankton}></img>
+                                    </div>
+                                    <div className="text">
+                                        <p>The food chain is kind of like nature’s dinner party! It’s all about who’s eating and who’s being eaten, with energy passing along the line. It starts with the chefs—plants and tiny phytoplankton—that whip up energy from sunlight. Then, little critters like zooplankton come along for a bite. After that, small fish snack on those critters, and bigger fish come in to munch on the smaller ones. It keeps going until we get to the ocean’s top diners, like sharks or whales!
+                                            Phytoplankton are the tiny heroes at the base of this party. Without them, no one else gets to eat, and the whole chain could fall apart. So, they’re super important to keep the food chain running smoothly!
+                                        </p>
+                                    </div>
+                                </InformativeSectionStage>
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: mauritania_above,
+                            next: 4,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"So the desert and the wind are connected, helping the phytoplankton grow. What do you think about it?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "It is boring!",
+                                            explanation: "Oh no, it’s far from boring! It’s like nature’s own puzzle, with each piece fitting together perfectly. The wind, the desert, the ocean, everything plays a part in helping these tiny ocean algae bloom. It’s like a secret teamwork mission happening all around us! A lot of things in nature are connected and understanding and solving a problem could help us to solve another one and understanding and modeling even more of the world."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: "Nature is not an isolated system",
+                                            explanation: "Exactly! Nature is all about connections. The desert and the ocean may seem far apart, but they’re really good friends. The wind carries the desert’s nutrient-rich dust across the ocean, and that helps the phytoplankton grow. It’s a beautiful example of how everything in nature is linked together in surprising ways! A lot of things in nature are connected and understanding and solving a problem could help us to solve another one and understanding and modeling even more of the world."
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: "It’s like the desert is sending a care package to the ocean!",
+                                            explanation: "Exactly! Nature is all about connections. The desert and the ocean may seem far apart, but they’re really good friends. The wind carries the desert’s nutrient-rich dust across the ocean, and that helps the phytoplankton grow. It’s a beautiful example of how everything in nature is linked together in surprising ways! A lot of things in nature are connected and understanding and solving a problem could help us to solve another one and understanding and modeling even more of the world."
+                                        },
+                                        {
+                                            id: 'd',
+                                            text: "Wow, nature is like a big team sport!",
+                                            explanation: "Exactly! Nature is all about connections. The desert and the ocean may seem far apart, but they’re really good friends. The wind carries the desert’s nutrient-rich dust across the ocean, and that helps the phytoplankton grow. It’s a beautiful example of how everything in nature is linked together in surprising ways! A lot of things in nature are connected and understanding and solving a problem could help us to solve another one and understanding and modeling even more of the world."
+                                        },
+                                        {
+                                            id: 'e',
+                                            text: "So the wind is like a delivery service!",
+                                            explanation: "Exactly! Nature is all about connections. The desert and the ocean may seem far apart, but they’re really good friends. The wind carries the desert’s nutrient-rich dust across the ocean, and that helps the phytoplankton grow. It’s a beautiful example of how everything in nature is linked together in surprising ways! A lot of things in nature are connected and understanding and solving a problem could help us to solve another one and understanding and modeling even more of the world."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={4}
+                                />
+                            ),
+                        },                        
+                        {
+                            displayMap: false,
+                            fallbackImage: mauritania_above,
+                            next: 5,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"The Sahara dust is considered an aerosol, what is it?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "It is like a type of deodorant",
+                                            explanation: "Kind of! Just like the spray from deodorant, an aerosol is made up of tiny particles that float in the air. But instead of making you smell fresh, aerosols can come from things like sea spray, smoke, or even volcanic ash."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: "It is tiny particles in the air",
+                                            explanation: "Exactly! Aerosols are very small solid or liquid particles that stay suspended in the air. They can be natural, like from a volcano, or human-made, like from pollution."
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: "It’s like glitter in the sky",
+                                            explanation: "That’s right! Aerosols are tiny particles, almost like invisible glitter floating through the air. They’re light enough to stay suspended and can have all sorts of effects, from influencing weather to spreading nutrients or pollution."
+                                        },
+                                        {
+                                            id: 'd',
+                                            text: "It’s nature’s way of spreading things around",
+                                            explanation: "You got it! Aerosols are tiny particles in the air, one of nature’s tools for moving materials around. Whether it’s dust, water droplets, or even pollen, aerosols can travel long distances in the air."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={5}
+                                />
+                            ),
+                        },
+                        {
+                            displayMap: false,
+                            fallbackImage: mauritania_globe,
+                            next: 6,
+                            component: (
+                                <OnlyOneQuestion
+                                    questionText={"Aerosols can also affect other things, do you know what?"}
+                                    options={[
+                                        {
+                                            id: 'a',
+                                            text: "Weather and climate",
+                                            explanation: "Aerosols can influence weather patterns and the climate by interacting with sunlight. Some aerosols reflect sunlight back into space, cooling the Earth, while others absorb heat, warming the atmosphere."
+                                        },
+                                        {
+                                            id: 'b',
+                                            text: "Cloud formation",
+                                            explanation: "Aerosols play an important role in cloud formation. Tiny aerosol particles can act as 'seeds' for water droplets to form around, helping clouds develop and affecting rainfall."
+                                        },
+                                        {
+                                            id: 'c',
+                                            text: "Air quality",
+                                            explanation: "Aerosols can affect the quality of the air we breathe. Natural aerosols, like sea salt, are usually harmless, but human-made aerosols, like smoke and industrial pollution, can cause health problems, especially for people with respiratory issues."
+                                        },
+                                        {
+                                            id: 'd',
+                                            text: "Human health",
+                                            explanation: "Some aerosols, especially those from pollution, can be harmful if inhaled. Particles like soot or chemicals in the air can irritate the lungs, leading to breathing issues or long-term health effects."
+                                        },
+                                        {
+                                            id: 'e',
+                                            text: "Visibility",
+                                            explanation: "Aerosols can affect how clear the air looks. High concentrations of aerosols, like smoke or haze, can make it harder to see, reducing visibility."
+                                        },
+                                        {
+                                            id: 'f',
+                                            text: "Ocean ecosystems",
+                                            explanation: "When certain aerosols, like those containing iron, land in the ocean, they can provide nutrients for marine life, particularly tiny organisms like phytoplankton."
+                                        },
+                                    ]}
+                                    correctAnswerId={null}
+                                    nextStage={6}
+                                />
+                            ),
+                        },                                                
                         {
                             displayMap: true,
                             component: (

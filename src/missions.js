@@ -182,7 +182,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                             { id: 'd', text: 'A giant sea monster taking a bath', explanation: 'Fortunately, or unfortunately, no animals exist in our ocean that are that big and green, but the thought that this is a living being (a collection of them) is correct!' }
                                         ]}
                                         correctAnswerId={'a'}
-                                        nextStage={6}  // Ensure this links correctly
+                                        nextStage={5}  // Ensure this links correctly
                                     />
                                 ),
                             },
@@ -191,7 +191,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                 fallbackImage: pace_water,
                                 next: 6,
                                 component: (
-                                    <InformativeSectionStage nextStage={7}> {/* Update nextStage properly */}
+                                    <InformativeSectionStage nextStage={6}> {/* Update nextStage properly */}
                                         <div className="mission-card-header">
                                             <h2>The answer is: Algae</h2>
                                             <h4>Here's some quick facts about it!</h4>
@@ -211,7 +211,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                 displayMap: true,
                                 next: 7,
                                 component: (
-                                    <MapFocusStage nextStage={8} // Make sure the progression continues logically
+                                    <MapFocusStage nextStage={7} // Make sure the progression continues logically
                                         images={[
                                             {
                                                 lat: 42.81671,
@@ -725,7 +725,7 @@ const getMissionsByDifficulty = (difficulty) => {
                         },
                         {
                             displayMap: false,
-                            fallbackImage: mauritania,
+                            fallbackImage: mauritania_globe,
                             next: 2,
                             component: (
                                 <OnlyOneQuestion

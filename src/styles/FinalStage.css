@@ -1,100 +1,96 @@
-/* Estilo base da página */
+/* Base styling for the final stage container */
 .final-stage-container {
-    position: absolute;
+    position: absolute; /* Allows positioning of backdrop */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #000000; /* Fundo não transparente */
+    background-color: transparent;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    color: #fff; /* Cor padrão do texto */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    color: #000; /* Default text color */
     z-index: 1000;
     animation: fadeIn 1s ease-in-out;
-    overflow: auto; 
-    overflow-x: hidden; /* Bloqueia a rolagem horizontal */
-
+    overflow: hidden; 
 }
 
-/* Animação de fade in */
+/* Black opacity backdrop */
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: -1; /* Behind text but above background */
+}
+
+/* Animation for fade in effect */
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
 
-/* Estilo dos textos */
+/* Title and subtitle styles */
 .title {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-    transition: transform 0.3s ease, color 0.3s ease; /* Animação para o título */
-    margin-top: 180px; /* Adicionando margem para afastar do topo */
-}
-
-.title:hover {
-    transform: scale(1.05); /* Aumenta o tamanho do título */
-    color: #4CAF50; /* Muda a cor do título no hover */
+    transition: transform 0.3s ease, color 0.3s ease; /* Animation for title */
+    margin-top: 180px; /* Space from top */
+    color: #fff; /* Title color set to white for contrast */
 }
 
 .subtitle {
     font-size: 1.8rem;
     margin-bottom: 15px;
-    color: white; /* Cor do subtítulo */
+    color: #fff; /* Subtitle color */
 }
 
-.mission-location {
-    font-style: italic;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    color: white; /* Cor da localização da missão */
+/* Mission report container */
+.mission-report-container {
+    text-align: center; /* Center text in the report */
+    margin: 20px; /* Add margin for spacing */
 }
 
-/* Estilo da imagem da missão */
-.mission-image {
-    width: 250px;
+/* Report box styling */
+.report-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
+    padding: 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease; /* Animação para a imagem */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    position: relative; /* For absolute positioning of badge */
+    max-width: 800px; /* Limit width */
+    margin: 0 auto; /* Center the box */
 }
 
-.mission-image:hover {
-    transform: scale(1.05); /* Aumenta a imagem no hover */
-}
-
-/* Estilo do relatório da missão */
-.mission-report {
-    background-color: rgba(231, 231, 231, 0.853); /* Fundo do relatório */
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
-    text-align: center;
-    max-width: 400px;
-    cursor: pointer; /* Mostra que é clicável */
-    transition: transform 0.2s, background-color 0.3s ease; /* Suaviza a animação de transformação */
-    color: white; /* Cor do texto do relatório */
-}
-
-.mission-report:hover {
-    transform: scale(1.05); /* Aumenta levemente o tamanho no hover */
-    background-color: rgba(255, 255, 255, 0.694); /* Muda a cor de fundo no hover */
-}
-
-.mission-report h3 {
-    font-size: 1.5rem;
+/* Report title */
+.report-title {
+    font-size: 2rem;
     margin-bottom: 10px;
-    color: black; /* Mantém o título do relatório em preto */
+    color: #4CAF50; /* Color for report title */
 }
 
-.mission-report p {
-    font-size: 1.1rem;
+/* Badge animation */
+.badge-animation {
+    position: absolute; /* Position badge within the report box */
+    bottom: -10px; /* Slightly below the box */
+    right: 0; /* Align to the right */
+    width: 80px; /* Adjust size */
+    animation: dance 1s infinite alternate; /* Dance animation */
 }
 
-/* Seção da badge e do botão lado a lado */
+/* Dancing animation */
+@keyframes dance {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+}
+
+/* Badge and button section */
 .badge-and-button {
     display: flex;
     justify-content: space-between;
@@ -102,60 +98,27 @@
     margin-top: 20px;
 }
 
-/* Estilo para a seção da badge */
-.badge-section {
-    text-align: center;
-    margin-right: 20px;
-}
-
-.badge-wrapper {
-    display: flex; /* Flex para alinhar o emblema e o texto */
-    flex-direction: column; /* Alinha verticalmente */
-    align-items: center; /* Centraliza o conteúdo */
-}
-
-.badge-image {
-    width: 100px;
-    transition: transform 0.3s ease; /* Animação para o emblema */
-}
-
-.badge-image:hover {
-    transform: scale(1.1); /* Aumenta o emblema no hover */
-}
-
-/* Estilo do botão de reivindicação */
+/* Claim badge button styling */
 .claim-badge-btn {
     padding: 12px 30px;
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: #28a745;
+    background-color: #28a745; /* Green button */
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease; /* Animação para o botão */
-    margin-left: 20px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease; /* Animation for button */
 }
 
 .claim-badge-btn:hover {
-    background-color: #007EA7; /* Cor de fundo do botão no hover */
-    transform: scale(1.05); /* Aumenta o botão no hover */
+    background-color: #007EA7; /* Hover color */
+    transform: scale(1.05); /* Increase size on hover */
 }
 
-/* Adiciona um ícone indicativo, se desejar */
-.mission-report-icon {
-    margin-left: 5px; /* Espaço entre o texto e o ícone */
-    font-size: 1.2rem; /* Tamanho do ícone */
-    color: #007EA7; /* Cor do ícone */
-}
-
-.badge-title {
-    color: white; /* Define a cor do título "Badge" como branco */
-    font-size: 1.2rem; /* Ajuste o tamanho se necessário */
-    margin-bottom: 5px; /* Espaço abaixo do título */
-}
-
-.badge-text {
-    color: white; /* Define a cor do texto do emblema como branco */
-    font-size: 1rem; /* Ajuste o tamanho se necessário */
+.report-box p{
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    text-indent: 3em;
+    text-align: justify !important;
 }

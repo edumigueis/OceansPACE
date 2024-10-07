@@ -7,9 +7,9 @@ function PopupReport({ reportDetails, onClose }) {
   return (
     <div className="popup-overlay">
       <div className="popup-container">
-        <h3>Detalhes do Relatório</h3>
+        <h3>Report Details</h3>
         <p>{reportDetails}</p>
-        <button className="close-popup-btn" onClick={onClose}>Fechar</button>
+        <button className="close-popup-btn" onClick={onClose}>Close</button>
       </div>
     </div>
   );

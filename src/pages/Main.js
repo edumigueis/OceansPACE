@@ -35,6 +35,7 @@ function Main({ missions }) {
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
+  
 
   // Function to pause the audio in Main
   const pauseMainAudio = () => {
@@ -113,7 +114,6 @@ function Main({ missions }) {
     // Get the selected difficulty from localStorage
     const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'MEDIUM';
     setDifficulty(savedDifficulty); // Update the state with the saved difficulty
-    console.log('Dificuldade carregada:', savedDifficulty); // Log da dificuldade carregada
   }, []);
 
   return (
@@ -175,7 +175,7 @@ function Main({ missions }) {
         padding: '10px',
         borderRadius: '5px'
       }}>
-        Dificuldade: {difficulty}
+        Difficulty: {difficulty}
       </div>
     </div>
   );

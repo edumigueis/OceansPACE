@@ -1,5 +1,6 @@
 import oman from './assets/oman.jpg';
 import gulf_of_maine from './assets/gulf_of_maine.jpg';
+import maine_to_george from './assets/georges_to_maine.png';
 import pace_clouds from './assets/pace_introduction_clouds.png';
 import pace_land from './assets/pace_introduction_land.png';
 import pace_water from './assets/pace_introduction_water.png';
@@ -77,9 +78,9 @@ const getMissionsByDifficulty = (difficulty) => {
                             next: 1,
                             component: (
                                 <OnlyOneQuestion
-                                    questionText={"Take a look at this awesome image. Is the white you see just one thing or more than one?"}
+                                    questionText={"Take a look at this awesome image. What do you see? What’s different or exciting? What caught your eye? Now, look at the colours in it, is the white you see just one thing or more than one?"}
                                     options={[
-                                        { id: 'a', text: 'It is all the same', explanation: '' },
+                                        { id: 'a', text: 'It is all the same', explanation: 'Not exactely! Let\'s look a little closer!' },
                                         { id: 'b', text: 'There are different whites', explanation: '' }
                                     ]}
                                     correctAnswerId={'b'}
@@ -131,10 +132,10 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <OnlyOneQuestion
                                     questionText={"The blue is water as we can see, but what could be the green?"}
                                     options={[
-                                        { id: 'a', text: 'Algae', explanation: '' },
-                                        { id: 'b', text: 'Pollution', explanation: '' },
-                                        { id: 'c', text: 'Waste', explanation: '' },
-                                        { id: 'd', text: 'A giant sea monster taking a bath', explanation: '' }
+                                        { id: 'a', text: 'Algae', explanation: 'Totally! Let\'s look further' },
+                                        { id: 'b', text: 'Pollution', explanation: 'Not in this case! Pollution can look like many colors including green, however we would be able to identify it by other impacts in the environment, like flora and fauna dying and other disturbences' },
+                                        { id: 'c', text: 'Waste', explanation: 'Not in this case, altought waste could be this color, we would be able to see its origin and it would be negatevely impacting the environment around it' },
+                                        { id: 'd', text: 'A giant sea monster taking a bath', explanation: 'Fortunetly, or unfortunetly, no animals exist in our ocean that are that big and green, but the thought  that this is an alive being (a collection of them) is correct!' }
                                     ]}
                                     correctAnswerId={'a'}
                                     nextStage={3}
@@ -169,11 +170,11 @@ const getMissionsByDifficulty = (difficulty) => {
                                 <MapFocusStage nextStage={5}
                                     images={[
                                         {
-                                            lat: 24.618875,
-                                            lng: 57.455609,
-                                            image: image_globe,
-                                            title: "alooo",
-                                            text: "aaai",
+                                            lat: 42.81671,
+                                            lng: -69.95354,
+                                            image: maine_to_george,
+                                            title: "This is the coast we were looking at!",
+                                            text: "With the satellite image we could see all its beauty!",
                                             zoom: 7,
                                         }
                                     ]}
@@ -187,7 +188,7 @@ const getMissionsByDifficulty = (difficulty) => {
                                 briefing={{
                                     title: "North America from Above",
                                     location: "Northeastern United States and Canada",
-                                    image: oman_picture,
+                                    image: pace_maine,
                                     report: "Congratulations! You’ve completed your first mission! Your skills are amazing, and we can’t wait to have your help on our next big adventure!",
                                     reportAll: "We’ve seen how it’s way smarter to act before a problem pops up, but when things do go wrong, we can’t just sit back. In today’s example, we talked about mud, but oil spills are a whole other story. They can be even nastier, sticking around much longer and causing bigger damage to marine life. Oil doesn’t just muddy the water, it coats everything, from fish to birds, making it hard for ecosystems to bounce back. The cool thing about using images is that they don’t just show us what’s happening, they give us clues about what might happen next! They help us track where the mud, oil, or any other mess is headed. With that info, we can figure out which areas might be in trouble and jump in with protective measures. Whether it’s blocking the spill, setting up barriers, or getting cleanup crews to the right spot, these images are like treasure maps showing us the best path to take. And even after the initial cleanup, we can keep an eye on things. Satellite images and other tools let us monitor how nature is recovering and make sure it gets back to its full strength. By acting early, responding quickly, and using tech to guide us, we can help protect our bays, rivers, and oceans from the messes that threaten the"
                                 }}

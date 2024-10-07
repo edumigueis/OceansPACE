@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
 import MissionPage from './pages/MissionPage';
 import DifficultyPage from './pages/DifficultyPage';
@@ -37,7 +37,7 @@ function App() {
         <Route path="/" element={<DifficultyPage setDifficulty={setDifficulty} />} />
         <Route path="/main" element={<Main missions={missions} />} />
         <Route path="/congratulations" element={<LastPage />} />
-        {missions.map((mission) => (
+        {missions.map((mission, index) => (
           <Route
             key={mission.index}
             path={`/mission-${mission.index}`}
@@ -48,7 +48,7 @@ function App() {
                   ...stage,
                   component: React.cloneElement(stage.component, {
                     setMissionStageIndex: () => missionPageRef.current.setStageIndex(stage.next),
-                    onMissionComplete: () => concludeMission(mission.index),
+                    onMissionComplete: () => concludeMission(index), // Use the index to identify the mission
                   }),
                 }))}
                 csvPath={mission.csvPath}

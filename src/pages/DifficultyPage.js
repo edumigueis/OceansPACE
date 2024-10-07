@@ -6,7 +6,7 @@ import { Water } from 'three-stdlib';
 import '../styles/Difficulty.css';
 import LpContent from '../components/LpContent.js';
 import backgroundMusic from '../assets/sounds/background_water.mp3';
-import { Const } from 'wgsl_reflect';
+import waterNormalsTexture from '../assets/waternormals.jpeg';
 import { useNavigate } from 'react-router-dom';
 
 extend({ Water });
@@ -14,8 +14,11 @@ extend({ Water });
 function Ocean({ speed }) {
   const ref = useRef();
   const gl = useThree((state) => state.gl);
-  const waterNormals = useLoader(THREE.TextureLoader, '/waternormals.jpeg');
+
+  // Load the water normals texture from the imported file
+  const waterNormals = useLoader(THREE.TextureLoader, waterNormalsTexture); 
   waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
+
   const geom = useMemo(() => new THREE.PlaneGeometry(10000, 10000), []);
 
   const config = useMemo(
@@ -28,9 +31,9 @@ function Ocean({ speed }) {
       waterColor: 0x003249,
       distortionScale: 0,
       fog: false,
-      format: gl.encoding
+      format: gl.encoding,
     }),
-    [waterNormals]
+    [waterNormals, gl.encoding]
   );
 
   useFrame((state, delta) => (ref.current.material.uniforms.time.value += delta * speed));
@@ -42,7 +45,7 @@ export default function App() {
   const [difficulty, setDifficulty] = useState('MEDIUM');
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(new Audio(backgroundMusic));
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const toggleAudio = () => {
     const audio = audioRef.current;

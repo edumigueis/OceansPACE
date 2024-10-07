@@ -6,6 +6,7 @@ import { Water } from 'three-stdlib';
 import { motion } from 'framer-motion';
 import '../styles/Difficulty.css';
 import backgroundMusic from '../assets/sounds/background_water.mp3';
+import logo from '../assets/logooceanspace.png';
 
 // Import the badges
 import aerosols from '../assets/badges/aerosols.png';
@@ -106,7 +107,7 @@ export default function App() {
       }}>
         {/* Logo */}
         <motion.img 
-          src={'logooceanspace.png'} 
+          src={logo} 
           alt="OceansPACE Logo" 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}

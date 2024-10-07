@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../styles/SelectionComponent.css";
-import easyImage from '../assets/Badge.png';
-import mediumImage from '../assets/Badge.png';
-import hardImage from '../assets/Badge.png';
+import easyImage from '../assets/animal1.jpg';
+import mediumImage from '../assets/animal2.jpg';
+import hardImage from '../assets/animal3.jpg';
+import logo from '../assets/logooceanspace.png';
 
 const LpContent = ({ setDifficulty }) => {
   const options = [
@@ -19,7 +20,7 @@ const LpContent = ({ setDifficulty }) => {
 
   return (
     <div className="selection-container">
-      <img src="logooceanspace.png" alt="Ocean Logo" className="logo" />
+      <img src={logo} alt="Ocean Logo" className="logo" />
       <h1>OCEANSPACE</h1>
       <p className="text">
         Welcome to the world of remote sensing, explorer! You have been selected to work on the <strong>OceansPACE</strong> program, where you will take on missions all over the world to generate reports and learn about <strong>PACE</strong> monitored phenomena and remote sensing.

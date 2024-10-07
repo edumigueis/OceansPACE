@@ -56,12 +56,19 @@ const getMissionsByDifficulty = (difficulty) => {
                     heatmapConfig: {
                         intensity: 1,
                         colorRange: [
-                            [255, 0, 0, 255],
-                            [255, 255, 0, 255],
-                            [0, 255, 0, 255],
-                            [0, 255, 255, 255],
-                            [0, 0, 255, 255],
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
                         ],
+
                         threshold: 0.9,
                     },
                     tileLayerConfig: {
@@ -220,12 +227,20 @@ const getMissionsByDifficulty = (difficulty) => {
                     heatmapConfig: {
                         intensity: 1,
                         colorRange: [
-                            [255, 0, 0, 255],
-                            [255, 255, 0, 255],
-                            [0, 255, 0, 255],
-                            [0, 255, 255, 255],
-                            [0, 0, 255, 255],
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
                         ],
+
+
                         threshold: 0.9,
                     },
                     tileLayerConfig: {
@@ -344,6 +359,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
+                            displayMap: true,
                             next: 7,
                             component: (
                                 <MapFocusStage nextStage={7}
@@ -354,13 +370,14 @@ const getMissionsByDifficulty = (difficulty) => {
                                             image: saginaw_pace,
                                             title: "The Saginaw Bay is a beautiful area but it may need a little help!",
                                             text: "We humans impact the world around us, look around your own environment, how do you think you change it? How do you think you can help the world around you, humans, land and oceans alike?",
-                                            zoom: 7,
+                                            zoom: 10,
                                         },
                                     ]}
                                 />
                             ),
                         },
                         {
+                            displayMap: true,
                             component: (
                                 <FinalStage
                                     onArrival={() => console.log('Final stage reached!')}
@@ -400,12 +417,20 @@ const getMissionsByDifficulty = (difficulty) => {
                     heatmapConfig: {
                         intensity: 1,
                         colorRange: [
-                            [255, 0, 0, 255],
-                            [255, 255, 0, 255],
-                            [0, 255, 0, 255],
-                            [0, 255, 255, 255],
-                            [0, 0, 255, 255],
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
                         ],
+
+
                         threshold: 0.9,
                     },
                     tileLayerConfig: {
@@ -609,11 +634,17 @@ const getMissionsByDifficulty = (difficulty) => {
                     heatmapConfig: {
                         intensity: 1,
                         colorRange: [
-                            [255, 0, 0, 255],
-                            [255, 255, 0, 255],
-                            [0, 255, 0, 255],
-                            [0, 255, 255, 255],
-                            [0, 0, 255, 255],
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
                         ],
                         threshold: 0.9,
                     },
@@ -773,11 +804,17 @@ const getMissionsByDifficulty = (difficulty) => {
                     heatmapConfig: {
                         intensity: 1,
                         colorRange: [
-                            [255, 0, 0, 255],
-                            [255, 255, 0, 255],
-                            [0, 255, 0, 255],
-                            [0, 255, 255, 255],
-                            [0, 0, 255, 255],
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
                         ],
                         threshold: 0.9,
                     },
@@ -954,12 +991,19 @@ const getMissionsByDifficulty = (difficulty) => {
                     heatmapConfig: {
                         intensity: 1,
                         colorRange: [
-                            [255, 0, 0, 255],
-                            [255, 255, 0, 255],
-                            [0, 255, 0, 255],
-                            [0, 255, 255, 255],
-                            [0, 0, 255, 255],
+                            [178, 34, 34, 255],     // Brick
+                            [255, 0, 0, 255],       // Red
+                            [255, 165, 0, 255],     // Orange
+                            [255, 255, 0, 255],     // Yellow
+                            [173, 255, 47, 255],    // GreenYellow
+                            [0, 255, 0, 255],       // Green
+                            [0, 255, 255, 255],     // Cyan
+                            [0, 0, 255, 255],       // Blue
+                            [147, 112, 219, 255],    // Lilac
+                            [128, 0, 128, 255],     // Purple
+                            [128, 0, 0, 255]        // Wine
                         ],
+
                         threshold: 0.9,
                     },
                     tileLayerConfig: {
@@ -1146,7 +1190,7 @@ const getMissionsByDifficulty = (difficulty) => {
 
         case 'HARD':
             return [
-                
+
             ];
 
         default:

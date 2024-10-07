@@ -14,6 +14,8 @@
     z-index: 1000;
     animation: fadeIn 1s ease-in-out;
     overflow: hidden; 
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 /* Black opacity backdrop */
@@ -40,7 +42,7 @@
     margin-bottom: 10px;
     text-align: center;
     transition: transform 0.3s ease, color 0.3s ease; /* Animation for title */
-    margin-top: 180px; /* Space from top */
+    margin-top: 90px; /* Space from top */
     color: #fff; /* Title color set to white for contrast */
 }
 

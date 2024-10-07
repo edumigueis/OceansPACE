@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/OceansPACE/static/css/main.47d29e4a.css",
-    "main.js": "/OceansPACE/static/js/main.3eb0a8f2.js",
+    "main.js": "/OceansPACE/static/js/main.2838b7a3.js",
     "static/js/453.952c47cf.chunk.js": "/OceansPACE/static/js/453.952c47cf.chunk.js",
     "static/media/oman_winter_norm.csv": "/OceansPACE/static/media/oman_winter_norm.9b8339772fa02155909d.csv",
     "static/media/earth-min-1.jpg": "/OceansPACE/static/media/earth-min-1.31d08d87ec70cffe6365.jpg",
@@ -24,6 +24,7 @@
     "static/media/oman_picture.jpg": "/OceansPACE/static/media/oman_picture.440f678a5270b2e0c3bb.jpg",
     "static/media/apce_introduction_snow.png": "/OceansPACE/static/media/apce_introduction_snow.d27037061b2b23ded6c3.png",
     "static/media/georges_to_maine.png": "/OceansPACE/static/media/georges_to_maine.5a1ee83b9629f7d7c1da.png",
+    "static/media/waternormals.jpeg": "/OceansPACE/static/media/waternormals.537ec85b965d414829ab.jpeg",
     "static/media/oman_green.png": "/OceansPACE/static/media/oman_green.5bb98a646915f363474c.png",
     "static/media/saginaw_bay_river_mud.png": "/OceansPACE/static/media/saginaw_bay_river_mud.307cb37d556bfdadfb67.png",
     "static/media/pace_introduction_water.png": "/OceansPACE/static/media/pace_introduction_water.a153b09c54578d6ad692.png",
@@ -41,11 +42,11 @@
     "static/media/springs.png": "/OceansPACE/static/media/springs.b385a9e53318d8adc7ed.png",
     "index.html": "/OceansPACE/index.html",
     "main.47d29e4a.css.map": "/OceansPACE/static/css/main.47d29e4a.css.map",
-    "main.3eb0a8f2.js.map": "/OceansPACE/static/js/main.3eb0a8f2.js.map",
+    "main.2838b7a3.js.map": "/OceansPACE/static/js/main.2838b7a3.js.map",
     "453.952c47cf.chunk.js.map": "/OceansPACE/static/js/453.952c47cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.47d29e4a.css",
-    "static/js/main.3eb0a8f2.js"
+    "static/js/main.2838b7a3.js"
   ]
 }

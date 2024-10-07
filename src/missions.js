@@ -45,7 +45,7 @@ const getMissionsByDifficulty = (difficulty) => {
                     title: "North America from Above",
                     lat: 42.81671,
                     lng: -69.95354,
-                    location: "Northeastern United States and Canada",
+                    location: "Northeastern US and Canada",
                     image: pace_maine,
                     text: "✨ Your first mission is coming up: We’ll be diving into the ocean’s colors, discovering how the light bouncing off the water can reveal hidden secrets about life in the whole world! The region, encompassing Georges Bank and the Gulf of Maine, is renowned for its rich biological productivity, historically making it a commercial fishing hub. However, overfishing and climate change now pose significant threats to this vital ecosystem.",
                     initialViewState: {

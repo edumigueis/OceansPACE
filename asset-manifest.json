@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/OceansPACE/static/css/main.fc74da71.css",
-    "main.js": "/OceansPACE/static/js/main.de2544c6.js",
+    "main.css": "/OceansPACE/static/css/main.d43987a7.css",
+    "main.js": "/OceansPACE/static/js/main.45c6238e.js",
     "static/js/453.952c47cf.chunk.js": "/OceansPACE/static/js/453.952c47cf.chunk.js",
     "static/media/oman_winter_norm.csv": "/OceansPACE/static/media/oman_winter_norm.9b8339772fa02155909d.csv",
     "static/media/earth-min-1.jpg": "/OceansPACE/static/media/earth-min-1.31d08d87ec70cffe6365.jpg",
@@ -47,12 +47,12 @@
     "static/media/bloom.png": "/OceansPACE/static/media/bloom.a0bed166a75c0baf7f97.png",
     "static/media/springs.png": "/OceansPACE/static/media/springs.b385a9e53318d8adc7ed.png",
     "index.html": "/OceansPACE/index.html",
-    "main.fc74da71.css.map": "/OceansPACE/static/css/main.fc74da71.css.map",
-    "main.de2544c6.js.map": "/OceansPACE/static/js/main.de2544c6.js.map",
+    "main.d43987a7.css.map": "/OceansPACE/static/css/main.d43987a7.css.map",
+    "main.45c6238e.js.map": "/OceansPACE/static/js/main.45c6238e.js.map",
     "453.952c47cf.chunk.js.map": "/OceansPACE/static/js/453.952c47cf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc74da71.css",
-    "static/js/main.de2544c6.js"
+    "static/css/main.d43987a7.css",
+    "static/js/main.45c6238e.js"
   ]
 }

@@ -35,6 +35,7 @@ function Main({ missions }) {
   const coordinates = gData.map(
     ({ lat, lng }) => `Lat: ${lat.toFixed(4)}, Long: ${lng.toFixed(4)}`
   );
+  
 
   // Function to pause the audio in Main
   const pauseMainAudio = () => {

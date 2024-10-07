@@ -113,7 +113,6 @@ function Main({ missions }) {
     // Get the selected difficulty from localStorage
     const savedDifficulty = localStorage.getItem('selectedDifficulty') || 'MEDIUM';
     setDifficulty(savedDifficulty); // Update the state with the saved difficulty
-    console.log('Dificuldade carregada:', savedDifficulty); // Log da dificuldade carregada
   }, []);
 
   return (
@@ -175,7 +174,7 @@ function Main({ missions }) {
         padding: '10px',
         borderRadius: '5px'
       }}>
-        Dificuldade: {difficulty}
+        Difficulty: {difficulty}
       </div>
     </div>
   );

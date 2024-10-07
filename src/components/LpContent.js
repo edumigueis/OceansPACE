@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "../styles/SelectionComponent.css"; // Ensure this file is properly linked
-import easyImage from '../assets/Badge.png'; // Replace with your image paths
+import "../styles/SelectionComponent.css";
+import easyImage from '../assets/Badge.png';
 import mediumImage from '../assets/Badge.png';
 import hardImage from '../assets/Badge.png';
 
 const LpContent = ({ setDifficulty }) => {
   const options = [
-    { label: "EASY",text: "Satellite Scout", image: easyImage },
+    { label: "EASY", text: "Satellite Scout", image: easyImage },
     { label: "MEDIUM", text: "Data Detective", image: mediumImage },
     { label: "HARD", text: "Geo-Wizard", image: hardImage },
   ];
@@ -22,7 +22,7 @@ const LpContent = ({ setDifficulty }) => {
       <img src="logooceanspace.png" alt="Ocean Logo" className="logo" />
       <h1>OCEANSPACE</h1>
       <p className="text">
-        Welcome to the world of remote sensing, explorer! You have been selected to work on the <strong>OceansPACE</strong> program, where you will take on missions all over the world to generate reports and learn about <strong>PACE</strong> monitored fenomena and remote sensoring.
+        Welcome to the world of remote sensing, explorer! You have been selected to work on the <strong>OceansPACE</strong> program, where you will take on missions all over the world to generate reports and learn about <strong>PACE</strong> monitored phenomena and remote sensing.
       </p>
       <h6>Pick difficulty</h6>
 
@@ -31,7 +31,7 @@ const LpContent = ({ setDifficulty }) => {
           <div
             key={option.label}
             className={`image-button ${index === currentIndex ? 'selected' : ''}`}
-            onClick={() => handleSelection(index)}
+            onClick={() => handleSelection(index)} // Modificado para permitir seleção direta
           >
             <img src={option.image} alt={`${option.label} icon`} />
             <p>{option.text}</p>
@@ -39,9 +39,6 @@ const LpContent = ({ setDifficulty }) => {
         ))}
       </div>
 
-      <p className="footer-text">
-        Difficulty level changes content complexity and tutorial mode.
-      </p>
     </div>
   );
 };

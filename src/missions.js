@@ -181,7 +181,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
-                            displayMap: false,
+                            displayMap: true,
                             component: <FinalStage
                                 onArrival={() => console.log('Final stage reached!')}
                                 briefing={{
@@ -567,6 +567,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
+                            displayMap: true,
                             component: (
                                 <FinalStage
                                     onArrival={() => console.log('Final stage reached!')}
@@ -733,7 +734,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
-                            displayMap: false,
+                            displayMap: true,
                             component: <FinalStage
                                 onArrival={() => console.log('Final stage reached!')}
                                 briefing={{
@@ -912,6 +913,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
+                            displayMap: true,
                             component: (
                                 <FinalStage
                                     onArrival={() => console.log('Final stage reached!')}
@@ -1119,6 +1121,7 @@ const getMissionsByDifficulty = (difficulty) => {
                             ),
                         },
                         {
+                            displayMap: true,
                             component: (
                                 <FinalStage
                                     onArrival={() => console.log('Final stage reached!')}

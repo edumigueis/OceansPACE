@@ -12,27 +12,9 @@ const LpContent = ({ setDifficulty }) => {
   ];
   const [currentIndex, setCurrentIndex] = useState(1); // Start at "MEDIUM"
 
-  const handleDifficultyChange = (index) => {
-    const newDifficulty = options[index].label; // Pega a nova dificuldade
-    setDifficulty(newDifficulty); // Atualiza a dificuldade
-    localStorage.setItem('selectedDifficulty', newDifficulty); // Salva no localStorage
-    setCurrentIndex(index); // Atualiza o índice atual
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex + 1) % options.length;
-      handleDifficultyChange(newIndex); // Chama a função para alterar a dificuldade
-      return newIndex;
-    });
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex - 1 + options.length) % options.length;
-      handleDifficultyChange(newIndex); // Chama a função para alterar a dificuldade
-      return newIndex;
-    });
+  const handleSelection = (index) => {
+    setCurrentIndex(index);
+    setDifficulty(options[index].label); // Update difficulty in the parent component
   };
 
   return (
@@ -49,7 +31,7 @@ const LpContent = ({ setDifficulty }) => {
           <div
             key={option.label}
             className={`image-button ${index === currentIndex ? 'selected' : ''}`}
-            onClick={() => handleDifficultyChange(index)} // Modificado para permitir seleção direta
+            onClick={() => handleSelection(index)} // Modificado para permitir seleção direta
           >
             <img src={option.image} alt={`${option.label} icon`} />
             <p>{option.text}</p>

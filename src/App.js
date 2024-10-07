@@ -5,11 +5,12 @@ import MissionPage from './pages/MissionPage';
 import DifficultyPage from './pages/DifficultyPage';
 import LastPage from './pages/LastPage';
 import './styles/App.css';
-import getMissionsByDifficulty from './missions'; // Caminho correto para importar
+import getMissionsByDifficulty from './missions'; // Correct path to import
 
 function App() {
   const missionPageRef = useRef(); // Create a ref for the MissionPage
   const [difficulty, setDifficulty] = useState('EASY'); // Default difficulty
+  const [missions, setMissions] = useState(getMissionsByDifficulty(difficulty)); // Get missions based on difficulty
 
   // UseEffect to get the selected difficulty from localStorage
   useEffect(() => {
@@ -17,12 +18,23 @@ function App() {
     setDifficulty(savedDifficulty);
   }, []);
 
-  const missions = getMissionsByDifficulty(difficulty);
+  // Update missions when difficulty changes
+  useEffect(() => {
+    setMissions(getMissionsByDifficulty(difficulty));
+  }, [difficulty]);
+
+  const concludeMission = (index) => {
+    setMissions((prevMissions) => {
+      const updatedMissions = [...prevMissions];
+      updatedMissions[index].concluded = true; // Set the concluded property to true
+      return updatedMissions;
+    });
+  };
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DifficultyPage />} />
+        <Route path="/" element={<DifficultyPage setDifficulty={setDifficulty} />} />
         <Route path="/main" element={<Main missions={missions} />} />
         <Route path="/congratulations" element={<LastPage />} />
         {missions.map((mission) => (
@@ -36,6 +48,7 @@ function App() {
                   ...stage,
                   component: React.cloneElement(stage.component, {
                     setMissionStageIndex: () => missionPageRef.current.setStageIndex(stage.next),
+                    onMissionComplete: () => concludeMission(mission.index),
                   }),
                 }))}
                 csvPath={mission.csvPath}
